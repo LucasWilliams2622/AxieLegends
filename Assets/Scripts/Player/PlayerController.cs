@@ -4,66 +4,98 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
+
+    [SerializeField] private bool isPlayerDie;
+    public float runSpeed;
+    public float diagMoveLimiter;
+
+    private PlayerAnimation playerAnim;
+    private Rigidbody2D body;
+    private float horizontal;
+    private float vertical;
     private bool isMoving;
+    
 
-    private Vector2 input;
-    public Transform playerTransform;
+    public bool IsPlayerDie { get => isPlayerDie; set => isPlayerDie = value; }
 
-    public LayerMask solidObjectLayer;
-    private void Update()
+    void Start()
     {
-        if (!isMoving)
+        body = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<PlayerAnimation>();
+    }
+
+    void Update()
+    {
+        CheckMoving();
+        CheckDead();
+
+    }
+
+    void FixedUpdate()
+    {
+        if (isMoving)
         {
-            input.x = Input.GetAxisRaw("Horizontal");
-            input.y = Input.GetAxisRaw("Vertical");
+            playerAnim.PlayRun();
+            Moving(horizontal * runSpeed, vertical * runSpeed);
 
-          /*  if (input.x != 0) input.y = 0; */ 
-
-            if(input != Vector2.zero)
+            if (horizontal < 0)
             {
-                var targetPos = transform.position;
-
-                targetPos.x += input.x;
-                targetPos.y += input.y;
-                if(IsWalkable(targetPos))
-                StartCoroutine(Move(targetPos));
-
-                if (input.x < 0)
-                {
-                    playerTransform.rotation = Quaternion.Euler(0, 0, 0);
-                }
-                else if (input.x > 0)
-                {
-                    playerTransform.rotation = Quaternion.Euler(0, 180, 0);
-                }
+                ChangeRotation(0, 0, 0);
             }
-        }
-    }
 
-    IEnumerator Move(Vector3 targetPos)
-    {
-        isMoving = true;
-
-        while ((targetPos - transform.position).sqrMagnitude> Mathf.Epsilon)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
-            yield return null;
-        }
-        transform.position = targetPos;
-
-        isMoving = false;
-    }
-
-    private bool IsWalkable(Vector3 targetPos)
-    {
-        if (Physics2D.OverlapCircle(targetPos, 0.2f, solidObjectLayer) != null)
-        {
-            return false;
+            if (horizontal > 0)
+            {
+                ChangeRotation(0, 180, 0);
+            }
         }
         else
         {
-            return true;
+            playerAnim.PlayIdle();
+            Moving(0, 0);
+        }
+
+    }
+
+    void CheckMoving()
+    {
+        horizontal = Input.GetAxisRaw("Horizontal");
+        vertical = Input.GetAxisRaw("Vertical");
+
+        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        {
+            // limit movement speed diagonally, move at 70% speed
+            horizontal *= diagMoveLimiter;
+            vertical *= diagMoveLimiter;
+        }
+
+        if (horizontal == 0 && vertical == 0)
+        {
+            isMoving = false;
+        }
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            isMoving = true;
         }
     }
+
+    void CheckDead()
+    {
+        if (IsPlayerDie)
+        {
+            IsPlayerDie = false;
+            playerAnim.PlayDie();
+        }
+    }
+
+    void Moving(float x, float y)
+    {
+        body.velocity = new Vector2(x, y);
+    }
+
+    void ChangeRotation(float x, float y, float z)
+    {
+        transform.localEulerAngles = new Vector3(x, y, z);
+    }
+
 }
