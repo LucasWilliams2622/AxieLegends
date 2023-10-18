@@ -6,9 +6,10 @@ using UnityEngine.UIElements;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] protected List<Transform> listEnemy;
-    [SerializeField] protected Transform holder;
+    [SerializeField] public Transform holder;
     [SerializeField] protected float timeEnemySpawnerLV;
     [SerializeField] protected float timeDelay;
+    [SerializeField] protected GameObject player; 
     // Start is called before the first frame update
 
     private void Reset()
@@ -41,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
     {
         ListEnemy();
         holder = transform.Find("Holder");
+        player = GameObject.Find("Player");
     }
 
     protected virtual void ListEnemy()
@@ -66,7 +68,13 @@ public class EnemySpawner : MonoBehaviour
 
     protected virtual void CreateEnemy(Transform enemy)
     {
-        Transform enemySpawner = Instantiate(enemy, new Vector3(Random.Range(-8,8),Random.Range(-4,4),0), Quaternion.Euler(0, 0, 0));
+        float posX = Random.Range(-8, 8);
+        float posY = Random.Range(-4, 4);
+        if(posX >= 0 && posX < 2) posX = 2;
+        if(posX < 0 && posX > -2) posX = -2;
+        if(posY >= 0 && posY < 2) posY = 2;
+        if(posY < 0 && posY > -2) posY = -2;
+        Transform enemySpawner = Instantiate(enemy, new Vector3(posX + player.transform.position.x, posY + player.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
         enemySpawner.gameObject.SetActive(true);
         enemySpawner.parent = this.holder;
     }

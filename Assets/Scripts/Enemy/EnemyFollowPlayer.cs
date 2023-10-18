@@ -1,30 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyFollowPlayer : MonoBehaviour
 {
-    [SerializeField] protected Transform player;
-    [SerializeField] protected float moveSpeed = 5f;
+    [SerializeField] public GameObject player;
+    [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] protected float stoppingDistance = 2f;
     // Start is called before the first frame update
+    private void Reset()
+    {
+    }
     void Start()
     {
-        if(player == null)
+        player = GameObject.Find("Player");
+        if (player == null)
         {
-            Debug.LogError("Bạn chưa khởi tạo player");
+            Debug.LogError("Không tìm thấy 'Player' để khởi tạo");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player != null)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
+        if (player != null && distanceToPlayer >= stoppingDistance)
         {
-            Vector3 direction = player.position - transform.position;
-            direction.Normalize();
+            Vector2 direction = player.transform.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
             transform.Translate(direction * moveSpeed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("bullet"))
+        {
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }
