@@ -9,7 +9,12 @@ public class EnemyAnimation : MonoBehaviour
     [SerializeField] private float animSpeed = 1f;
     private string ENEMY_RUN = "action/move-forward";
     private string ENEMY_DIE = "action/die";
-    
+
+    private void OnEnable()
+    {
+        PlayRun();
+    }
+
     public void PlayRun()
     {
         anim.AnimationName = ENEMY_RUN;
