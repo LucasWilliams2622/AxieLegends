@@ -12,8 +12,11 @@ public class PlayerAnimation : MonoBehaviour
     [SerializeField] private Transform targetTransform;
 
     private string PLAYER_RUN = "draft/run-origin";
-    private string PLAYER_HURT = "activity/appear";
+    private string PLAYER_HURT = "defense/hit-by-normal";
     private string PLAYER_IDLE = "action/idle/normal";
+
+    public SkeletonAnimation Anim { get => anim; set => anim = value; }
+
     // private string PLAYER_DIE ; 
     // player die sẽ cho làm particle bung thành 5 cục 5 hướng khác nhau, xóa sprite
     // Start is called before the first frame update
@@ -30,21 +33,21 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayRun()
     {
-        anim.AnimationName = PLAYER_RUN;
-        anim.timeScale = animSpeed;
+        Anim.AnimationName = PLAYER_RUN;
+        Anim.timeScale = animSpeed;
     }
 
     public void PlayHurt()
     {
-        anim.AnimationName = PLAYER_HURT;
-        anim.loop = false;
-        anim.timeScale = animSpeed;
+        var myAnim = Anim.AnimationName = PLAYER_HURT;
+        Anim.loop = false;
+        Anim.timeScale = animSpeed;
     }
 
     public void PlayIdle()
     {
-        anim.AnimationName = PLAYER_IDLE;
-        anim.timeScale = animSpeed;
+        Anim.AnimationName = PLAYER_IDLE;
+        Anim.timeScale = animSpeed;
     }
 
     public void PlayDie()

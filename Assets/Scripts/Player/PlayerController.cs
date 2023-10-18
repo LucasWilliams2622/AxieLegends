@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private bool isMoving;
+    private bool isTriggerHurt;
     
 
     public bool IsPlayerDie { get => isPlayerDie; set => isPlayerDie = value; }
@@ -35,7 +36,11 @@ public class PlayerController : MonoBehaviour
     {
         if (isMoving)
         {
-            playerAnim.PlayRun();
+            if(!isTriggerHurt)
+            {
+                playerAnim.PlayRun();
+            }
+           
             Moving(horizontal * runSpeed, vertical * runSpeed);
 
             if (horizontal < 0)
@@ -50,7 +55,10 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            playerAnim.PlayIdle();
+            if (!isTriggerHurt)
+            {
+                playerAnim.PlayIdle();
+            }
             Moving(0, 0);
         }
 
@@ -97,5 +105,19 @@ public class PlayerController : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(x, y, z);
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.CompareTag("Monster"))
+        {
+            isTriggerHurt = true;
+            playerAnim.PlayHurt();
 
+            //delaytime lấy từ độ dài animation bên trong skeletonanimation
+            Invoke(nameof(SetFalseTriggerHurt), 0.417f);
+        }
+    }
+    void SetFalseTriggerHurt()
+    {
+        isTriggerHurt = false;
+    }
 }

@@ -12,7 +12,9 @@ GameObject:
   - component: {fileID: 4598139442795789675}
   - component: {fileID: 6511352450620705686}
   - component: {fileID: 4598139442795789669}
-  - component: {fileID: 6777913021172996947}
+  - component: {fileID: 4506009213161688735}
+  - component: {fileID: 7003124293809453745}
+  - component: {fileID: 839123432689460363}
   m_Layer: 0
   m_Name: ExpPotion
   m_TagString: Item_ExpPot
@@ -134,7 +136,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6916525, y: 3.563367}
   m_EdgeRadius: 0
---- !u!114 &6777913021172996947
+--- !u!114 &4506009213161688735
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +145,38 @@ MonoBehaviour:
   m_GameObject: {fileID: 4598139442795789674}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67e6135b5a832c4d8a03259262cde36, type: 3}
+  m_Script: {fileID: 11500000, guid: e79b2c451f75d574f9fb90b94eabdee6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mergeNumber: 3
+--- !u!95 &7003124293809453745
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598139442795789674}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 52f5c8ae709489c4080a5548a2a468dc, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &839123432689460363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4598139442795789674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e79b2c451f75d574f9fb90b94eabdee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
