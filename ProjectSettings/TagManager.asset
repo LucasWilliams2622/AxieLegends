@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Arrow
+  - Item_ExpPot
+  - Item_ExpPot_Medium
+  - Monster
   layers:
   - Default
   - TransparentFX
