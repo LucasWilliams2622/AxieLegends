@@ -10,12 +10,15 @@ public class PlayerLevelBuff : MonoBehaviour
     [SerializeField] public Transform skill;
     [SerializeField] protected List <Transform> listPosition;
     [SerializeField] protected Transform position;
+    [SerializeField] protected List<Transform> listPlayerSkill;
+    [SerializeField] protected Transform playerSkill;
     [SerializeField] public int[] arraySkill;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        playerSkill = transform.Find("PlayerSkill");
         level = 1;
         LoadList();
     }
@@ -31,6 +34,7 @@ public class PlayerLevelBuff : MonoBehaviour
             Time.timeScale = 0f;
 
         }
+        PlayerSkill();
     }
 
     protected virtual void LoadList()
@@ -47,6 +51,11 @@ public class PlayerLevelBuff : MonoBehaviour
         foreach (Transform pos in position)
         {
             this.listPosition.Add(pos);
+        }
+        foreach (Transform playerSkil in playerSkill)
+        {
+            this.listPlayerSkill.Add(playerSkil);
+            playerSkil.gameObject.SetActive(false);
         }
         skill.gameObject.SetActive(false);
 
@@ -75,6 +84,14 @@ public class PlayerLevelBuff : MonoBehaviour
             }
             numbers[i] = randomNumber;
             Debug.Log("Số thứ " + (i + 1) + ": " + numbers[i]);
+        }
+    }
+
+    protected virtual void PlayerSkill()
+    {
+        for (int i = 0;i < arraySkill.Length; i++)
+        {
+            listPlayerSkill[arraySkill[i]].gameObject.SetActive(true);
         }
     }
 }
