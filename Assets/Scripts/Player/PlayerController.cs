@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float diagMoveLimiter;
 
     private PlayerAnimation playerAnim;
-    private Rigidbody2D body;
+    [SerializeField] private Rigidbody2D rb;
     private float horizontal;
     private float vertical;
     private bool isMoving;
@@ -21,7 +21,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        diagMoveLimiter = 0.7f;
+        rb = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<PlayerAnimation>();
     }
 
@@ -36,12 +37,12 @@ public class PlayerController : MonoBehaviour
     {
         if (isMoving)
         {
-            if(!isTriggerHurt)
+            if (!isTriggerHurt)
             {
                 playerAnim.PlayRun();
             }
            
-            Moving(horizontal * runSpeed, vertical * runSpeed);
+            Moving(horizontal, vertical);
 
             if (horizontal < 0)
             {
@@ -69,12 +70,12 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-        {
-            // limit movement speed diagonally, move at 70% speed
-            horizontal *= diagMoveLimiter;
-            vertical *= diagMoveLimiter;
-        }
+        //if (horizontal != 0 && vertical != 0) // Check for diagonal movement
+        //{
+        //    // limit movement speed diagonally, move at 70% speed
+        //    horizontal *= diagMoveLimiter;
+        //    vertical *= diagMoveLimiter;
+        //}
 
         if (horizontal == 0 && vertical == 0)
         {
@@ -98,7 +99,8 @@ public class PlayerController : MonoBehaviour
 
     void Moving(float x, float y)
     {
-        body.velocity = new Vector2(x, y);
+        Vector2 movement = new Vector2(horizontal, vertical).normalized;
+        rb.velocity = movement * runSpeed;
     }
 
     void ChangeRotation(float x, float y, float z)
