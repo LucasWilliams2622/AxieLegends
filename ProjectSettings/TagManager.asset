@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Arrow
   - bullet
+  - Monster
+  - Item_ExpPot
+  - EnemyLv1
+  - EnemyLv2
+  - EnemyLv3
   layers:
   - Default
   - TransparentFX

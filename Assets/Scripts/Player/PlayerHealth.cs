@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
 
-    public int maxHealth = 4;
+    public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject panelDead;
@@ -17,9 +17,19 @@ public class PlayerHealth : MonoBehaviour
 
     // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
-
     {
-      
+        if (collision.gameObject.CompareTag("EnemyLv1"))
+        {
+            TakeDamage(1);
+        }
+        if (collision.gameObject.CompareTag("EnemyLv2"))
+        {
+            TakeDamage(2);
+        }
+        if (collision.gameObject.CompareTag("EnemyLv3"))
+        {
+            TakeDamage(3);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,7 +52,6 @@ public class PlayerHealth : MonoBehaviour
 
     public void Heal(int heal)
     {
-        Debug.Log("=====================>HEAL");
         currentHealth += heal;
         healthBar.SetHealth(currentHealth);
 

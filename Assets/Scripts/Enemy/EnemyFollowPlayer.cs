@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EnemyFollowPlayer : MonoBehaviour
 {
-    [SerializeField] public GameObject player;
+    [SerializeField] private GameObject player;
     [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] protected float stoppingDistance = 2f;
     // Start is called before the first frame update

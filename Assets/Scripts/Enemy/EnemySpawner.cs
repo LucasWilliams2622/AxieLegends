@@ -14,18 +14,18 @@ public class EnemySpawner : MonoBehaviour
 
     private void Reset()
     {
-        LoadComponent();
     }
     void Start()
     {
         timeDelay = 0.3f;
         timeEnemySpawnerLV = 0;
+        LoadComponent();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       
     }
     private void FixedUpdate()
     {
