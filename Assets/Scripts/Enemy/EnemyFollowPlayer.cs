@@ -37,10 +37,10 @@ public class EnemyFollowPlayer : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("bullet"))
+        /*if (collision.gameObject.CompareTag("bullet"))
         {
             Destroy(gameObject);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 }
