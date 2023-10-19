@@ -415,6 +415,7 @@ GameObject:
   - component: {fileID: 236991234}
   - component: {fileID: 236991233}
   - component: {fileID: 236991232}
+  - component: {fileID: 236991243}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -621,11 +622,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3073c60a1710a6e43b75265af13b2b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  playerTransform: {fileID: 236991241}
-  solidObjectLayer:
-    serializedVersion: 2
-    m_Bits: 1024
+  isPlayerDie: 0
+  runSpeed: 0
+  diagMoveLimiter: 0
 --- !u!114 &236991238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,6 +745,22 @@ MonoBehaviour:
   attackRange: 2
   holder: {fileID: 958157660}
   nearestEnemy: {fileID: 0}
+--- !u!114 &236991243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236991231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d041ddf20ef554eb96fc3b98085fd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 236991238}
+  animSpeed: 0
+  deadPS: {fileID: 5497213299864268059, guid: e22547c921151e44d9a5e1fbf2206c8f, type: 3}
+  targetTransform: {fileID: 0}
 --- !u!1 &303744890
 GameObject:
   m_ObjectHideFlags: 0
