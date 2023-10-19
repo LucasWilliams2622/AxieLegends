@@ -8,6 +8,7 @@ public class EnemyFollowPlayer : MonoBehaviour
     [SerializeField] public GameObject player;
     [SerializeField] protected float moveSpeed = 2f;
     [SerializeField] protected float stoppingDistance = 2f;
+    [SerializeField] protected Rigidbody2D rb;
     // Start is called before the first frame update
     private void Reset()
     {
@@ -19,6 +20,7 @@ public class EnemyFollowPlayer : MonoBehaviour
         {
             Debug.LogError("Không tìm thấy 'Player' để khởi tạo");
         }
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -28,10 +30,9 @@ public class EnemyFollowPlayer : MonoBehaviour
         if (player != null && distanceToPlayer >= stoppingDistance)
         {
             Vector2 direction = player.transform.position - transform.position;
+            rb.velocity = direction.normalized * moveSpeed;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            transform.Translate(direction * moveSpeed * Time.deltaTime);
+            rb.rotation = angle;
         }
     }
 
