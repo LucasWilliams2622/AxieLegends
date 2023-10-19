@@ -1041,8 +1041,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 804854383}
-  moveSpeed: 0
+  moveSpeed: 0.5
   stoppingDistance: 2
+  rb: {fileID: 0}
 --- !u!50 &612795738
 Rigidbody2D:
   serializedVersion: 4
@@ -1195,8 +1196,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 1
   currentHealth: 0
-  panelHealth: {fileID: 0}
-  healthBar: {fileID: 0}
 --- !u!1 &642885196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1487,8 +1486,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 804854383}
-  moveSpeed: 0
+  moveSpeed: 1
   stoppingDistance: 2
+  rb: {fileID: 0}
 --- !u!50 &777161958
 Rigidbody2D:
   serializedVersion: 4
@@ -1641,8 +1641,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 2
   currentHealth: 0
-  panelHealth: {fileID: 0}
-  healthBar: {fileID: 0}
 --- !u!1 &804854383
 GameObject:
   m_ObjectHideFlags: 0
@@ -1821,6 +1819,7 @@ MonoBehaviour:
   isPlayerDie: 0
   runSpeed: 12
   diagMoveLimiter: 0.7
+  rb: {fileID: 0}
 --- !u!82 &804854390
 AudioSource:
   m_ObjectHideFlags: 0
@@ -41803,7 +41802,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1754580696
 Transform:
   m_ObjectHideFlags: 0
@@ -41832,8 +41831,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 804854383}
-  moveSpeed: 0
+  moveSpeed: 1
   stoppingDistance: 2
+  rb: {fileID: 0}
 --- !u!50 &1754580698
 Rigidbody2D:
   serializedVersion: 4
@@ -41986,8 +41986,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 3
   currentHealth: 0
-  panelHealth: {fileID: 0}
-  healthBar: {fileID: 0}
 --- !u!1 &1800762695
 GameObject:
   m_ObjectHideFlags: 0
