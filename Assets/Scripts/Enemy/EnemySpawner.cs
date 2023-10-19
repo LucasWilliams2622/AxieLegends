@@ -6,7 +6,10 @@ using UnityEngine.UIElements;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] protected List<Transform> listEnemy;
-    [SerializeField] protected Transform holder;
+    [SerializeField] public Transform holder;
+    [SerializeField] protected float timeEnemySpawnerLV;
+    [SerializeField] protected float timeDelay;
+    [SerializeField] protected GameObject player; 
     // Start is called before the first frame update
 
     private void Reset()
@@ -15,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     }
     void Start()
     {
+        timeDelay = 0.3f;
+        timeEnemySpawnerLV = 0;
     }
 
     // Update is called once per frame
@@ -24,9 +29,12 @@ public class EnemySpawner : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (Input.GetKey(KeyCode.Space))
+        timeEnemySpawnerLV += Time.fixedDeltaTime;
+        timeDelay -= Time.fixedDeltaTime;
+        if(timeDelay <= 0)
         {
             EnemySpawners();
+            timeDelay = 0.3f;
         }
     }
 
@@ -34,6 +42,7 @@ public class EnemySpawner : MonoBehaviour
     {
         ListEnemy();
         holder = transform.Find("Holder");
+        player = GameObject.Find("Player");
     }
 
     protected virtual void ListEnemy()
@@ -59,13 +68,22 @@ public class EnemySpawner : MonoBehaviour
 
     protected virtual void CreateEnemy(Transform enemy)
     {
-        Transform enemySpawner = Instantiate(enemy, new Vector3(Random.Range(-8,8),Random.Range(-4,4),0), Quaternion.Euler(0, 0, 0));
+        float posX = Random.Range(-8, 8);
+        float posY = Random.Range(-4, 4);
+        if(posX >= 0 && posX < 2) posX = 2;
+        if(posX < 0 && posX > -2) posX = -2;
+        if(posY >= 0 && posY < 2) posY = 2;
+        if(posY < 0 && posY > -2) posY = -2;
+        Transform enemySpawner = Instantiate(enemy, new Vector3(posX + player.transform.position.x, posY + player.transform.position.y, 0), Quaternion.Euler(0, 0, 0));
         enemySpawner.gameObject.SetActive(true);
         enemySpawner.parent = this.holder;
     }
 
     protected virtual void EnemySpawners()
     {
-        ListEnemySpawner(0);
+        if(timeEnemySpawnerLV >0 && timeEnemySpawnerLV < 5) ListEnemySpawner(0);
+        if(timeEnemySpawnerLV >5 && timeEnemySpawnerLV < 10) ListEnemySpawner(1);
+        if(timeEnemySpawnerLV >10 && timeEnemySpawnerLV < 15) ListEnemySpawner(2);
+
     }
 }
