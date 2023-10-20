@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -10,11 +11,11 @@ public class PlayerController : MonoBehaviour
     public float diagMoveLimiter;
 
     private PlayerAnimation playerAnim;
-    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb; // addcomponent rigidbody2d và setup gravity scale = 0, constrains freeze rotation z = true
     private float horizontal;
     private float vertical;
     private bool isMoving;
-    private bool isTriggerHurt;
+    private bool isTriggerHurtAnimation; //lock các animation khác khi animation hurt đang chạy
     
 
     public bool IsPlayerDie { get => isPlayerDie; set => isPlayerDie = value; }
@@ -37,7 +38,7 @@ public class PlayerController : MonoBehaviour
     {
         if (isMoving)
         {
-            if (!isTriggerHurt)
+            if (!isTriggerHurtAnimation)
             {
                 playerAnim.PlayRun();
             }
@@ -54,9 +55,10 @@ public class PlayerController : MonoBehaviour
                 ChangeRotation(0, 180, 0);
             }
         }
-        else
+
+        if(!isMoving)
         {
-            if (!isTriggerHurt)
+            if (!isTriggerHurtAnimation)
             {
                 playerAnim.PlayIdle();
             }
@@ -70,12 +72,12 @@ public class PlayerController : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
-        //if (horizontal != 0 && vertical != 0) // Check for diagonal movement
-        //{
-        //    // limit movement speed diagonally, move at 70% speed
-        //    horizontal *= diagMoveLimiter;
-        //    vertical *= diagMoveLimiter;
-        //}
+        if (horizontal != 0 && vertical != 0) // check di chuyển khi di chuyển chéo ví dụ: đè 2 nút W và D cùng lúc
+        {
+            // giới hạn tốc độ di chuyển chéo (nếu không có, di chuyển chéo sẽ bị di chuyển nhanh gấp đôi di chuyển thẳng.)
+            horizontal *= diagMoveLimiter;
+            vertical *= diagMoveLimiter;
+        }
 
         if (horizontal == 0 && vertical == 0)
         {
@@ -111,15 +113,15 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Monster"))
         {
-            isTriggerHurt = true;
-            playerAnim.PlayHurt();
-
-            //delaytime lấy từ độ dài animation bên trong skeletonanimation
-            Invoke(nameof(SetFalseTriggerHurt), 0.417f);
+                isTriggerHurtAnimation = true;
+                playerAnim.PlayHurt();
+                //delaytime lấy từ độ dài animation bên trong skeletonanimation
+                Invoke(nameof(SetFalseTriggerHurt), 0.417f);
+            
         }
     }
     void SetFalseTriggerHurt()
     {
-        isTriggerHurt = false;
+        isTriggerHurtAnimation = false;
     }
 }

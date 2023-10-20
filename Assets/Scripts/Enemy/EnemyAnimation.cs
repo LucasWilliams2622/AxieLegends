@@ -1,29 +1,33 @@
-using Spine.Unity;
+﻿using Spine.Unity;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyAnimation : MonoBehaviour
 {
-    [SerializeField] private SkeletonAnimation anim;
+    private SkeletonAnimation anim; // cần các nhân vật có tích hợp component skeletonsanimation;
     [SerializeField] private float animSpeed = 1f;
     private string ENEMY_RUN = "action/move-forward";
     private string ENEMY_DIE = "action/die";
 
-    private void OnEnable()
+    private void Start()
     {
+        anim = GetComponent<SkeletonAnimation>();
         PlayRun();
     }
 
     public void PlayRun()
     {
-        anim.AnimationName = ENEMY_RUN;
+        anim.loop = true;
         anim.timeScale = animSpeed;
+        anim.AnimationName = ENEMY_RUN;
+        
     }
     public void PlayDie()
     {
-        anim.AnimationName = ENEMY_DIE;
         anim.loop = false;
         anim.timeScale = animSpeed;
+        anim.AnimationName = ENEMY_DIE;
+        
     }
 }

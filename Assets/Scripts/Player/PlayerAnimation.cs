@@ -33,21 +33,23 @@ public class PlayerAnimation : MonoBehaviour
 
     public void PlayRun()
     {
-        Anim.AnimationName = PLAYER_RUN;
+        Anim.loop = true;
         Anim.timeScale = animSpeed;
+        Anim.AnimationName = PLAYER_RUN;
     }
 
     public void PlayHurt()
     {
-        var myAnim = Anim.AnimationName = PLAYER_HURT;
         Anim.loop = false;
         Anim.timeScale = animSpeed;
+        Anim.AnimationName = PLAYER_HURT;
     }
 
     public void PlayIdle()
     {
-        Anim.AnimationName = PLAYER_IDLE;
+        Anim.loop = true;
         Anim.timeScale = animSpeed;
+        Anim.AnimationName = PLAYER_IDLE;
     }
 
     public void PlayDie()

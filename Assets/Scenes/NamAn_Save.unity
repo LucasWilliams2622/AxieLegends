@@ -308,7 +308,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288d8fcbe8168e849867ae65c0e64f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1156657539}
   animSpeed: 1
 --- !u!114 &1156657539
 MonoBehaviour:
@@ -629,7 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288d8fcbe8168e849867ae65c0e64f53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 1525350591}
   animSpeed: 1
 --- !u!1 &1568015164
 GameObject:
@@ -669,6 +667,7 @@ MonoBehaviour:
   isPlayerDie: 0
   runSpeed: 7
   diagMoveLimiter: 0.7
+  rb: {fileID: 0}
 --- !u!114 &1568015166
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,7 +783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1568015166}
-  animSpeed: 1.32
+  animSpeed: 2.07
   deadPS: {fileID: 5497213299864268059, guid: e22547c921151e44d9a5e1fbf2206c8f, type: 3}
   targetTransform: {fileID: 1568015169}
 --- !u!50 &1568015171
