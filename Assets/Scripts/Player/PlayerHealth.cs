@@ -9,6 +9,10 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject panelDead;
+    public GameObject panelHealthBar;
+    public GameObject panelExpBar;
+
+
     private Dictionary<string, int> enemyDamageMap = new Dictionary<string, int>()
     {
         { "EnemyLv1", 1 },
@@ -51,6 +55,8 @@ public class PlayerHealth : MonoBehaviour
         {
             Debug.Log("DEAD");
             Time.timeScale = 0f;
+            panelHealthBar.SetActive(false);
+            panelExpBar.SetActive(false);
             panelDead.SetActive(true);
         }
     }
