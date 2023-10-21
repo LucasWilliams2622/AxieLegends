@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     public float diagMoveLimiter;
 
     private PlayerAnimation playerAnim;
-    [SerializeField] private Rigidbody2D rb; // addcomponent rigidbody2d và setup gravity scale = 0, constrains freeze rotation z = true
+    private Rigidbody2D rb; // addcomponent rigidbody2d và setup gravity scale = 0, constrains freeze rotation z = true
     private float horizontal;
     private float vertical;
     private bool isMoving;
