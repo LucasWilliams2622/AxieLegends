@@ -11,6 +11,7 @@ TagManager:
   - EnemyLv1
   - EnemyLv2
   - EnemyLv3
+  - Spinner
   layers:
   - Default
   - TransparentFX

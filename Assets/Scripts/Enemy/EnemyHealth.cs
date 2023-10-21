@@ -18,6 +18,10 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (collision.gameObject.CompareTag("Spinner"))
+        {
+            TakeDamage(1);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

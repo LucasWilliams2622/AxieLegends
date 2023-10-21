@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private bool isMoving;
     private bool isTriggerHurtAnimation; //lock các animation khác khi animation hurt đang chạy
-    
 
     public bool IsPlayerDie { get => isPlayerDie; set => isPlayerDie = value; }
 
@@ -31,7 +30,6 @@ public class PlayerController : MonoBehaviour
     {
         CheckMoving();
         CheckDead();
-
     }
 
     void FixedUpdate()
