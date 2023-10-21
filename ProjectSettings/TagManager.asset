@@ -12,6 +12,7 @@ TagManager:
   - EnemyLv2
   - EnemyLv3
   - Spinner
+  - Heal
   layers:
   - Default
   - TransparentFX

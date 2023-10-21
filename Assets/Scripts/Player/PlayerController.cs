@@ -109,14 +109,21 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Monster"))
+        if (collision.collider.CompareTag("Monster") 
+            || collision.collider.CompareTag("EnemyLv1") 
+            || collision.collider.CompareTag("EnemyLv2")
+            || collision.collider.CompareTag("EnemyLv3"))
         {
-                isTriggerHurtAnimation = true;
-                playerAnim.PlayHurt();
-                //delaytime lấy từ độ dài animation bên trong skeletonanimation
-                Invoke(nameof(SetFalseTriggerHurt), 0.417f);
-            
+            HandleHurt();
         }
+
+    }
+    void HandleHurt()
+    {
+        isTriggerHurtAnimation = true;
+        playerAnim.PlayHurt();
+        //delaytime lấy từ độ dài animation bên trong skeletonanimation
+        Invoke(nameof(SetFalseTriggerHurt), 0.417f);
     }
     void SetFalseTriggerHurt()
     {

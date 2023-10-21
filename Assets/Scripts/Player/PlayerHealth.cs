@@ -9,6 +9,12 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject panelDead;
+    private Dictionary<string, int> enemyDamageMap = new Dictionary<string, int>()
+    {
+        { "EnemyLv1", 1 },
+        { "EnemyLv2", 2 },
+        { "EnemyLv3", 3 }
+    };
     void Start()
     {
         currentHealth = maxHealth;
@@ -23,17 +29,16 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyLv1"))
+        string tag = collision.gameObject.tag;
+        if (enemyDamageMap.ContainsKey(tag))
         {
-            TakeDamage(1);
+            int damage = enemyDamageMap[tag];
+            TakeDamage(damage);
         }
-        if (collision.gameObject.CompareTag("EnemyLv2"))
+        if (collision.gameObject.CompareTag("Heal"))
         {
-            TakeDamage(2);
-        }
-        if (collision.gameObject.CompareTag("EnemyLv3"))
-        {
-            TakeDamage(3);
+            Heal(5);
+            Destroy(collision.gameObject);
         }
     }
 
@@ -53,7 +58,10 @@ public class PlayerHealth : MonoBehaviour
     public void Heal(int heal)
     {
         currentHealth += heal;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
         healthBar.SetHealth(currentHealth);
-
-    }
+        }
 }
