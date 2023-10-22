@@ -1,13 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] public int maxHealth = 3;
-    [SerializeField] public int currentHealth;
+    public int maxHealth = 3;
+    public int currentHealth;
     [SerializeField] private GameObject floatingTextPrefab;
-
+    [SerializeField] protected GameObject exp;
+    [SerializeField] protected GameObject holder;
     void Start()
     {
         currentHealth = maxHealth;
@@ -29,13 +30,15 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Spinner"))
         {
             TakeDamage(1);
         }
-        
+
     }
 
     private void TakeDamage(int damage)
@@ -46,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
+            CreateExp();
         }
     }
 
@@ -58,6 +62,14 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+
+    protected virtual void CreateExp()
+    {
+        GameObject createExp = Instantiate(exp);
+        createExp.transform.parent = this.holder.transform;
+        createExp.transform.position = transform.position; 
+        createExp.gameObject.SetActive(true);
+    }
 
    
 }

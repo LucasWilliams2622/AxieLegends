@@ -82,7 +82,7 @@ public class PlayerShooting : MonoBehaviour
             {
                 ReadyForNextShot = Time.time * 1 / fireRate;
                 Shoot();
-                timeDelayAttack = 0.5f;
+                timeDelayAttack = 0.3f;
             }
         }
     }
