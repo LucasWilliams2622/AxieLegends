@@ -18,6 +18,14 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (collision.gameObject.CompareTag("Ultimate"))
+        {
+            TakeDamage(10);
+        }   
+        if (collision.gameObject.CompareTag("Rocket"))
+        {
+            TakeDamage(10);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -26,12 +34,13 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(1);
         }
+        
     }
 
     private void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }

@@ -10,31 +10,22 @@ public class ShieldController : MonoBehaviour
 
     void Start()
     {
-        isShieldActive =true;
+        isShieldActive = false;
     }   
 
     private void Update()
     {
-        if (isShieldActive)
-        {
-            transform.position = player.transform.position;
-            shield.SetActive(true);
-        }
-        else
-        {
-            shield.SetActive(false);
-        }
+        shield.transform.position = player.transform.position;
+        shield.SetActive(isShieldActive);
     }
 
     public void ActivateShield()
     {
-        isShieldActive = true;
         shield.SetActive(true);
     }
 
     public void DeactivateShield()
     {
-        isShieldActive = false;
         shield.SetActive(false);
     }
     
