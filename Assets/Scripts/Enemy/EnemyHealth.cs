@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
-    public int currentHealth;
+    [SerializeField] public int maxHealth = 3;
+    [SerializeField] public int currentHealth;
+    [SerializeField] private GameObject floatingTextPrefab;
+
     void Start()
     {
         currentHealth = maxHealth;
     }
 
-    // Update is called once per frame
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Arrow"))
@@ -39,12 +40,24 @@ public class EnemyHealth : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
+        ShowDamage(damage.ToString());
+        Debug.Log("damage"+damage);
         currentHealth -= damage;
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
     }
+
+    void ShowDamage(string text)
+    {
+        if (floatingTextPrefab != null)
+        {
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<TextMesh>().text = text;
+        }
+    }
+
 
    
 }
