@@ -3,45 +3,34 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class EnemyFollowPlayer : MonoBehaviour
+public class EnemyFollowPlayer : FollowToDistance
 {
-    [SerializeField] private GameObject player;
-    [SerializeField] protected float moveSpeed = 2f;
-    [SerializeField] protected float stoppingDistance = 2f;
-    [SerializeField] protected Rigidbody2D rb;
-    // Start is called before the first frame update
-    private void Reset()
+    protected override void ConditionTarget()
     {
-    }
-    void Start()
-    {
-        player = GameObject.Find("Player");
-        if (player == null)
+        base.ConditionTarget();
+        if (target != null && distance >= targetDistance)
         {
-            Debug.LogError("Không tìm thấy 'Player' để khởi tạo");
+            MoveTarget();
+            Flip();
         }
-        rb = GetComponent<Rigidbody2D>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Target()
     {
-        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-        if (player != null && distanceToPlayer >= stoppingDistance)
-        {
-            Vector2 direction = player.transform.position - transform.position;
-            rb.velocity = direction.normalized * moveSpeed;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle;
-        }
+        base.Target();
+        target = GameObject.Find("Player");
+    }
+    protected virtual void Flip()
+    {
+        Vector2 theScale = transform.localScale;
+        if (target.transform.position.x - transform.position.x > 0 && theScale.x < 0) theScale.x *= -1;
+        if (target.transform.position.x - transform.position.x <= 0 && theScale.x > 0) theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+    public float Distance()
+    {
+        return distance;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        /*if (collision.gameObject.CompareTag("bullet"))
-        {
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
-        }*/
-    }
 }
