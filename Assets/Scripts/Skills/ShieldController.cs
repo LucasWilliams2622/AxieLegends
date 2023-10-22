@@ -8,10 +8,16 @@ public class ShieldController : MonoBehaviour
     [SerializeField] public GameObject shield;
     [SerializeField] public bool isShieldActive;
 
+    public bool IsShieldActive
+    {
+        get { return isShieldActive; }
+    }
+
     void Start()
     {
         isShieldActive = false;
-    }   
+        shield.SetActive(false);
+    }  
 
     private void Update()
     {
@@ -21,11 +27,20 @@ public class ShieldController : MonoBehaviour
 
     public void ActivateShield()
     {
+        isShieldActive = true;
         shield.SetActive(true);
+        StartCoroutine(DeactivateShieldAfterDelay(5f)); // Gọi coroutine để tắt khiên sau 5 giây
+    }
+
+    private IEnumerator DeactivateShieldAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        DeactivateShield();
     }
 
     public void DeactivateShield()
     {
+        isShieldActive = false;
         shield.SetActive(false);
     }
     

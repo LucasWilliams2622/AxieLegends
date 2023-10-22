@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 3;
-    public int currentHealth;
+    public static int currentHealth;
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
     [SerializeField] protected GameObject holder;
@@ -43,7 +43,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void TakeDamage(int damage)
     {
-        ShowDamage(damage.ToString());
+        // ShowDamage(damage.ToString());
         Debug.Log("damage"+damage);
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -62,7 +62,6 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
     protected virtual void CreateExp()
     {
         GameObject createExp = Instantiate(exp);
@@ -70,6 +69,5 @@ public class EnemyHealth : MonoBehaviour
         createExp.transform.position = transform.position; 
         createExp.gameObject.SetActive(true);
     }
-
-   
+    
 }
