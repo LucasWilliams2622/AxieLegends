@@ -16,6 +16,7 @@ TagManager:
   - Ultimate
   - Rocket
   - BulletEnemy
+  - Shield
   layers:
   - Default
   - TransparentFX

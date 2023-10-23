@@ -66,9 +66,10 @@ public class PlayerHealth : MonoBehaviour
             panelExpBar.SetActive(false);
             panelDead.SetActive(true);
         }
-        else if (currentHealth  <= healthBar.slider.minValue)
+        else if (currentHealth  <= 3)
         {
-            Debug.Log("DEAD222"+shieldController.shield);
+            Debug.Log("DEAD222");
+            shieldController.ActivateShield();  
         }
     }
 
