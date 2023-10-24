@@ -13,7 +13,6 @@ public class PlayerHealth : MonoBehaviour
     public GameObject panelExpBar;
 
     public ShieldController shieldController;
-    private float shieldActivationThreshold = 0.3f;
     private Dictionary<string, int> enemyDamageMap = new Dictionary<string, int>()
     {
         { "EnemyLv1", 1 },
@@ -34,7 +33,6 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
         if (collision.gameObject.CompareTag("Heal"))
         {
             Heal(5);
@@ -66,9 +64,8 @@ public class PlayerHealth : MonoBehaviour
             panelExpBar.SetActive(false);
             panelDead.SetActive(true);
         }
-        else if (currentHealth  <= 3)
+        else if (currentHealth  <= 5)
         {
-            Debug.Log("DEAD222");
             shieldController.ActivateShield();  
         }
     }
