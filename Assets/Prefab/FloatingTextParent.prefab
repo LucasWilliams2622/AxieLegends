@@ -54,7 +54,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10100, guid: 0000000000000000e000000000000000, type: 0}
+  - {fileID: 2100000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,19 +85,19 @@ TextMesh:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3882214865499002958}
   m_Text: 100
-  m_OffsetZ: 0
-  m_CharacterSize: 0.4
-  m_LineSpacing: 1
+  m_OffsetZ: 1.44
+  m_CharacterSize: 0.43
+  m_LineSpacing: 1.46
   m_Anchor: 0
   m_Alignment: 1
-  m_TabSize: 4
-  m_FontSize: 12
-  m_FontStyle: 1
+  m_TabSize: 4.98
+  m_FontSize: 20
+  m_FontStyle: 2
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: 5dd49b3eacc540408c98eee0de38e0f1, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278205903
+    rgba: 4278765311
 --- !u!95 &905688492704867990
 Animator:
   serializedVersion: 5
@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6948281821590637351}
+  - component: {fileID: 4124000393165770797}
   m_Layer: 0
   m_Name: FloatingTextParent
   m_TagString: Untagged
@@ -151,3 +152,16 @@ Transform:
   - {fileID: 7287991286201758982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4124000393165770797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6535852272784815669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7366ec2d31d44a484e93242def70a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondToDestroy: 1
