@@ -212,7 +212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isTriggerSkill: 1
   rotateSpeed: 150
-  target: {fileID: 0}
+  targetToFollow: {fileID: 0}
 --- !u!1 &6337762494338551646
 GameObject:
   m_ObjectHideFlags: 0

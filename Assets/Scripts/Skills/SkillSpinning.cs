@@ -6,7 +6,7 @@ public class SkillSpinning : MonoBehaviour
 {
     [SerializeField] private bool isTriggerSkill;
     [SerializeField] private float rotateSpeed;
-    [SerializeField] private GameObject target;
+    [SerializeField] private GameObject targetToFollow;
     private List<GameObject> children = new();
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class SkillSpinning : MonoBehaviour
             {
                 item.SetActive(true);
             }
-            transform.position = target.transform.position;
+            transform.position = targetToFollow.transform.position;
             transform.Rotate(0,0,rotateSpeed*Time.deltaTime);
         }
         else

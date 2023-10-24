@@ -17,6 +17,8 @@ TagManager:
   - Rocket
   - BulletEnemy
   - Shield
+  - ActiveRange4Skill
+  - SnailArea
   layers:
   - Default
   - TransparentFX
