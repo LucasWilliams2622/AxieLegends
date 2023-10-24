@@ -25,6 +25,7 @@ public class BulletEnemy : MonoBehaviour
     {
         DistanceTarget();
         ConditionTarget();
+        Destroy(gameObject, 2f);
     }
 
     protected virtual void Target()

@@ -21,7 +21,7 @@ public class EnemyShooting : MonoBehaviour
     void Update()
     {
         timeDelay -= Time.deltaTime;
-        if(enemyFollowPlayer.Distance() <= 10 && timeDelay <=0)
+        if(enemyFollowPlayer.Distance() <= 10 && timeDelay <=0 && gameObject != null)
         {
             GameObject Bullet = Instantiate(bullet,shootTip.transform.position, shootTip.transform.rotation);
             Bullet.SetActive(true);

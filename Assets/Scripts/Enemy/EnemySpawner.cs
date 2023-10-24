@@ -71,6 +71,7 @@ public class EnemySpawner : Spawner
         {
             ListSpawner(3);
             panelBoss.SetActive(true);
+            panelBoss.transform.position = player.transform.position;
             EnemyHealth.currentHealth = 0;
             checkBoss = false;
         }
