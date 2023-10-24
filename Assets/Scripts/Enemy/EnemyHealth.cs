@@ -18,10 +18,6 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Arrow"))
-        {
-            TakeDamage(1);
-        }
         if (collision.gameObject.CompareTag("Ultimate"))
         {
             TakeDamage(10);
@@ -53,6 +49,8 @@ public class EnemyHealth : MonoBehaviour
 
     protected virtual void IsDestroy()
     {
+        // ShowDamage(damage.ToString());
+        currentHealth -= damage;
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
