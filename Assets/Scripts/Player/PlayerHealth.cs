@@ -9,31 +9,44 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject panelDead;
+    public GameObject panelHealthBar;
+    public GameObject panelExpBar;
+
+    public ShieldController shieldController;
+    private Dictionary<string, int> enemyDamageMap = new Dictionary<string, int>()
+    {
+        { "EnemyLv1", 1 },
+        { "EnemyLv2", 2 },
+        { "EnemyLv3", 3 },
+        { "BulletEnemy", 1 },
+
+    };
     void Start()
     {
         currentHealth = maxHealth;
         healthBar.SetMaxHeallth(currentHealth);
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
+        if (collision.gameObject.CompareTag("Heal"))
+        {
+            Heal(5);
+            Destroy(collision.gameObject);  
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("EnemyLv1"))
+        string tag = collision.gameObject.tag;
+        if (enemyDamageMap.ContainsKey(tag))
         {
-            TakeDamage(1);
-        }
-        if (collision.gameObject.CompareTag("EnemyLv2"))
-        {
-            TakeDamage(2);
-        }
-        if (collision.gameObject.CompareTag("EnemyLv3"))
-        {
-            TakeDamage(3);
+            int damage = enemyDamageMap[tag];
+            TakeDamage(damage);
         }
     }
 
@@ -42,18 +55,28 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
-        if (currentHealth == healthBar.slider.minValue)
+        
+        if (currentHealth <= healthBar.slider.minValue)
         {
             Debug.Log("DEAD");
             Time.timeScale = 0f;
+            panelHealthBar.SetActive(false);
+            panelExpBar.SetActive(false);
             panelDead.SetActive(true);
+        }
+        else if (currentHealth  <= 5)
+        {
+            shieldController.ActivateShield();  
         }
     }
 
     public void Heal(int heal)
     {
         currentHealth += heal;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
         healthBar.SetHealth(currentHealth);
-
     }
 }
