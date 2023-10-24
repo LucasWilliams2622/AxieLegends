@@ -25,7 +25,7 @@ public class BulletEnemy : MonoBehaviour
     {
         DistanceTarget();
         ConditionTarget();
-        Destroy(gameObject, 2f);
+        
     }
 
     protected virtual void Target()
@@ -47,7 +47,8 @@ public class BulletEnemy : MonoBehaviour
     {
         rb.velocity = direction.normalized * moveSpeed;
     }
-    private void OnCollisionEnter2D(Collider2D collision)
+    
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Shield"))
         {

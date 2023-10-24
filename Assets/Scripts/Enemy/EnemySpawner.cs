@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 public class EnemySpawner : Spawner
 {
    
-    [SerializeField] protected float timeEnemySpawnerLV;
+    [SerializeField] public static float timeEnemySpawnerLV;
     [SerializeField] protected float timeDelay;
     [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject panelBoss;
-    [SerializeField] protected bool checkBoss;
+    [SerializeField] public static bool checkBoss;
     protected override void Start()
     {
         checkBoss = false;
@@ -72,7 +72,7 @@ public class EnemySpawner : Spawner
             ListSpawner(3);
             panelBoss.SetActive(true);
             panelBoss.transform.position = player.transform.position;
-            EnemyHealth.currentHealth = 0;
+            //EnemyDestroy.DestroyEnemy();
             checkBoss = false;
         }
 

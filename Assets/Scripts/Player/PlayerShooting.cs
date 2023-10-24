@@ -37,7 +37,6 @@ public class PlayerShooting : MonoBehaviour
     {
         UpdateComponent();
         AttackPosMoseMove();
-        AttackAuto();
        
         
     }
@@ -70,7 +69,7 @@ public class PlayerShooting : MonoBehaviour
             }
         }
     }
-    protected virtual void AttackAuto()
+    public virtual void AttackAuto()
     {
         if (timeDelayAuto <= 0)
         {

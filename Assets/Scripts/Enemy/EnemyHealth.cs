@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public int maxHealth = 3;
-    public static int currentHealth;
+    public int currentHealth;
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
     [SerializeField] protected GameObject holder;
@@ -35,6 +35,7 @@ public class EnemyHealth : MonoBehaviour
     private void Update()
     {
         IsDestroy();
+        if (EnemySpawner.timeEnemySpawnerLV >= 15) Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -57,6 +58,13 @@ public class EnemyHealth : MonoBehaviour
             Destroy(gameObject);
             CreateExp();
         }
+    }
+
+    public void EnemyHP()
+    {
+        currentHealth = 0;
+        Debug.Log("hp ne: " + currentHealth);
+        IsDestroy();
     }
     private void TakeDamage(int damage)
     {
