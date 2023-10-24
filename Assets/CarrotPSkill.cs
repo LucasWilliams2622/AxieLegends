@@ -35,7 +35,7 @@ public class CarrotPSkill : MonoBehaviour
 
         anim.Play("PCarrot_FlyUp");
         float dur = anim.GetCurrentAnimatorClipInfo(0).Length;
-        Invoke(nameof(ShootCarrot), dur);//đặt trong onenable để đoạn lệnh này chỉ chạy một lần direction không bị trừ liên tục gây lỗi
+        Invoke(nameof(ShootCarrot), dur);//đặt trong onenable để đoạn lệnh này chỉ chạy một lần và để cho direction không bị trừ liên tục gây lỗi
        
     }
     // Update is called once per frame
