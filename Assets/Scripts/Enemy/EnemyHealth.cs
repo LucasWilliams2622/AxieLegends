@@ -18,14 +18,28 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.gameObject.CompareTag("Spinner"))
+        {
+            TakeDamage(1);
+        }
+        if (collision.gameObject.CompareTag("Arrow"))
+        {
+            TakeDamage(1);
+
+        }
         if (collision.gameObject.CompareTag("Ultimate"))
         {
             TakeDamage(10);
-        }   
+        }
         if (collision.gameObject.CompareTag("Rocket"))
         {
             TakeDamage(10);
         }
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            TakeDamage(10);
+        }
+
     }
 
     private void Update()
@@ -36,21 +50,12 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Spinner"))
-        {
-            TakeDamage(1);
-        }
-        if (collision.gameObject.CompareTag("Arrow"))
-        {
-            TakeDamage(1);
-        }
-
+       
     }
 
     protected virtual void IsDestroy()
     {
-        // ShowDamage(damage.ToString());
-        //currentHealth -= damage;
+       
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
@@ -58,19 +63,11 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void EnemyHP()
-    {
-        currentHealth = 0;
-        Debug.Log("hp ne: " + currentHealth);
-        IsDestroy();
-    }
+   
     private void TakeDamage(int damage)
     {
         ShowDamage(damage.ToString());
-        Debug.Log("damage"+damage);
         currentHealth -= damage;
-        Debug.Log("Hp enemy: " + currentHealth);
-
 
     }
 
@@ -79,6 +76,7 @@ public class EnemyHealth : MonoBehaviour
         if (floatingTextPrefab != null)
         {
             GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            prefab.gameObject.SetActive(true);
             prefab.GetComponentInChildren<TextMesh>().text = text;
         }
     }
