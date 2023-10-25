@@ -1048,6 +1048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  currentHealth: 0
   floatingTextPrefab: {fileID: 0}
   exp: {fileID: 1110073172}
   holder: {fileID: 1881220988}
@@ -1377,6 +1378,10 @@ MonoBehaviour:
   mousePosX: 0
   mousePosY: 0
   timeDelayAttack: 0
+  isEnhanceAttack: 0
+  EnhancedBullet: {fileID: 0}
+  EnhancedBulletSpeed: 0
+  EnhancedFireRate: 0
 --- !u!60 &236991236
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2184,6 +2189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  currentHealth: 0
   floatingTextPrefab: {fileID: 0}
   exp: {fileID: 1110073172}
   holder: {fileID: 1881220988}
@@ -2383,6 +2389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
+  currentHealth: 0
   floatingTextPrefab: {fileID: 0}
   exp: {fileID: 1110073172}
   holder: {fileID: 1881220988}
@@ -2434,11 +2441,9 @@ MonoBehaviour:
   listPrefabs: []
   holder: {fileID: 958157660}
   index: 1
-  timeEnemySpawnerLV: 0
   timeDelay: 0
   player: {fileID: 236991231}
   panelBoss: {fileID: 801888764}
-  checkBoss: 0
 --- !u!4 &347895329
 Transform:
   m_ObjectHideFlags: 0

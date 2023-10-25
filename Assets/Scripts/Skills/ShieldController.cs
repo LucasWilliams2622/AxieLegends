@@ -28,8 +28,7 @@ public class ShieldController : MonoBehaviour
     public void ActivateShield()
     {
         isShieldActive = true;
-        // shield.SetActive(true);
-        StartCoroutine(DeactivateShieldAfterDelay(5f)); // Gọi coroutine để tắt khiên sau 5 giây
+        StartCoroutine(DeactivateShieldAfterDelay(5f));
     }
 
     private IEnumerator DeactivateShieldAfterDelay(float delay)
