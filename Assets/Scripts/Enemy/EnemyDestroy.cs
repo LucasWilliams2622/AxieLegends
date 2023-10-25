@@ -19,11 +19,6 @@ public class EnemyDestroy : MonoBehaviour
         
     }
 
-    public static EnemyDestroy instance;
 
-    public static void DestroyEnemy()
-    {
-        enemyHealth.EnemyHP();
-        
-    }
+    
 }

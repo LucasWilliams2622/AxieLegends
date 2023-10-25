@@ -65,12 +65,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    public void EnemyHP()
-    {
-        currentHealth = 0;
-        Debug.Log("hp ne: " + currentHealth);
-        IsDestroy();
-    }
+   
     private void TakeDamage(int damage)
     {
         ShowDamage(damage.ToString());
