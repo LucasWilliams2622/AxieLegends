@@ -13,7 +13,6 @@ public class EnemyShooting : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         enemyFollowPlayer = GetComponent<EnemyFollowPlayer>();
     }
 
@@ -21,13 +20,12 @@ public class EnemyShooting : MonoBehaviour
     void Update()
     {
         timeDelay -= Time.deltaTime;
-        if(enemyFollowPlayer.Distance() <= 10 && timeDelay <=0 && gameObject != null)
+        if (enemyFollowPlayer.Distance() <= 10 && timeDelay <= 0 && gameObject != null)
         {
-            GameObject Bullet = Instantiate(bullet,shootTip.transform.position, shootTip.transform.rotation);
+            GameObject Bullet = Instantiate(bullet, shootTip.transform.position, shootTip.transform.rotation);
             Bullet.SetActive(true);
-            Destroy(Bullet.gameObject, 2f);
+            Destroy(Bullet, 2f);
             timeDelay = 2f;
         }
-
     }
 }
