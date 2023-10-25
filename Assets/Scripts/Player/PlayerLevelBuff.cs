@@ -31,14 +31,14 @@ public class PlayerLevelBuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
+       /* if(Input.GetKeyDown(KeyCode.Q))
         {
             level++;
             skill.gameObject.SetActive(true);
             Random3Skill();
             Time.timeScale = 0f;
 
-        }
+        }*/
         PlayerSkill();
     }
 
@@ -46,7 +46,7 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(100);
+            CollectExp(10);
             Destroy(collision.gameObject);
         }
     }

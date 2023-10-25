@@ -27,6 +27,11 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(1);
 
         }
+        if (collision.gameObject.CompareTag("EnhanceArrow"))
+        {
+            TakeDamage(2);
+
+        }
         if (collision.gameObject.CompareTag("Ultimate"))
         {
             TakeDamage(10);
@@ -35,10 +40,10 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
-        if (collision.gameObject.CompareTag("Shield"))
+      /*  if (collision.gameObject.CompareTag("Shield"))
         {
             TakeDamage(10);
-        }
+        }*/
 
     }
 
