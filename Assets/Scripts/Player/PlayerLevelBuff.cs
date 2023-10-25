@@ -14,6 +14,11 @@ public class PlayerLevelBuff : MonoBehaviour
     [SerializeField] protected Transform playerSkill;
     [SerializeField] public int[] arraySkill;
 
+    public int maxExp = 100;
+    public int currentExp = 0;
+    public ExpBar expBar;
+    public int currentLevel = 1;
+    public GameObject panelChooseSkill;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +40,15 @@ public class PlayerLevelBuff : MonoBehaviour
 
         }
         PlayerSkill();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("EXP"))
+        {
+            CollectExp(100);
+            Destroy(collision.gameObject);
+        }
     }
 
     protected virtual void LoadList()
@@ -93,5 +107,27 @@ public class PlayerLevelBuff : MonoBehaviour
         {
             listPlayerSkill[arraySkill[i]].gameObject.SetActive(true);
         }
+    }
+
+    private void CollectExp(int amount)
+    {
+        Debug.Log("amount: " + amount);
+        currentExp += amount;
+        expBar.SetEXP(currentExp);
+
+        if (currentExp >= maxExp)
+        {
+            LevelUp();
+        }
+    }
+    private void LevelUp()
+    {
+        Debug.Log("Level up!");
+        currentExp = 0;
+        currentLevel++;
+        skill.gameObject.SetActive(true);
+        Random3Skill();
+        Time.timeScale = 0f;
+        Debug.Log("Current level: " + currentLevel);
     }
 }
