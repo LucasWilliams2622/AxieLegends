@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SkillSpinning : MonoBehaviour
 {
-    [SerializeField] private bool isTriggerSkill;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private GameObject targetToFollow;
     private List<GameObject> children = new();
@@ -17,25 +16,17 @@ public class SkillSpinning : MonoBehaviour
         }
     }
 
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        
-        if (isTriggerSkill)
+
+        foreach (GameObject item in children)
         {
-            foreach (GameObject item in children)
-            {
-                item.SetActive(true);
-            }
-            transform.position = targetToFollow.transform.position;
-            transform.Rotate(0,0,rotateSpeed*Time.deltaTime);
+            item.SetActive(true);
         }
-        else
-        {
-            foreach (GameObject item in children)
-            {
-                item.SetActive(false);
-            }
-        }
+        transform.position = targetToFollow.transform.position;
+        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+
     }
 }
