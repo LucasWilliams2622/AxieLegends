@@ -55,9 +55,7 @@ public class EnemyHealth : MonoBehaviour
 
     protected virtual void IsDestroy()
     {
-        ShowDamage(damage.ToString());
-        currentHealth -= damage;
-        
+       
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
