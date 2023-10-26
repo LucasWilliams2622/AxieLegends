@@ -11,13 +11,14 @@ public class CarrotPSkill : MonoBehaviour
     public Transform activeRangeTransform;
     public SkillScanNearMob activeRange;
     public Transform piercingCarrot;
+    public float delayAnimOffset;
 
     [Header("Đừng động vào rotationModifier")]
     [SerializeField] private float rotationModifier;
 
    
     private Animator anim;
-    private PolygonCollider2D col2D;
+    private BoxCollider2D col2D;
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private bool isShooting = false;
@@ -36,7 +37,7 @@ public class CarrotPSkill : MonoBehaviour
         LoadStuff();
         anim.Play("PCarrot_FlyUp");
         float dur = anim.GetCurrentAnimatorClipInfo(0).Length;
-        Invoke(nameof(ShootCarrot), dur);//đặt trong onenable để đoạn lệnh này chỉ chạy một lần và để cho direction không bị trừ liên tục gây lỗi
+        Invoke(nameof(ShootCarrot), dur-delayAnimOffset);//đặt trong onenable để đoạn lệnh này chỉ chạy một lần và để cho direction không bị trừ liên tục gây lỗi
        
     }
     // Update is called once per frame
@@ -67,7 +68,7 @@ public class CarrotPSkill : MonoBehaviour
         activeRange = GameObject.Find("ActiveRange").GetComponent<SkillScanNearMob>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
-        col2D = GetComponent<PolygonCollider2D>();
+        col2D = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
 
         onFirstLoad = true;
