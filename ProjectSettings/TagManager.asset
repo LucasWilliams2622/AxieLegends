@@ -19,6 +19,7 @@ TagManager:
   - Shield
   - ActiveRange4Skill
   - EXP
+  - EnhanceArrow
   layers:
   - Default
   - TransparentFX
