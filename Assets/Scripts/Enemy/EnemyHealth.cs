@@ -9,6 +9,8 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
     [SerializeField] protected GameObject holder;
+    [SerializeField] protected EnemySpawner enemySpawner;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -45,7 +47,7 @@ public class EnemyHealth : MonoBehaviour
     private void Update()
     {
         IsDestroy();
-        if (EnemySpawner.timeEnemySpawnerLV >= 15) Destroy(gameObject);
+        if (enemySpawner.checkBoss) Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

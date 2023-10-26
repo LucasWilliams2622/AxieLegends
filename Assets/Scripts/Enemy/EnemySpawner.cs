@@ -6,17 +6,23 @@ using UnityEngine.UIElements;
 public class EnemySpawner : Spawner
 {
    
-    [SerializeField] public static float timeEnemySpawnerLV;
+    [SerializeField] public float timeEnemySpawnerLV;
     [SerializeField] protected float timeDelay;
     [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject panelBoss;
-    [SerializeField] public static bool checkBoss;
+    [SerializeField] public bool checkBoss;
+    [SerializeField] protected float timeDelayEnemyLV;
+    [SerializeField] protected float indexBoss;
+    [SerializeField] protected int indexEnemy;
     protected override void Start()
     {
+        indexBoss = 0;
+        indexEnemy = 0;
         checkBoss = false;
         base.Start();
         timeDelay = 0.3f;
-        timeEnemySpawnerLV = 0;
+        timeEnemySpawnerLV = 5f;
+        timeDelayEnemyLV = 30f;
 
     }
 
@@ -25,13 +31,16 @@ public class EnemySpawner : Spawner
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        timeEnemySpawnerLV += Time.fixedDeltaTime;
+        if(!checkBoss) timeEnemySpawnerLV -= Time.fixedDeltaTime;
+
         timeDelay -= Time.fixedDeltaTime;
         if (timeDelay <= 0)
         {
             Spawners();
             timeDelay = 0.3f;
         }
+
+        Debug.Log(">>>>>>>>>>>>" + checkBoss);
 
     }
     protected override void CreatePrefabs(Transform pfefabs)
@@ -62,19 +71,43 @@ public class EnemySpawner : Spawner
     }
     protected override void Spawners()
     {
+        
         base.Spawners();
-        if (timeEnemySpawnerLV > 0 && timeEnemySpawnerLV < 5) ListSpawner(0);
-        if (timeEnemySpawnerLV > 5 && timeEnemySpawnerLV < 10) ListSpawner(1);
-        if (timeEnemySpawnerLV > 10 && timeEnemySpawnerLV < 15) ListSpawner(2);
-        if (timeEnemySpawnerLV > 15 && timeEnemySpawnerLV < 15.2) checkBoss = true;
-        if (checkBoss) 
+        
+        if (timeEnemySpawnerLV > 0 && indexEnemy != 3 && indexEnemy != 7 && checkBoss == false) ListSpawner(indexEnemy);
+        if (timeEnemySpawnerLV <= 0) 
+        { 
+            if(indexEnemy <7)  indexEnemy++;
+            timeEnemySpawnerLV = 5f;
+        }
+
+        if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 7)
         {
-            ListSpawner(3);
+            if (indexEnemy == 3) indexEnemy++;
+            checkBoss = true;
+
+        }
+        if (checkBoss && indexBoss == 0)
+        {       
+                ListSpawner(3);
+                panelBoss.SetActive(true);
+                panelBoss.transform.position = player.transform.position;
+                indexBoss++;
+
+        }
+        if (checkBoss && indexBoss == 1 && indexEnemy == 7)
+        {
+            ListSpawner(7);
             panelBoss.SetActive(true);
             panelBoss.transform.position = player.transform.position;
-            //EnemyDestroy.DestroyEnemy();
-            checkBoss = false;
+            indexBoss++;
+
         }
+        if (!checkBoss) panelBoss.SetActive(false);
+        
+
+
+
 
     }
 }
