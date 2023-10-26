@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18681eaa6abbec74b9b305b9743beb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spinningSpeed: -850
+  spinningSpeed: -700
   startSkill: 0
   spinDuration: 3
   durOffset: 0.6
@@ -671,7 +671,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 4d4df8562af9b0244ae3d91daedf1450, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

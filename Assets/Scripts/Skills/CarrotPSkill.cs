@@ -25,14 +25,15 @@ public class CarrotPSkill : MonoBehaviour
     private Transform nearestEnm;
     private Vector2 direction;
     private Vector2 rotation;
+    private bool onFirstLoad = false;
     // Start is called before the first frame update
     void Start()
     {
+        
     }
     private void OnEnable()
     {
         LoadStuff();
-
         anim.Play("PCarrot_FlyUp");
         float dur = anim.GetCurrentAnimatorClipInfo(0).Length;
         Invoke(nameof(ShootCarrot), dur);//đặt trong onenable để đoạn lệnh này chỉ chạy một lần và để cho direction không bị trừ liên tục gây lỗi
@@ -49,6 +50,15 @@ public class CarrotPSkill : MonoBehaviour
         {
             rb.velocity = new Vector2(direction.x, direction.y).normalized * shootingForce;
         }
+        if (onFirstLoad)
+        {
+            onFirstLoad = false;
+
+            rotation = (transform.position - nearestEnm.position);
+
+            float angle = Mathf.Atan2(rotation.y, rotation.x) * Mathf.Rad2Deg - rotationModifier;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
     }
 
     void LoadStuff()
@@ -59,6 +69,9 @@ public class CarrotPSkill : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col2D = GetComponent<PolygonCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+
+        onFirstLoad = true;
+
     }
     void ShootCarrot()
     {
@@ -86,6 +99,8 @@ public class CarrotPSkill : MonoBehaviour
             isShooting = false;
             sprite.sortingOrder = 0;
             transform.rotation = Quaternion.Euler(0, 0, 0);
+
+            gameObject.SetActive(false);
         }
     }
 }

@@ -25,6 +25,7 @@ public class SpinningController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = targetToFollow.position;
         spinColliderScript.RotateSpeed = spinningSpeed;
 
         if (startSkill)
