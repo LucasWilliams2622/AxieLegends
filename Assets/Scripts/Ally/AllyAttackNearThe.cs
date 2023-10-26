@@ -57,8 +57,6 @@ public class AllyAttackNearThe : MonoBehaviour
 
     private void AttackNearestEnemy()
     {
-
-        Debug.Log("Tấn công kẻ địch gần nhất!");
         GetComponent<AllyShooting>().AttackAuto();
     }
 }
