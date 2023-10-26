@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] protected float mousePosY;
     [SerializeField] protected float timeDelayAttack;
 
-    [SerializeField] protected bool isEnhanceAttack;
+    [SerializeField] public bool isEnhanceAttack;
     [SerializeField] protected GameObject EnhancedBullet;
     [SerializeField] protected float EnhancedBulletSpeed;
     [SerializeField] protected float EnhancedFireRate;

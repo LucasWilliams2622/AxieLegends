@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("Arrow"))
         {
             TakeDamage(1);
+            Destroy(collision.gameObject);
 
         }
         if (collision.gameObject.CompareTag("EnhanceArrow"))

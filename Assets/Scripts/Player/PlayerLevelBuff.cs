@@ -23,7 +23,7 @@ public class PlayerLevelBuff : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerSkill = transform.Find("PlayerSkill");
+        
         level = 1;
         LoadList();
     }
@@ -31,22 +31,24 @@ public class PlayerLevelBuff : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       /* if(Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             level++;
             skill.gameObject.SetActive(true);
             Random3Skill();
             Time.timeScale = 0f;
 
-        }*/
+        }
         PlayerSkill();
+        
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(10);
+            CollectExp(50);
             Destroy(collision.gameObject);
         }
     }
@@ -86,7 +88,7 @@ public class PlayerLevelBuff : MonoBehaviour
 
             do
             {
-                randomNumber = UnityEngine.Random.Range(0, 11); 
+                randomNumber = UnityEngine.Random.Range(0, listPlayerSkill.Count); 
             } while (Array.IndexOf(numbers, randomNumber) != -1 || Array.IndexOf(arraySkill, randomNumber) != -1);
             foreach(Transform skill in listSkill)
             {
@@ -106,6 +108,10 @@ public class PlayerLevelBuff : MonoBehaviour
         for (int i = 0;i < arraySkill.Length; i++)
         {
             listPlayerSkill[arraySkill[i]].gameObject.SetActive(true);
+            if (Array.IndexOf(arraySkill, 3) != -1)
+            {
+                GetComponent<PlayerShooting>().isEnhanceAttack = true;
+            }
         }
     }
 
