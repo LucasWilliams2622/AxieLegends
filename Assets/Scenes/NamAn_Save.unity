@@ -1263,67 +1263,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee3a0f6eec39fc4993c17db99156783, type: 3}
---- !u!1001 &1907459672
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2518394175450473519, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_Name
-      value: PiercingCarrot
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5384814194481345441, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6976964892352985779, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
-      propertyPath: targetToFollow
-      value: 
-      objectReference: {fileID: 1167364879}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df7faa05ea37a8f4db4c249d34b6aece, type: 3}
 --- !u!1001 &1981581498
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1800,6 +1739,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4357460939865991607
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241587754688484733, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3229432005081682808, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: targetToFollow
+      value: 
+      objectReference: {fileID: 1167364879}
+    - target: {fileID: 3999486933100449376, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_Name
+      value: PiercingCarrotSkill
+      objectReference: {fileID: 0}
+    - target: {fileID: 3999486933100449376, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
 --- !u!1001 &5326589187286635403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1881,6 +1885,6 @@ SceneRoots:
   - {fileID: 1566442745}
   - {fileID: 2047248581}
   - {fileID: 1749914670}
-  - {fileID: 1907459672}
+  - {fileID: 4357460939865991607}
   - {fileID: 1528765735}
   - {fileID: 1981581498}
