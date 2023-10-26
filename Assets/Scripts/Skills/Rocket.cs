@@ -16,6 +16,7 @@ public class Rocket : MonoBehaviour
     private void Start()
     {
         rockets = new GameObject[maxRockets];
+        StartCoroutine(AutoFireRockets());
     }
 
     private void Update()
@@ -27,7 +28,17 @@ public class Rocket : MonoBehaviour
         enemyNearThe = playerAttackEnemyNearThe.nearestEnemy;
 
     }
-
+    private IEnumerator AutoFireRockets()
+    {
+        while (true)
+        {
+            if (canFireRockets)
+            {
+                FireRockets();
+            }
+            yield return new WaitForSeconds(5f); // Thời gian chờ giữa các lần bắn tên lửa (1 giây trong ví dụ này)
+        }
+    }
     private void FireRockets()
     {
        
