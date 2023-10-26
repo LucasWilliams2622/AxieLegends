@@ -45,11 +45,11 @@ public class PlayerLevelBuff : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("EXP"))
+       /* if (collision.gameObject.CompareTag("EXP"))
         {
             CollectExp(40);
             Destroy(collision.gameObject);
-        }
+        }*/
     }
 
     protected virtual void LoadList()

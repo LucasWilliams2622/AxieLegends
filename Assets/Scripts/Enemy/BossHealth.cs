@@ -9,6 +9,8 @@ public class BossHealth : MonoBehaviour
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
     [SerializeField] protected GameObject holder;
+    [SerializeField] protected EnemySpawner enemySpawner;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -30,7 +32,10 @@ public class BossHealth : MonoBehaviour
         }
     }
 
-
+    private void FixedUpdate()
+    {
+        IsDestroy();
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -41,16 +46,26 @@ public class BossHealth : MonoBehaviour
 
     }
 
+    protected virtual void IsDestroy()
+    {
+        Debug.Log(enemySpawner.checkBoss);
+        if (currentHealth <= 1)
+        {
+            enemySpawner.checkBoss = false;
+            if (enemySpawner.checkBoss == false)
+            {
+                Destroy(gameObject);
+                CreateExp();
+            }
+
+        }
+    }
     private void TakeDamage(int damage)
     {
-        ShowDamage(damage.ToString());
-        Debug.Log("damage" + damage);
         currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            Destroy(gameObject);
-            CreateExp();
-        }
+        ShowDamage(damage.ToString());
+        Debug.Log("hp boss: " + currentHealth);
+        
     }
 
     void ShowDamage(string text)
