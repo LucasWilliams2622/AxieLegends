@@ -31,16 +31,19 @@ public class Rocket : MonoBehaviour
     private void FireRockets()
     {
        
-        // Bắn tên lửa tới kẻ địch gần nhất
         for (int i = 0; i < maxRockets; i++)
         {
-            if (rockets[i] == null)
+            if (rockets[i] ==null)
             {
                 GameObject rocket = Instantiate(rocketPrefab, shootPoint.position, Quaternion.identity);
                 rockets[i] = rocket;
 
-                Vector2 direction = (enemyNearThe.transform.position - shootPoint.position).normalized;
-                rocket.GetComponent<Rigidbody2D>().velocity = direction * rocketSpeed;
+                if (enemyNearThe != null)
+                {
+                    Vector2 direction = (enemyNearThe.transform.position - shootPoint.position).normalized;
+                    rocket.GetComponent<Rigidbody2D>().velocity = direction * rocketSpeed;
+                }
+
 
                 break;
             }
