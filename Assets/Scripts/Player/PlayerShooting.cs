@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] protected Transform enemyNearThe;
     [SerializeField] protected float mousePosX;
     [SerializeField] protected float mousePosY;
-    [SerializeField] protected float timeDelayAttack;
+    [SerializeField] protected float timeDelayAttack = 1;
 
     [SerializeField] public bool isEnhanceAttack;
     [SerializeField] protected GameObject EnhancedBullet;

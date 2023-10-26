@@ -47,7 +47,7 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(0);
+            CollectExp(40);
             Destroy(collision.gameObject);
         }
     }
