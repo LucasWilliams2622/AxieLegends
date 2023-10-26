@@ -78,7 +78,7 @@ public class PlayerShooting : MonoBehaviour
                 }
                 mousePosX = mousePos.x;
                 mousePosY = mousePos.y;
-                timeDelayAuto = 3f;
+                timeDelayAuto = 1.5f;
             }
         }
     }
