@@ -13,7 +13,10 @@ public class Ultimate : MonoBehaviour
         usingUltimate = false;
     }
 
-    // Update is called once per frame
+    public void PlayUltimate()
+    {
+        usingUltimate = true;
+    }
     void Update()
     {
         ultimateEffect.transform.position = player.transform.position;
@@ -33,5 +36,7 @@ public class Ultimate : MonoBehaviour
         yield return new WaitForSeconds(delay);
         usingUltimate = false;
     }
+
+    
     
 }

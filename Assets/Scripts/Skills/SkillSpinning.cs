@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class SkillSpinning : MonoBehaviour
 {
-    [SerializeField] private float rotateSpeed;
-    [SerializeField] private GameObject targetToFollow;
+    private float rotateSpeed;
     private List<GameObject> children = new();
-    // Start is called before the first frame update
-    void Start()
+
+    public float RotateSpeed { get => rotateSpeed; set => rotateSpeed = value; }
+
+
+    private void OnEnable()
     {
         foreach (Transform child in transform)
         {
@@ -25,8 +27,7 @@ public class SkillSpinning : MonoBehaviour
         {
             item.SetActive(true);
         }
-        transform.position = targetToFollow.transform.position;
-        transform.Rotate(0, 0, rotateSpeed * Time.deltaTime);
+        transform.Rotate(0, 0, RotateSpeed * Time.deltaTime);
 
     }
 }
