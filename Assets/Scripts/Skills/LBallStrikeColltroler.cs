@@ -75,12 +75,23 @@ public class LBallStrikeColltroler : MonoBehaviour
                 emit.position = (startObject.position + endObject.position) / 2;
                 obj.Emit(emit, 1);
             }
-
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Monster") && listEnemy.Count < numMaxEnemy && !listEnemy.Contains(collision.gameObject.transform))
+        {
+            listEnemy.Add(collision.gameObject.transform);
+        }
+        if (collision.CompareTag("EnemyLv1") && listEnemy.Count < numMaxEnemy && !listEnemy.Contains(collision.gameObject.transform))
+        {
+            listEnemy.Add(collision.gameObject.transform);
+        }
+        if (collision.CompareTag("EnemyLv2") && listEnemy.Count < numMaxEnemy && !listEnemy.Contains(collision.gameObject.transform))
+        {
+            listEnemy.Add(collision.gameObject.transform);
+        }
+        if (collision.CompareTag("EnemyLv3") && listEnemy.Count < numMaxEnemy && !listEnemy.Contains(collision.gameObject.transform))
         {
             listEnemy.Add(collision.gameObject.transform);
         }
