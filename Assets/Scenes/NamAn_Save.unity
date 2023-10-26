@@ -1258,6 +1258,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissileSkill
       objectReference: {fileID: 0}
+    - target: {fileID: 1986514146460715817, guid: fee3a0f6eec39fc4993c17db99156783, type: 3}
+      propertyPath: targetToFollow
+      value: 
+      objectReference: {fileID: 1568015164}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1315,6 +1319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThrowingSnailSkill
       objectReference: {fileID: 0}
+    - target: {fileID: 5977758223268306683, guid: 86476303f4325b24d8e7fcfee977de3b, type: 3}
+      propertyPath: targetToFollow
+      value: 
+      objectReference: {fileID: 1568015169}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1513,6 +1521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: LightningBall
       objectReference: {fileID: 0}
+    - target: {fileID: 2219049732981746964, guid: fb918c6048d72144397e0dc345a95520, type: 3}
+      propertyPath: targetToFollow
+      value: 
+      objectReference: {fileID: 1568015169}
     - target: {fileID: 7173496274309795847, guid: fb918c6048d72144397e0dc345a95520, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -58,8 +58,6 @@ public class PlayerAttackEnemyNearThe : MonoBehaviour
 
     private void AttackNearestEnemy()
     {
-        
-        Debug.Log("Tấn công kẻ địch gần nhất!");
         GetComponent<PlayerShooting>().AttackAuto();
     }
 }

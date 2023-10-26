@@ -14,6 +14,8 @@ public class PlayerAnimation : MonoBehaviour
     private string PLAYER_RUN = "draft/run-origin";
     private string PLAYER_HURT = "defense/hit-by-normal";
     private string PLAYER_IDLE = "action/idle/normal";
+    private string PLAYER_SPEED_RUN = "action/move-forward";
+
 
     public SkeletonAnimation Anim { get => anim; set => anim = value; }
 
@@ -36,6 +38,12 @@ public class PlayerAnimation : MonoBehaviour
         Anim.loop = true;
         Anim.timeScale = animSpeed;
         Anim.AnimationName = PLAYER_RUN;
+    }
+    public void PlaySpeedRun()
+    {
+        Anim.loop = true;
+        Anim.timeScale = animSpeed;
+        Anim.AnimationName = PLAYER_SPEED_RUN;
     }
 
     public void PlayHurt()

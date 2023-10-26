@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpinningController : MonoBehaviour
 {
     [SerializeField] private float spinningSpeed;
-    [SerializeField] private bool startSkill;
+    [SerializeField] public bool startSkill;
     [SerializeField] private float spinDuration;
     [SerializeField] private float durOffset;
     private bool isStartCount;
@@ -19,7 +19,7 @@ public class SpinningController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        startSkill = true;
     }
 
     // Update is called once per frame
