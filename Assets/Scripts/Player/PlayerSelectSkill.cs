@@ -19,51 +19,51 @@ public class PlayerSelectSkill : MonoBehaviour
 
     public virtual void skill1()
     {
-        AddToNumber(0);
+        AddToNumber(1);
     }
     public virtual void skill2()
     {
-        AddToNumber(1);
+        AddToNumber(2);
     }
     public virtual void skill3()
     {
-        AddToNumber(2);
+        AddToNumber(3);
     }
     public virtual void skill4()
     {
-        AddToNumber(3);
+        AddToNumber(4);
     }
     public virtual void skill5()
     {
-        AddToNumber(4);
+        AddToNumber(5);
     }
     public virtual void skill6()
     {
-        AddToNumber(5);
+        AddToNumber(6);
     }
     public virtual void skill7()
     {
-        AddToNumber(6);
+        AddToNumber(7);
     }
     public virtual void skill8()
     {
-        AddToNumber(7);
+        AddToNumber(8);
     }
     public virtual void skill9()
     {
-        AddToNumber(8);
+        AddToNumber(9);
     }
     public virtual void skill10()
     {
-        AddToNumber(9);
+        AddToNumber(10);
     }
     public virtual void skill11()
     {
-        AddToNumber(10);
+        AddToNumber(11);
     }
     public virtual void skill12()
     {
-        AddToNumber(11);
+        AddToNumber(12);
     }
 
     protected virtual void AddToNumber(int number)

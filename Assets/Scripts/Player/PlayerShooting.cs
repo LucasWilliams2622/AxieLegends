@@ -102,7 +102,7 @@ public class PlayerShooting : MonoBehaviour
    
     public virtual void Shoot()
     {
-        if (isEnhanceAttack)
+        /*if (isEnhanceAttack)
         {
             sniperSound.Play();
             GameObject EnhancedBulletInstant = Instantiate(EnhancedBullet, ShootPoint.position, ShootPoint.rotation);
@@ -111,13 +111,13 @@ public class PlayerShooting : MonoBehaviour
             Destroy(EnhancedBulletInstant, 2);
         }
         else
-        {
+        {*/
             sniperSound.Play();
-            GameObject BulletInstant = Instantiate(Bullet, ShootPoint.position, ShootPoint.rotation);
+            GameObject BulletInstant = Instantiate(isEnhanceAttack ? EnhancedBullet:  Bullet, ShootPoint.position, ShootPoint.rotation);
             Rigidbody2D bulletRigidbody = BulletInstant.GetComponent<Rigidbody2D>();
             bulletRigidbody.velocity = ShootPoint.right * BulletSpeed;
             Destroy(BulletInstant, 2);  
-        }
+        /*}*/
     }
 
 
