@@ -1787,17 +1787,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3229432005081682808, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
+    - target: {fileID: 3664109345968836690, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
       propertyPath: targetToFollow
       value: 
       objectReference: {fileID: 1167364879}
     - target: {fileID: 3999486933100449376, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
       propertyPath: m_Name
       value: PiercingCarrotSkill
-      objectReference: {fileID: 0}
-    - target: {fileID: 3999486933100449376, guid: ee1b7c6acda4d6b43b05ff8a49544a1f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
