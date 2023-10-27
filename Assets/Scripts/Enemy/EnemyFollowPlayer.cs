@@ -24,6 +24,7 @@ public class EnemyFollowPlayer : FollowToDistance
     protected virtual void Flip()
     {
         Vector2 theScale = transform.localScale;
+        transform.localRotation = Quaternion.Euler(0, 180, 0);
         if (target.transform.position.x - transform.position.x > 0 && theScale.x < 0) theScale.x *= -1;
         if (target.transform.position.x - transform.position.x <= 0 && theScale.x > 0) theScale.x *= -1;
         transform.localScale = theScale;

@@ -15,7 +15,7 @@ public class ShieldController : MonoBehaviour
 
     void Start()
     {
-        isShieldActive = false;
+        isShieldActive = true;
         shield.SetActive(false);
     }  
 
@@ -28,15 +28,9 @@ public class ShieldController : MonoBehaviour
     public void ActivateShield()
     {
         isShieldActive = true;
-        StartCoroutine(DeactivateShieldAfterDelay(5f));
     }
 
-    private IEnumerator DeactivateShieldAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        DeactivateShield();
-    }
-
+   
     public void DeactivateShield()
     {
         isShieldActive = false;

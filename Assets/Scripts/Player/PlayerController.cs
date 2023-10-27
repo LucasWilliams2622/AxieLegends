@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     private float vertical;
     private bool isMoving;
     private bool isTriggerHurtAnimation; //lock các animation khác khi animation hurt đang chạy
+    private bool isBuffSpeed = false;
 
     public bool IsPlayerDie { get => isPlayerDie; set => isPlayerDie = value; }
 
@@ -38,7 +39,14 @@ public class PlayerController : MonoBehaviour
         {
             if (!isTriggerHurtAnimation)
             {
-                playerAnim.PlayRun();
+                if (isBuffSpeed)
+                {
+                    playerAnim.PlaySpeedRun();
+                }
+                else
+                {
+                    playerAnim.PlayRun();
+                }
             }
            
             Moving(horizontal, vertical);
@@ -116,6 +124,11 @@ public class PlayerController : MonoBehaviour
         {
             HandleHurt();
         }
+        if (collision.collider.CompareTag("buffSpeed"))
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine(BuffSpeedCoroutine());
+        }
 
     }
     void HandleHurt()
@@ -129,4 +142,15 @@ public class PlayerController : MonoBehaviour
     {
         isTriggerHurtAnimation = false;
     }
+    private IEnumerator BuffSpeedCoroutine()
+    {
+        runSpeed += 5;
+
+        yield return new WaitForSeconds(5f);
+
+        runSpeed -= 5; 
+
+        isBuffSpeed = false;
+    }
+
 }
