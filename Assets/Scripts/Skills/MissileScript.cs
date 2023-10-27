@@ -5,37 +5,26 @@ using UnityEngine;
 public class MissileScript : MonoBehaviour
 {
 
-    public Rigidbody2D rb;
-    public float flySpeed;
-    public float rotateSpeed;
-    public Transform targetPos;
-    // Start is called before the first frame update
-    void Start()
+    public Animator anim;
+    public float offsetDelay;
+    public float startShootingDelay;
+
+    private void OnEnable()
     {
-        rb = GetComponent<Rigidbody2D>();
+        Invoke(nameof(startShotting), startShootingDelay);
     }
-
-    // Update is called once per frame
-    void Update()
+    void startShotting()
     {
-        
-    }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = transform.up * flySpeed;
-        Vector2 direction = (Vector2)targetPos.position - rb.position;
-        direction.Normalize();
-
-        float rotateAmout = Vector3.Cross(direction, transform.up).z;
-        rb.angularVelocity = -rotateAmout * rotateSpeed;
+        anim.Play("MissileFly");
+        var dur = anim.GetCurrentAnimatorStateInfo(0).length;
+        Destroy(gameObject, dur - offsetDelay);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster")||collision.CompareTag("Rocket"))
+        if (collision.CompareTag("Monster"))
         {
-            Destroy(gameObject);
+            Debug.Log("Monster Hit");
         }
     }
 }
