@@ -27,21 +27,21 @@ public class SpinningController : MonoBehaviour
     {
         transform.position = targetToFollow.position;
         spinColliderScript.RotateSpeed = spinningSpeed;
-
+        startSpin();
         if (startSkill)
         {
             startSkill = false;
             objAnimation.SetActive(true);
             anim.Play("Spin_Start");
 
-            var dur = anim.GetCurrentAnimatorStateInfo(0).length-durOffset;
+            var dur = anim.GetCurrentAnimatorStateInfo(0).length - durOffset;
             Invoke(nameof(startSpin), dur);
-            
+
         }
 
         if (isStartCount)
         {
-            
+
 
             timer += Time.deltaTime;
             if (timer > spinDuration)

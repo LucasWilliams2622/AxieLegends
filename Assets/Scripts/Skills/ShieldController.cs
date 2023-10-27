@@ -19,6 +19,7 @@ public class ShieldController : MonoBehaviour
         shield.SetActive(false);
     }  
 
+
     private void Update()
     {
         shield.transform.position = player.transform.position;
