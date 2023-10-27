@@ -7,36 +7,33 @@ public class Ultimate : MonoBehaviour
     [SerializeField] public GameObject ultimateEffect;
     [SerializeField] public GameObject player;
     [SerializeField] public bool usingUltimate;
-
+    [SerializeField] private Animator tonglao;
+    [SerializeField] private float offsetDelay =1.5f;
     void Start()
     {
         usingUltimate = false;
+        
     }
 
+  /*  public void PlayUltimate()
+    {
+        usingUltimate = true;
+    }*/
+    void Update()
+    {
+        ultimateEffect.transform.position = player.transform.position;
+
+        if (usingUltimate)
+        {
+            usingUltimate = false;
+            ultimateEffect.SetActive(true);
+        }
+
+        
+    }
     public void PlayUltimate()
     {
         usingUltimate = true;
     }
-    void Update()
-    {
-        ultimateEffect.transform.position = player.transform.position;
-        ultimateEffect.SetActive(usingUltimate);
-        ActivateUltimate() ;
-    }
-    public void ActivateUltimate()  
-    {
-        if (usingUltimate)
-        {
-            StartCoroutine(DeactivateUltimateAfterDelay(1.5f));
-        }
-    }
-
-    IEnumerator DeactivateUltimateAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        usingUltimate = false;
-    }
-
-    
     
 }

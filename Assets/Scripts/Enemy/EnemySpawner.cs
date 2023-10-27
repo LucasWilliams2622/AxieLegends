@@ -37,7 +37,7 @@ public class EnemySpawner : Spawner
         if (timeDelay <= 0)
         {
             Spawners();
-            timeDelay = 0.3f;
+            timeDelay = 0.2f;
         }
 
         Debug.Log(">>>>>>>>>>>>" + checkBoss);
@@ -78,7 +78,7 @@ public class EnemySpawner : Spawner
         if (timeEnemySpawnerLV <= 0) 
         { 
             if(indexEnemy <7)  indexEnemy++;
-            timeEnemySpawnerLV = 5f;
+            timeEnemySpawnerLV = 10f;
         }
 
         if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 7)

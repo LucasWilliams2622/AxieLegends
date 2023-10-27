@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class PlayerAttackEnemyNearThe : MonoBehaviour
+public class AllyAttackNearThe : MonoBehaviour
 {
     [SerializeField] protected List<Transform> enemies;
     [SerializeField] protected float attackRange = 5f;
@@ -16,7 +15,7 @@ public class PlayerAttackEnemyNearThe : MonoBehaviour
 
     private void Update()
     {
-        
+
 
     }
     private void FixedUpdate()
@@ -42,8 +41,8 @@ public class PlayerAttackEnemyNearThe : MonoBehaviour
         }
     }
     protected virtual void FindNearestEnemy()
-    {        
-        
+    {
+
         float nearestDistance = Mathf.Infinity;
         foreach (Transform enemy in enemies)
         {
@@ -58,6 +57,6 @@ public class PlayerAttackEnemyNearThe : MonoBehaviour
 
     private void AttackNearestEnemy()
     {
-        GetComponent<PlayerShooting>().AttackAuto();
+        GetComponent<AllyShooting>().AttackAuto();
     }
 }

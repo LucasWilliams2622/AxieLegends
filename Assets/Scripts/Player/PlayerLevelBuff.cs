@@ -13,14 +13,13 @@ public class PlayerLevelBuff : MonoBehaviour
     [SerializeField] protected List<Transform> listPlayerSkill;
     [SerializeField] protected Transform playerSkill;
     [SerializeField] public int[] arraySkill;
+    [SerializeField] public SpinningController spinningController;
 
     public int maxExp = 100;
     public int currentExp = 0;
     public ExpBar expBar;
     public int currentLevel = 1;
-    public GameObject panelChooseSkill;
 
-    // Start is called before the first frame update
     void Start()
     {
         
@@ -48,7 +47,7 @@ public class PlayerLevelBuff : MonoBehaviour
     {
        /* if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(50);
+            CollectExp(40);
             Destroy(collision.gameObject);
         }*/
     }
@@ -81,14 +80,14 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         if (arraySkill.Length >= 9) return;
         int[] numbers = new int[3];
-
+        Debug.Log(" list skill player" + listPlayerSkill.Count);
         for (int i = 0; i < 3; i++)
         {
             int randomNumber;
 
             do
             {
-                randomNumber = UnityEngine.Random.Range(0, listPlayerSkill.Count); 
+                randomNumber = UnityEngine.Random.Range(0, listPlayerSkill.Count ); 
             } while (Array.IndexOf(numbers, randomNumber) != -1 || Array.IndexOf(arraySkill, randomNumber) != -1);
             foreach(Transform skill in listSkill)
             {
@@ -107,11 +106,16 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         for (int i = 0;i < arraySkill.Length; i++)
         {
+            Debug.Log(arraySkill);
             listPlayerSkill[arraySkill[i]].gameObject.SetActive(true);
-            if (Array.IndexOf(arraySkill, 3) != -1)
+            if (Array.IndexOf(arraySkill, 9) != -1 && GetComponent<PlayerShooting>().isEnhanceAttack == false)
             {
                 GetComponent<PlayerShooting>().isEnhanceAttack = true;
             }
+            //if (Array.IndexOf(arraySkill, 1) != -1)
+            //{
+            //    spinningController.startSkill = true;
+            //}
         }
     }
 
