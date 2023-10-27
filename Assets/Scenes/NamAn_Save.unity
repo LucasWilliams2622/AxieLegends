@@ -1162,13 +1162,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpinningSkill
       objectReference: {fileID: 0}
+    - target: {fileID: 6337762494287389032, guid: 28371659cf3c22841b796f31aed3d657, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6337762494287389039, guid: 28371659cf3c22841b796f31aed3d657, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6337762494287389039, guid: 28371659cf3c22841b796f31aed3d657, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.42
       objectReference: {fileID: 0}
     - target: {fileID: 6337762494287389039, guid: 28371659cf3c22841b796f31aed3d657, type: 3}
       propertyPath: m_LocalPosition.z

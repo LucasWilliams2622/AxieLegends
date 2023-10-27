@@ -15,6 +15,7 @@ public class SpinningController : MonoBehaviour
     [SerializeField] private GameObject spinCollider;
     [SerializeField] private GameObject objAnimation;
     [SerializeField] private Animator anim;
+    [SerializeField] private GameObject circleBehindPlayer;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +28,7 @@ public class SpinningController : MonoBehaviour
     {
         transform.position = targetToFollow.position;
         spinColliderScript.RotateSpeed = spinningSpeed;
+        circleBehindPlayer.SetActive(objAnimation.activeInHierarchy);
 
         if (startSkill)
         {

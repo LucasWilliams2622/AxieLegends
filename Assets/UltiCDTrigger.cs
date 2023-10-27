@@ -13,21 +13,29 @@ public class UltiCDTrigger : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+       
     }
-    private void OnEnable()
-    {
-        anim.Play("UltimateCooldown");
-    }
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         var dur = anim.GetCurrentAnimatorStateInfo(0).length;
-        Invoke(nameof(turnoff), dur-offsetDelay);
+        Invoke(nameof(doneCoolDown), dur + 0.5f - offsetDelay);
     }
-    void turnoff()
+    private void OnEnable() 
+    {
+        anim.Play("UltimateCooldown");
+        
+    }
+    
+    void doneCoolDown()
+    {
+        anim.Play("UltimateCooldown_Done");
+        var duration = anim.GetCurrentAnimatorStateInfo(0).length;
+        Invoke(nameof(turnOff), duration - offsetDelay);
+    }
+    void turnOff()
     {
         btn.enabled = true;
         gameObject.SetActive(false);
-        cooldown.lockRun = false;
     }
 }

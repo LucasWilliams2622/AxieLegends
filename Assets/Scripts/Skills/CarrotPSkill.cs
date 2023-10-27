@@ -7,7 +7,7 @@ public class CarrotPSkill : MonoBehaviour
 {
 
     
-    [SerializeField] private float shootingForce;
+    [SerializeField] private float shootingForce;   
     public Transform activeRangeTransform;
     public SkillScanNearMob activeRange;
     public Transform piercingCarrot;
