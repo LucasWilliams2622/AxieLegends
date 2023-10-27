@@ -107,11 +107,23 @@ public class PlayerLevelBuff : MonoBehaviour
         for (int i = 0;i < arraySkill.Length; i++)
         {
             Debug.Log(arraySkill);
-            listPlayerSkill[arraySkill[i]].gameObject.SetActive(true);
-            if (Array.IndexOf(arraySkill, 9) != -1 && GetComponent<PlayerShooting>().isEnhanceAttack == false)
+            //listPlayerSkill[arraySkill[i]].gameObject.SetActive(true);
+            if (arraySkill[i] == 1) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill1);
+            if (arraySkill[i] == 2) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill2);
+            if (arraySkill[i] == 3) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill3);
+            if (arraySkill[i] == 4) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill4);
+            if (arraySkill[i] == 5) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill5);
+            if (arraySkill[i] == 6) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill6);
+            if (arraySkill[i] == 7) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill7);
+            if (arraySkill[i] == 8) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill8);
+
+            if (arraySkill[i] == 9)
             {
-                GetComponent<PlayerShooting>().isEnhanceAttack = true;
+                listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill9);
+                GetComponent<PlayerShooting>().isEnhanceAttack = DelaySkills.checkSkill9;
+                Debug.Log(DelaySkills.checkSkill9);
             }
+            
             //if (Array.IndexOf(arraySkill, 1) != -1)
             //{
             //    spinningController.startSkill = true;

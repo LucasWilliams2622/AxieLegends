@@ -58,8 +58,8 @@ public class PlayerShooting : MonoBehaviour
     {
         enemyNearThe = GetComponent<PlayerAttackEnemyNearThe>().nearestEnemy;
         mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        timeDelayAttack -= Time.deltaTime;
-        timeDelayAuto -= Time.deltaTime;
+        if(timeDelayAttack > -1) timeDelayAttack -= Time.deltaTime;
+        if(timeDelayAuto > -1) timeDelayAuto -= Time.deltaTime;
         direction = mousePos - (Vector2)Gun.position;
         FaceMouce();
     }
@@ -68,7 +68,7 @@ public class PlayerShooting : MonoBehaviour
     {
         if (mousePosX != mousePos.x || mousePosY != mousePos.y)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Time.timeScale == 1)
             {
                 if (Time.time > ReadyForNextShot)
                 {
