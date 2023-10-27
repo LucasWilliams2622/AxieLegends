@@ -22,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
         { "EnemyLv2", 2 },
         { "EnemyLv3", 3 },
         { "BulletEnemy", 1 },
+         
 
     };
     void Start()

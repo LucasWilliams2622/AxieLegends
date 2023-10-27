@@ -22,6 +22,7 @@ TagManager:
   - EnhanceArrow
   - SnailArea
   - buffSpeed
+  - BossLv1
   layers:
   - Default
   - TransparentFX

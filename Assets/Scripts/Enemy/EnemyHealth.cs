@@ -43,10 +43,21 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
-      /*  if (collision.gameObject.CompareTag("Shield"))
+
+        if (collision.gameObject.CompareTag("SnailArea"))
         {
-            TakeDamage(10);
-        }*/
+            TakeDamage(1);
+        }
+        if (gameObject.CompareTag("SnailArea"))
+        {
+            Debug.Log("ádsad");
+            StartCoroutine(LoseHealthOverTime(1));
+        }
+
+        /*  if (collision.gameObject.CompareTag("Shield"))
+          {
+              TakeDamage(10);
+          }*/
 
     }
 
@@ -74,6 +85,7 @@ public class EnemyHealth : MonoBehaviour
    
     private void TakeDamage(int damage)
     {
+        
         ShowDamage(damage.ToString());
         currentHealth -= damage;
 
@@ -89,7 +101,17 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-
+    private IEnumerator LoseHealthOverTime(int damage)
+    {
+        int remainingDamage = damage;
+        while (remainingDamage > 0 && currentHealth > 0)
+        {
+            ShowDamage(remainingDamage.ToString());
+            currentHealth--;
+            remainingDamage--;
+            yield return new WaitForSeconds(1f); 
+        }
+    }
     protected virtual void CreateExp()
     {
         GameObject createExp = Instantiate(exp);
