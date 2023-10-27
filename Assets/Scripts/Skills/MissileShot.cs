@@ -4,43 +4,40 @@ using UnityEngine;
 
 public class MissileShot : MonoBehaviour
 {
-    public List<GameObject> listMissile;
-    public GameObject missilePrefab;
-    public GameObject targetPrefab;
+
+    public Animator anim;
+    private float delayAtkBetweenPerMissile;
     public MissileAreaScan missleArea;
-    public float startHeight;
-    public bool isTriggerShot;
-    // Start is called before the first frame update
-    void Start()
+    public GameObject prefMissile;
+
+    public float DelayAtkBetweenPerMissile { get => delayAtkBetweenPerMissile; set => delayAtkBetweenPerMissile = value; }
+
+    private void OnEnable()
     {
+        anim.Play("MissileShot");
+
+        StartCoroutine(startShootingWithDelay());
+
         
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
 
-        if (isTriggerShot)
+    }
+
+    IEnumerator startShootingWithDelay()
+    {
+        for (int i = 0; i < 3; i++)
         {
-            isTriggerShot = false;
-
-            foreach (var item in missleArea.ListEnemy)
+            var enemy = missleArea.ListEnemy[Random.Range(0,missleArea.ListEnemy.Count-1)];
+            if (enemy != null)
             {
-
-                if (item == null) continue;
-
-                var obj1 = Instantiate(missilePrefab, transform.position, Quaternion.identity);
-                var obj2 = Instantiate(targetPrefab, item);
-
-                obj1.name = missilePrefab.name;
-                obj2.name = targetPrefab.name;
-
-                obj1.GetComponent<MissileScript>().targetPos = obj2.transform;
-                obj2.GetComponent<TargetMissileScript>().missile = obj1;
+                Instantiate(prefMissile, enemy);
             }
-            
+            yield return new WaitForSeconds(DelayAtkBetweenPerMissile);
         }
-        
+        gameObject.SetActive(false);
     }
-
 }
