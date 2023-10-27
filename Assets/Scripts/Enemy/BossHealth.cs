@@ -1,16 +1,16 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BossHealth : MonoBehaviour
 {
-    public int maxHealth = 3;
+    public int maxHealth = 20;
     public static int currentHealth;
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
     [SerializeField] protected GameObject holder;
     [SerializeField] protected EnemySpawner enemySpawner;
-
+    public BossFinalAnimation bossFinalAnimation;
     void Start()
     {
         currentHealth = maxHealth;
@@ -54,14 +54,23 @@ public class BossHealth : MonoBehaviour
             enemySpawner.checkBoss = false;
             if (enemySpawner.checkBoss == false)
             {
-                Destroy(gameObject);
-                CreateExp();
+                StartCoroutine(DestroyAfterAnimation());
             }
 
         }
     }
+    IEnumerator DestroyAfterAnimation()
+    {
+        bossFinalAnimation.PlayDie();
+        yield return new WaitForSeconds(2f); // Chờ 2 giây
+
+        Destroy(gameObject);
+        CreateExp();
+
+    }
     private void TakeDamage(int damage)
     {
+        bossFinalAnimation.PlayHurt();
         currentHealth -= damage;
         ShowDamage(damage.ToString());
         Debug.Log("hp boss: " + currentHealth);
@@ -76,7 +85,6 @@ public class BossHealth : MonoBehaviour
             prefab.GetComponentInChildren<TextMesh>().text = text;
         }
     }
-
 
     protected virtual void CreateExp()
     {

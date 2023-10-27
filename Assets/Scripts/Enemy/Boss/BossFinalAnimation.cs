@@ -9,12 +9,12 @@ public class BossFinalAnimation : MonoBehaviour
     [SerializeField] private float animSpeed;
     [SerializeField] private Transform targetTransform;
 
-    private string BOSS_RUN = "actiob/move-forward";
+    private string BOSS_RUN = "action/move-back";
     private string BOSS_HURT = "defense/hit-by-normal";
-    private string BOSS_ATTACK = "action/melee/normal-attack";
+    private string BOSS_ATTACK = "attack/melee/normal-attack";
     private string BOSS_DIE = "defence/hit-die";
     private string BOSS_IDLE = "action/idle/normal";
-
+    public BossFollowPlayer bossFollowPlayer;
     public SkeletonAnimation Anim { get => anim; set => anim = value; }
 
     void Start()
@@ -24,8 +24,10 @@ public class BossFinalAnimation : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
+
+    
     public void PlayAttack()
     {
         Anim.loop = true;
