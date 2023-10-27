@@ -22,6 +22,7 @@ TagManager:
   - EnhanceArrow
   - SnailArea
   - buffSpeed
+  - Boss1
   layers:
   - Default
   - TransparentFX
@@ -34,7 +35,7 @@ TagManager:
   - 
   - Player
   - SolidObject
-  - 
+  - Enemy
   - 
   - 
   - 
