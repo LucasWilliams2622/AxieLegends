@@ -116,6 +116,7 @@ public class PlayerLevelBuff : MonoBehaviour
             if (arraySkill[i] == 6) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill6);
             if (arraySkill[i] == 7) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill7);
             if (arraySkill[i] == 8) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill8);
+             
 
             if (arraySkill[i] == 9)
             {

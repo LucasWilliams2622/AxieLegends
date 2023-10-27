@@ -52,7 +52,7 @@ public class BulletEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shield") || collision.gameObject.CompareTag("Player"))
         {
-            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
