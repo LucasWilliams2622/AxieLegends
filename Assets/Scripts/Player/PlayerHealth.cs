@@ -57,7 +57,7 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(4);
         }
-        if (collision.gameObject.CompareTag("Boss1Attack"))
+        if (collision.gameObject.CompareTag("BossFinal"))
         {
             TakeDamage(5);
         }
