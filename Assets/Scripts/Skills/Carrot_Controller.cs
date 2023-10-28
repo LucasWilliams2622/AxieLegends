@@ -29,7 +29,7 @@ public class Carrot_Controller : MonoBehaviour
     {
         var obj = Instantiate(carrot, targetToFollow);
         Debug.Log(targetToFollow.position);
-        obj.GetComponent<CarrotPSkill>().nearestEnm = nearestEnm;
+        obj.GetComponent<CarrotPSkill>().enmPos = nearestEnm.position;
     }
 
 }

@@ -6,7 +6,7 @@ public class MissileShot : MonoBehaviour
 {
 
     public Animator anim;
-    private float delayAtkBetweenPerMissile;
+    public float delayAtkBetweenPerMissile;
     public MissileAreaScan missleArea;
     public GameObject prefMissile;
     private float shootSucced;
@@ -15,13 +15,9 @@ public class MissileShot : MonoBehaviour
 
     private void OnEnable()
     {
-        if(missleArea.ListEnemy.Count>0)
-        {
             shootSucced = 0;
             anim.Play("MissileShot");
             StartCoroutine(startShootingWithDelay());
-        }
-
     }
     private void OnDisable()
     {
@@ -35,12 +31,15 @@ public class MissileShot : MonoBehaviour
 
     IEnumerator startShootingWithDelay()
     {
+        var dur = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(dur);
         for (int i = 0; i < missleArea.ListEnemy.Count; i++)
         {
             var enemy = missleArea.ListEnemy[Random.Range(0,missleArea.ListEnemy.Count-1)];
             if (enemy != null && shootSucced <3)
             {
-                Instantiate(prefMissile, enemy.transform);
+                Vector3 enemyPos = enemy.position;
+                Instantiate(prefMissile, enemyPos,Quaternion.identity);
                 shootSucced++;
                 yield return new WaitForSeconds(DelayAtkBetweenPerMissile);
             }
@@ -50,8 +49,5 @@ public class MissileShot : MonoBehaviour
             }
             
         }
-        yield return new WaitForSeconds(0.1f);
-        missleArea.ListEnemy.Clear();
-        gameObject.SetActive(false);
     }
 }
