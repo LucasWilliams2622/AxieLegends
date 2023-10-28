@@ -14,6 +14,7 @@ public class BossHealth : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,28 +50,27 @@ public class BossHealth : MonoBehaviour
     protected virtual void IsDestroy()
     {
         Debug.Log(enemySpawner.checkBoss);
-        if (currentHealth <= 1)
+        if (currentHealth <= 0)
         {
             enemySpawner.checkBoss = false;
-            if (enemySpawner.checkBoss == false)
-            {
-                StartCoroutine(DestroyAfterAnimation());
-            }
+            bossFinalAnimation.PlayDie();
+            Invoke(nameof(DelayDie), 1.5f);
+           
 
         }
     }
-    IEnumerator DestroyAfterAnimation()
+    void DelayDie()
     {
-        bossFinalAnimation.PlayDie();
-        yield return new WaitForSeconds(2f); // Chờ 2 giây
-
         Destroy(gameObject);
         CreateExp();
-
     }
+  
     private void TakeDamage(int damage)
     {
         bossFinalAnimation.PlayHurt();
+        if(currentHealth >0) Invoke(nameof(bossFinalAnimation.PlayRun), 0.667f);
+
+
         currentHealth -= damage;
         ShowDamage(damage.ToString());
         Debug.Log("hp boss: " + currentHealth);

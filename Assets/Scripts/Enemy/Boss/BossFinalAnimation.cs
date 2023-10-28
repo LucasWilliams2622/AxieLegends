@@ -12,8 +12,11 @@ public class BossFinalAnimation : MonoBehaviour
     private string BOSS_RUN = "action/move-back";
     private string BOSS_HURT = "defense/hit-by-normal";
     private string BOSS_ATTACK = "attack/melee/normal-attack";
-    private string BOSS_DIE = "defence/hit-die";
+    private string BOSS1_ATTACK = "attack/melee/normal-attack";
+    private string BOSS_DIE = "defense/hit-die";
     private string BOSS_IDLE = "action/idle/normal";
+    private string BOSS_ULTIMATE = "attack/melee/scratch-attack";   
+
     public BossFollowPlayer bossFollowPlayer;
     public SkeletonAnimation Anim { get => anim; set => anim = value; }
 
@@ -29,16 +32,25 @@ public class BossFinalAnimation : MonoBehaviour
 
     
     public void PlayAttack()
+    {   
+        Anim.loop = true;
+        Anim.timeScale = animSpeed;
+        if(gameObject.tag == "Boss1") Anim.AnimationName = BOSS1_ATTACK;
+        else Anim.AnimationName = BOSS_ATTACK;
+        Debug.Log("TAG"+gameObject.tag);
+    }
+    public void PlayUltimate()
     {
         Anim.loop = true;
         Anim.timeScale = animSpeed;
-        Anim.AnimationName = BOSS_ATTACK;
+        Anim.AnimationName = BOSS_ULTIMATE;
     }
     public void PlayRun()
     {
         Anim.loop = true;
         Anim.timeScale = animSpeed;
         Anim.AnimationName = BOSS_RUN;
+
     }
 
     public void PlayHurt()
