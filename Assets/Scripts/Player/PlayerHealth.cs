@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
         { "EnemyLv4", 2 },
         { "EnemyLv5", 3 },
         { "EnemyLv6", 4 },
-        { "BulletEnemy", 1 },
+
     };
     void Start()
     {
@@ -60,6 +60,10 @@ public class PlayerHealth : MonoBehaviour
         if (collision.gameObject.CompareTag("BossFinal"))
         {
             TakeDamage(5);
+        }
+        if (collision.gameObject.CompareTag("BulletEnemy"))
+        {
+            TakeDamage(1);
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
