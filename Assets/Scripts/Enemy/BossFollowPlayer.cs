@@ -15,6 +15,7 @@ public class BossFollowPlayer : FollowToDistance
     private void FixedUpdate()
     {
         speed = moveSpeed;
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

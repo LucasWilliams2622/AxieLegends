@@ -70,6 +70,7 @@ public class CarrotPSkill : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col2D = GetComponent<BoxCollider2D>();
         sprite = GetComponent<SpriteRenderer>();
+
         onFirstLoad = true;
 
     }

@@ -27,7 +27,6 @@ TagManager:
   - EnemyLv4
   - EnemyLv5
   - EnemyLv6
-  - Toxic
   layers:
   - Default
   - TransparentFX
