@@ -5,41 +5,46 @@ using UnityEngine;
 public class BossAttackPlayer : MonoBehaviour
 {
     [SerializeField] public GameObject attack;
-    float timedelay;
+    [SerializeField] protected BossFollowPlayer bossFollowPlayer;
+    float timeDelay;
     public bool checkAttack;
     // Start is called before the first frame update
     void Start()
     {
         checkAttack = false;
-        attack.SetActive(checkAttack);
-        timedelay = 0.25f;
+        timeDelay = 0.2f;
+        bossFollowPlayer = GetComponent<BossFollowPlayer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        timedelay -= Time.deltaTime;
         attack.SetActive(checkAttack);
+        attack.transform.position = transform.position;
+        if (checkAttack && bossFollowPlayer.timeDelayAnim <= 0)
+        {
+
+            timeDelay -= Time.fixedDeltaTime;
+            if (timeDelay <= 0)
+            {
+                checkAttack = false;
+                timeDelay = 0.2f;
+            }
+        }
     }
 
     public virtual void Attack()
     {
         attack.SetActive (checkAttack);
-        if(timedelay <= 0)
+        if(timeDelay <= 0)
         {
             checkAttack = false;
-            timedelay = 0.25f;
+            timeDelay = 0.2f;
         }
     }
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("Gặp player nè:");
-        }
-    }
+  
 
 }

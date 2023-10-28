@@ -25,28 +25,16 @@ public class BossFollowPlayer : FollowToDistance
   
     private void FixedUpdate()
     {
-        attack.transform.position = transform.position;
+       
         speed = moveSpeed;
-        if(checkAttack && timeDelayAnim<= 0)
-        {
-            
-            timeDelay -= Time.fixedDeltaTime;
-            attack.gameObject.SetActive(true);
-            if (timeDelay <= 0)
-            {
-                checkAttack = false;
-                attack.gameObject.SetActive(false);
-                
-                timeDelay = 0.25f;
-            }
-        }
+       
         Debug.Log(checkAttack);
-        if(moveSpeed == 0 && checkAttack == false && checkAnimAttack == false)
+        if(moveSpeed == 0 && bossAttackPlayer.checkAttack == false && checkAnimAttack == false)
         {
             bossFinalAnimation.PlayAttack();
             
             checkAnimAttack= true;
-            timeDelayAnim = 0.65f;
+            timeDelayAnim = 0.7f;
         }
         if (checkAnimAttack)
         {
@@ -54,7 +42,7 @@ public class BossFollowPlayer : FollowToDistance
             if (timeDelayAnim <= 0)
             {
                 checkAnimAttack = false;
-                checkAttack = true;
+                bossAttackPlayer.checkAttack = true;
             }
         }
 
