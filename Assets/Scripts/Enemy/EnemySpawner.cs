@@ -9,7 +9,7 @@ public class EnemySpawner : Spawner
     [SerializeField] public float timeEnemySpawnerLV;
     [SerializeField] protected float timeDelay;
     [SerializeField] protected GameObject player;
-    [SerializeField] protected GameObject panelBoss;
+    [SerializeField] public GameObject panelBoss;
     [SerializeField] public bool checkBoss;
     [SerializeField] protected float timeDelayEnemyLV;
     [SerializeField] protected float indexBoss;
@@ -24,6 +24,11 @@ public class EnemySpawner : Spawner
         timeEnemySpawnerLV = 5f;
         timeDelayEnemyLV = 30f;
 
+
+        ListSpawner(3);
+        panelBoss.SetActive(true);
+        panelBoss.transform.position = player.transform.position;
+        indexBoss++;
     }
 
     // Update is called once per frame
@@ -36,7 +41,7 @@ public class EnemySpawner : Spawner
         timeDelay -= Time.fixedDeltaTime;
         if (timeDelay <= 0)
         {
-            Spawners();
+          /*  Spawners();*/
             timeDelay = 0.2f;
         }
 
@@ -74,22 +79,22 @@ public class EnemySpawner : Spawner
         
         base.Spawners();
         
-        if (timeEnemySpawnerLV > 0 && indexEnemy != 4 && indexEnemy != 8 && checkBoss == false) ListSpawner(indexEnemy);
+        if (timeEnemySpawnerLV > 0 && indexEnemy != 3 && indexEnemy != 8 && checkBoss == false) ListSpawner(indexEnemy);
         if (timeEnemySpawnerLV <= 0) 
         { 
             if(indexEnemy <8)  indexEnemy++;
             timeEnemySpawnerLV = 10f;
         }
 
-        if (checkBoss == false && indexEnemy == 4 || checkBoss == false && indexEnemy == 8)
+        if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 8)
         {
-            if (indexEnemy == 4) indexEnemy++;
+            if (indexEnemy == 3) indexEnemy++;
             checkBoss = true;
 
         }
         if (checkBoss && indexBoss == 0)
         {       
-                ListSpawner(4);
+                ListSpawner(3);
                 panelBoss.SetActive(true);
                 panelBoss.transform.position = player.transform.position;
                 indexBoss++;

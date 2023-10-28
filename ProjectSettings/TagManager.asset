@@ -32,6 +32,7 @@ TagManager:
   - Carrot
   - Undefined
   - Boss1Attack
+  - AxeHurt
   layers:
   - Default
   - TransparentFX

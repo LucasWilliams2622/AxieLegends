@@ -53,8 +53,12 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(5);
         }
+        if (collision.gameObject.CompareTag("Boss1Attack"))
+        {
+            TakeDamage(5);
+            Debug.Log("abc");
+        }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.gameObject.tag;
@@ -64,7 +68,6 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(damage);
         }
     }
-
 
     private void TakeDamage(int damage)
     {
