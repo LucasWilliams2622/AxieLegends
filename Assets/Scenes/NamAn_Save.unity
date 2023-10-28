@@ -689,6 +689,7 @@ GameObject:
   - component: {fileID: 1156657540}
   - component: {fileID: 1156657539}
   - component: {fileID: 1156657538}
+  - component: {fileID: 1156657544}
   - component: {fileID: 1156657543}
   m_Layer: 0
   m_Name: Spine GameObject (slime)
@@ -857,6 +858,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.96410847, y: 0.8945969}
   m_EdgeRadius: 0
+--- !u!114 &1156657544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1156657537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5072f0b81d35d584d911260a8d7939f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  currentHealth: 0
+  floatingTextPrefab: {fileID: 0}
+  exp: {fileID: 0}
+  holder: {fileID: 0}
+  enemySpawner: {fileID: 0}
 --- !u!1 &1167364879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2242,10 @@ PrefabInstance:
     - target: {fileID: 2761485636250177731, guid: 86476303f4325b24d8e7fcfee977de3b, type: 3}
       propertyPath: m_Name
       value: ThrowingSnailSkill
+      objectReference: {fileID: 0}
+    - target: {fileID: 2761485636250177731, guid: 86476303f4325b24d8e7fcfee977de3b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5977758223268306683, guid: 86476303f4325b24d8e7fcfee977de3b, type: 3}
       propertyPath: targetToFollow

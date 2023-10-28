@@ -43,6 +43,12 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
+
+        if (collision.gameObject.CompareTag("Toxic"))
+        {
+            StartCoroutine(takeDmgPerSec());
+        }
+
       /*  if (collision.gameObject.CompareTag("Shield"))
         {
             TakeDamage(10);
@@ -50,6 +56,23 @@ public class EnemyHealth : MonoBehaviour
 
     }
 
+    IEnumerator takeDmgPerSec()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            TakeDamage(1);
+        }
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Toxic"))
+        {
+            StopCoroutine(takeDmgPerSec());
+        }
+    }
     private void Update()
     {
         IsDestroy();

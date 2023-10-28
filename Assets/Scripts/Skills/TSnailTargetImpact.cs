@@ -20,9 +20,8 @@ public class TSnailTargetImpact : MonoBehaviour
         if(isTrigger)
         {
             anim.Play("Snail_Spread"); 
-            gameObject.tag = "bullet";
+            gameObject.tag = "Toxic";
             Invoke(nameof(playDoneAnim), destroyTime);
-            
         }
     }
     void playDoneAnim()
@@ -32,4 +31,5 @@ public class TSnailTargetImpact : MonoBehaviour
         var dur = anim.GetCurrentAnimatorStateInfo(0).length;
         Destroy(gameObject,dur);
     }
+
 }
