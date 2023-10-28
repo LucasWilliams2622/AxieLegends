@@ -9,25 +9,38 @@ public class UltiCDTrigger : MonoBehaviour
     public Button btn;
     public float offsetDelay;
     public UltiCD cooldown;
+    private float durationAnim;
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
+       
+    }
+
+    private void Update()
+    {
+        
+        StartCoroutine(runAnimation());
+        
     }
     private void OnEnable()
     {
         anim.Play("UltimateCooldown");
+
     }
-    // Update is called once per frame
-    void Update()
+    IEnumerator runAnimation()
     {
-        var dur = anim.GetCurrentAnimatorStateInfo(0).length;
-        Invoke(nameof(turnoff), dur-offsetDelay);
-    }
-    void turnoff()
-    {
+        durationAnim = anim.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(durationAnim);
+
+        anim.Play("UltimateCooldown_Done");
+        durationAnim = anim.GetCurrentAnimatorStateInfo(0).length;
+
+        yield return new WaitForSeconds(durationAnim);
+
         btn.enabled = true;
         gameObject.SetActive(false);
-        cooldown.lockRun = false;
     }
+    
+    
 }

@@ -38,6 +38,7 @@ public class MissileShot : MonoBehaviour
             }
             yield return new WaitForSeconds(DelayAtkBetweenPerMissile);
         }
+        missleArea.ListEnemy.Clear();
         gameObject.SetActive(false);
     }
 }
