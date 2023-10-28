@@ -10,10 +10,9 @@ public class MissileAreaScan : MonoBehaviour
     public List<Transform> ListEnemy { get => listEnemy; set => listEnemy = value; }
     public float MaxEnemy { get => maxEnemy; set => maxEnemy = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDisable()
     {
-        
+        listEnemy.Clear();
     }
 
     // Update is called once per frame

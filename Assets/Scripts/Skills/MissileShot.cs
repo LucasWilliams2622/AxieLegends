@@ -34,13 +34,14 @@ public class MissileShot : MonoBehaviour
     }
 
     IEnumerator startShootingWithDelay()
-    {
+    { 
         for (int i = 0; i < missleArea.ListEnemy.Count; i++)
         {
             var enemy = missleArea.ListEnemy[Random.Range(0,missleArea.ListEnemy.Count-1)];
             if (enemy != null && shootSucced <3)
             {
-                Instantiate(prefMissile, enemy.transform);
+                Vector3 enemyPos = enemy.position;
+                Instantiate(prefMissile, enemyPos,Quaternion.identity);
                 shootSucced++;
                 yield return new WaitForSeconds(DelayAtkBetweenPerMissile);
             }
@@ -50,8 +51,6 @@ public class MissileShot : MonoBehaviour
             }
             
         }
-        yield return new WaitForSeconds(0.1f);
-        missleArea.ListEnemy.Clear();
         gameObject.SetActive(false);
     }
 }
