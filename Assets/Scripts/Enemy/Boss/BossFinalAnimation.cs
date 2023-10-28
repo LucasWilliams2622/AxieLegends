@@ -8,6 +8,7 @@ public class BossFinalAnimation : MonoBehaviour
     [SerializeField] private SkeletonAnimation anim;
     [SerializeField] private float animSpeed;
     [SerializeField] private Transform targetTransform;
+    [SerializeField] protected BossAttackPlayer bossAttackPlayer;
 
     private string BOSS_RUN = "action/move-back";
     private string BOSS_HURT = "defense/hit-by-normal";
@@ -22,6 +23,10 @@ public class BossFinalAnimation : MonoBehaviour
 
     void Start()
     {
+        anim = GetComponent<SkeletonAnimation>();
+        targetTransform = gameObject.transform;
+        bossFollowPlayer = GetComponent<BossFollowPlayer>();
+        bossAttackPlayer = GetComponent<BossAttackPlayer>();
     }
 
     // Update is called once per frame
@@ -35,10 +40,11 @@ public class BossFinalAnimation : MonoBehaviour
     {   
         Anim.loop = true;
         Anim.timeScale = animSpeed;
-        if(gameObject.tag == "Boss1") Anim.AnimationName = BOSS1_ATTACK;
-        else Anim.AnimationName = BOSS_ATTACK;
-        Debug.Log("TAG"+gameObject.tag);
+        Anim.AnimationName = BOSS_ATTACK;
+
     }
+
+    
     public void PlayUltimate()
     {
         Anim.loop = true;

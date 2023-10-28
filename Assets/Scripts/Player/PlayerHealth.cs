@@ -49,6 +49,10 @@ public class PlayerHealth : MonoBehaviour
             Heal(5);
             Destroy(collision.gameObject);  
         }
+        if (collision.gameObject.CompareTag("Boss1Attack"))
+        {
+            TakeDamage(5);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
