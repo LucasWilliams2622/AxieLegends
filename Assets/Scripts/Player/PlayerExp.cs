@@ -18,7 +18,7 @@ public class PlayerExp : MonoBehaviour
     }
     private void Start()
     {
-        playerLevelBuff = GetComponent<PlayerLevelBuff>();
+        /*playerLevelBuff = GetComponent<PlayerLevelBuff>();*/
     }
 
     private void CollectExp(int amount)

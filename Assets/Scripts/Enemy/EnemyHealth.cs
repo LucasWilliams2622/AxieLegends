@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Arrow"))
         {
-            TakeDamage(100);
+            TakeDamage(1);
             Destroy(collision.gameObject);
 
         }

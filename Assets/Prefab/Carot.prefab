@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2424695692513062469}
   - component: {fileID: 1740537994061965971}
-  - component: {fileID: 7416041665904366340}
   - component: {fileID: 5380644783376592600}
+  - component: {fileID: -7401305428763387112}
   m_Layer: 0
   m_Name: Carot
   m_TagString: Rocket
@@ -86,8 +86,35 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!60 &7416041665904366340
-PolygonCollider2D:
+--- !u!50 &5380644783376592600
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5729417134701457442}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!61 &-7401305428763387112
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,111 +155,6 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1.8299999, y: -1.6899999}
-      - {x: 1.66, y: -1.61}
-      - {x: 1.56, y: -1.37}
-      - {x: 1.5, y: -1.01}
-      - {x: 1.37, y: -0.55}
-      - {x: 1.28, y: -0.28}
-      - {x: 1.15, y: 0.06}
-      - {x: 1.06, y: 0.26}
-      - {x: 0.94, y: 0.45999998}
-      - {x: 0.84999996, y: 0.59999996}
-      - {x: 0.64, y: 0.78999996}
-      - {x: 0.62, y: 0.85999995}
-      - {x: 0.59, y: 1.05}
-      - {x: 0.53999996, y: 1.11}
-      - {x: 0.34, y: 1.1899999}
-      - {x: 0.35999998, y: 1.23}
-      - {x: 0.39, y: 1.28}
-      - {x: 0.42, y: 1.43}
-      - {x: 0.42, y: 1.63}
-      - {x: 0.35999998, y: 1.76}
-      - {x: 0.28, y: 1.8399999}
-      - {x: 0.099999994, y: 1.8499999}
-      - {x: -0.01, y: 1.8}
-      - {x: -0.14999999, y: 1.7099999}
-      - {x: -0.13, y: 1.8199999}
-      - {x: -0.25, y: 1.9499999}
-      - {x: -0.45, y: 1.9399999}
-      - {x: -0.53, y: 1.92}
-      - {x: -0.65, y: 1.93}
-      - {x: -0.71999997, y: 2.07}
-      - {x: -0.81, y: 2.1699998}
-      - {x: -0.9, y: 2.21}
-      - {x: -1.05, y: 2.21}
-      - {x: -1.12, y: 2.19}
-      - {x: -1.27, y: 2.06}
-      - {x: -1.3299999, y: 1.9699999}
-      - {x: -1.39, y: 1.6899999}
-      - {x: -1.36, y: 1.64}
-      - {x: -1.51, y: 1.63}
-      - {x: -1.68, y: 1.53}
-      - {x: -1.67, y: 1.3399999}
-      - {x: -1.62, y: 1.23}
-      - {x: -1.48, y: 0.98999995}
-      - {x: -1.63, y: 0.98999995}
-      - {x: -1.7099999, y: 0.96999997}
-      - {x: -1.9699999, y: 0.74}
-      - {x: -2, y: 0.66999996}
-      - {x: -2, y: 0.53}
-      - {x: -1.9599999, y: 0.41}
-      - {x: -1.8499999, y: 0.32}
-      - {x: -1.73, y: 0.25}
-      - {x: -1.5899999, y: 0.21}
-      - {x: -1.3199999, y: 0.19}
-      - {x: -1.41, y: 0.11}
-      - {x: -1.4399999, y: 0.01}
-      - {x: -1.43, y: -0.14}
-      - {x: -1.4, y: -0.21}
-      - {x: -1.28, y: -0.29}
-      - {x: -1.11, y: -0.28}
-      - {x: -1, y: -0.24}
-      - {x: -0.95, y: -0.22}
-      - {x: -0.95, y: -0.48999998}
-      - {x: -0.85999995, y: -0.66999996}
-      - {x: -0.66999996, y: -0.87}
-      - {x: -0.39999998, y: -1.12}
-      - {x: -0.17999999, y: -1.29}
-      - {x: 0.07, y: -1.4599999}
-      - {x: 0.58, y: -1.7199999}
-      - {x: 1, y: -1.9}
-      - {x: 1.2099999, y: -2.07}
-      - {x: 1.35, y: -2.1299999}
-      - {x: 1.51, y: -2.1599998}
-      - {x: 1.48, y: -2.31}
-      - {x: 1.5, y: -2.33}
-      - {x: 1.67, y: -2.33}
-      - {x: 1.78, y: -2.28}
-      - {x: 1.92, y: -2.11}
-      - {x: 1.92, y: -1.9}
-  m_UseDelaunayMesh: 0
---- !u!50 &5380644783376592600
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5729417134701457442}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
+  serializedVersion: 2
+  m_Size: {x: 5.12, y: 5.12}
+  m_EdgeRadius: 0
