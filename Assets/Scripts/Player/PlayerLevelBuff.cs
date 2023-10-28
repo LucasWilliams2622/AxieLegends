@@ -139,7 +139,8 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         Debug.Log("amount: " + amount);
         currentExp += amount;
-        expBar.SetEXP(currentExp);
+        //expBar.SetEXP(currentExp);
+        expBar.UpdateExp(currentExp, maxExp);
 
 
         if (currentLevel == 1 )
