@@ -5,17 +5,65 @@ using UnityEngine;
 public class BossFollowPlayer : FollowToDistance
 {
     [SerializeField] public float speed ;
-
+    [SerializeField] protected BossAttackPlayer bossAttackPlayer;
     public BossFinalAnimation bossFinalAnimation;
+    public float timeDelay;
+    public float timeDelayAnim;
+    [SerializeField] public GameObject attack;
+    public bool checkAttack;
+    public bool checkAnimAttack;
 
     private void Awake()
     {
-        bossFinalAnimation.PlayRun();
+        bossFinalAnimation = GetComponent<BossFinalAnimation>();
+        bossAttackPlayer = GetComponent<BossAttackPlayer>();
+        timeDelay = 0.2f;
+        checkAttack = false;
+        checkAnimAttack = false;
+        timeDelayAnim = 0;
     }
+  
     private void FixedUpdate()
     {
+        attack.transform.position = transform.position;
         speed = moveSpeed;
-       
+        if(checkAttack && timeDelayAnim<= 0)
+        {
+            
+            timeDelay -= Time.fixedDeltaTime;
+            attack.gameObject.SetActive(true);
+            if (timeDelay <= 0)
+            {
+                checkAttack = false;
+                attack.gameObject.SetActive(false);
+                
+                timeDelay = 0.25f;
+            }
+        }
+        Debug.Log(checkAttack);
+        if(moveSpeed == 0 && checkAttack == false && checkAnimAttack == false)
+        {
+            bossFinalAnimation.PlayAttack();
+            
+            checkAnimAttack= true;
+            timeDelayAnim = 0.65f;
+        }
+        if (checkAnimAttack)
+        {
+            timeDelayAnim -= Time.fixedDeltaTime;
+            if (timeDelayAnim <= 0)
+            {
+                checkAnimAttack = false;
+                checkAttack = true;
+            }
+        }
+
+        else if (moveSpeed == 3)
+        {
+            bossFinalAnimation.PlayRun();
+
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,7 +72,6 @@ public class BossFollowPlayer : FollowToDistance
         {
             moveSpeed = 0;
             
-            bossFinalAnimation.PlayAttack();
 
         }
     }
@@ -32,15 +79,15 @@ public class BossFollowPlayer : FollowToDistance
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            bossFinalAnimation.PlayRun();
             moveSpeed = 3;
           
         }
     }
-
+    
     protected override void MoveTarget()
     {
         base.MoveTarget();
+        
         direction = target.transform.position - transform.position;
         rb.velocity = direction.normalized * moveSpeed;
 
@@ -48,7 +95,7 @@ public class BossFollowPlayer : FollowToDistance
         {
             transform.localScale = new Vector3(-1f, 1f, 1f);
         }
-        else if (direction.x < 0)
+        else if (direction.x <= 0)
         {
             transform.localScale = new Vector3(1f, 1f, 1f);
         }

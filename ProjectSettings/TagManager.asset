@@ -24,6 +24,7 @@ TagManager:
   - buffSpeed
   - Boss1
   - BossFinal
+  - Boss1Attack
   layers:
   - Default
   - TransparentFX

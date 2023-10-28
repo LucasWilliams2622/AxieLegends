@@ -49,7 +49,6 @@ public class BossHealth : MonoBehaviour
 
     protected virtual void IsDestroy()
     {
-        Debug.Log(enemySpawner.checkBoss);
         if (currentHealth <= 0)
         {
             enemySpawner.checkBoss = false;
