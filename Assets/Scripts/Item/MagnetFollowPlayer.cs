@@ -15,7 +15,9 @@ public class MagnetFollowPlayer : FollowToDistance
         distanceTarget = ExpFollowPlayer.distanceTarget;
         speed = ExpFollowPlayer.moveSpeedTarget;
         target = GameObject.Find("Player");
-        
+        ExpFollowPlayer.distanceTarget = 2;
+        ExpFollowPlayer.moveSpeedTarget = 10;
+
     }
 
     protected override void Update()
@@ -26,7 +28,7 @@ public class MagnetFollowPlayer : FollowToDistance
         {
             if (time <= 0)
             {
-                ExpFollowPlayer.distanceTarget = 1;
+                ExpFollowPlayer.distanceTarget = 2;
                 ExpFollowPlayer.moveSpeedTarget = 10;
             } 
         }

@@ -34,11 +34,23 @@ public class BossFollowPlayer : FollowToDistance
         Debug.Log(checkAttack);
         if(moveSpeed == 0 &&  checkAnimAttack == false)
         {
-           
-            if(gameObject.tag == "Boss1" && bossHealth.currentHealth <= 0.3f * bossHealth.maxHealth) bossFinalAnimation.PlayUltimate();
-            else bossFinalAnimation.PlayAttack();
+
+            if (gameObject.tag == "Boss1" )
+            {
+                if(bossHealth.currentHealth <= 0.3f * bossHealth.maxHealth)
+                {
+                    bossFinalAnimation.PlayUltimate();
+                }else bossFinalAnimation.PlayAttack();
+                timeDelayAnim = 0.9f;
+            }
+            if (gameObject.tag == "BossFinal")
+            {
+                bossFinalAnimation.PlayAttack();
+                timeDelayAnim = 1.5f;
+            }
+
             checkAnimAttack = true;
-            timeDelayAnim = 0.9f;
+            
         }
         if (checkAnimAttack)
         {
@@ -56,8 +68,12 @@ public class BossFollowPlayer : FollowToDistance
         }
 
     }
+    protected override void Update()
+    {
+        base.Update();
+    }
 
-    
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

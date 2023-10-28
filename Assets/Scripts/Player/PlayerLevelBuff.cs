@@ -15,10 +15,10 @@ public class PlayerLevelBuff : MonoBehaviour
     [SerializeField] public int[] arraySkill;
     [SerializeField] public SpinningController spinningController;
 
-    public int maxExp = 100;
-    public int currentExp = 0;
+    public float maxExp = 100;
+    public float currentExp = 0;
     public ExpBar expBar;
-    public int currentLevel = 1;
+    public float currentLevel = 1;
 
     void Start()
     {
@@ -42,14 +42,15 @@ public class PlayerLevelBuff : MonoBehaviour
         
        
     }
-
+    
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       /* if (collision.gameObject.CompareTag("EXP"))
+        if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(40);
+            CollectExp(20);
             Destroy(collision.gameObject);
-        }*/
+        }
     }
 
     protected virtual void LoadList()
@@ -134,13 +135,34 @@ public class PlayerLevelBuff : MonoBehaviour
 
     private void CollectExp(int amount)
     {
-        Debug.Log("amount: " + amount);
         currentExp += amount;
-        //expBar.SetEXP(currentExp);
-        expBar.UpdateExp(currentExp, maxExp);
+        if (currentLevel == 1) { maxExp = 100; }
+        maxExp = 100 * currentLevel;
 
+        expBar.UpdateExp(currentExp, maxExp);
+        Debug.Log("exp ne:" + currentExp + "..." + maxExp);
         if (currentExp >= maxExp)
         {
+            LevelUp();
+        }
+        if (currentLevel == 1 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 2 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 3 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 4 && currentExp == maxExp)
+        {
+
             LevelUp();
         }
     }
@@ -149,6 +171,7 @@ public class PlayerLevelBuff : MonoBehaviour
         Debug.Log("Level up!");
         currentExp = 0;
         currentLevel++;
+        expBar.UpdateExp(0, maxExp);
         skill.gameObject.SetActive(true);
         Random3Skill();
         Time.timeScale = 0f;
