@@ -32,7 +32,6 @@ public class PlayerLevelBuff : MonoBehaviour
 
     }
     
-   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
@@ -45,11 +44,11 @@ public class PlayerLevelBuff : MonoBehaviour
                 }
                 if (currentLevel == 2)
                 {
-                    CollectExp(6);
+                    CollectExp(5);
                 }
                 if (currentLevel == 3)
                 {
-                    CollectExp(5);
+                    CollectExp(4);
                 }
                 if (currentLevel == 4)
                 {
