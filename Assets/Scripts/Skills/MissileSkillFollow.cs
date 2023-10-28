@@ -31,7 +31,6 @@ public class MissileSkillFollow : MonoBehaviour
         if(timer > delayBetween)
         {
             timer = 0;
-
             missleShot.SetActive(true);
         }
     }

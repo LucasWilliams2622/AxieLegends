@@ -22,7 +22,7 @@ public class MissileAreaScan : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Monster") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        if(collision.CompareTag("EnemyLv1") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
         {
             listEnemy.Add(collision.transform);
         }
