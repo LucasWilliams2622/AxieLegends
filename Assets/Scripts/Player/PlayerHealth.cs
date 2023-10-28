@@ -65,6 +65,10 @@ public class PlayerHealth : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (collision.gameObject.CompareTag("AxeHurt"))
+        {
+            TakeDamage(10);
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

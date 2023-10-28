@@ -40,7 +40,7 @@ public class PlayerLevelBuff : MonoBehaviour
             {
                 if (currentLevel == 1)
                 {
-                    CollectExp(7);
+                    CollectExp(6);
                 }
                 if (currentLevel == 2)
                 {
