@@ -37,6 +37,7 @@ public class ItemSpawner : Spawner
             timeDelayMagnet -= Time.fixedDeltaTime;
             ExpFollowPlayer.distanceTarget = 30f;
             ExpFollowPlayer.moveSpeedTarget = 50f;
+
             if (Time.fixedDeltaTime <= 0) { MagnetFollowPlayer.checkMagnet = false; }
         }else
         {
