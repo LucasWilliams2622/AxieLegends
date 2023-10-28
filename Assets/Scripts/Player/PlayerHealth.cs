@@ -20,13 +20,12 @@ public class PlayerHealth : MonoBehaviour
     {
         { "EnemyLv1", 1 },
         { "EnemyLv2", 2 },
-        { "EnemyLv3", 3 },
+        { "EnemyLv3", 1 },
 
-        { "EnemyLv4", 3 },
-        { "EnemyLv5", 4 },
+        { "EnemyLv4", 2 },
+        { "EnemyLv5", 3 },
         { "EnemyLv6", 4 },
         { "BulletEnemy", 1 },
-         
     };
     void Start()
     {
@@ -46,17 +45,21 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Heal"))
         {
-            Heal(5);
+            Heal(10);
             Destroy(collision.gameObject);  
         }
+        if (collision.gameObject.CompareTag("SuperHeal"))
+        {
+            Heal(20);
+            Destroy(collision.gameObject);
+        }
         if (collision.gameObject.CompareTag("Boss1Attack"))
         {
-            TakeDamage(5);
+            TakeDamage(4);
         }
         if (collision.gameObject.CompareTag("Boss1Attack"))
         {
             TakeDamage(5);
-            Debug.Log("abc");
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -111,7 +114,6 @@ public class PlayerHealth : MonoBehaviour
         panelSystem.SetActive(true);
 
         panelDead.SetActive(false);
-
         isDead = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

@@ -33,6 +33,7 @@ TagManager:
   - Undefined
   - Boss1Attack
   - AxeHurt
+  - SuperHeal
   layers:
   - Default
   - TransparentFX

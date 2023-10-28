@@ -8,6 +8,7 @@ public class BossHealth : MonoBehaviour
     public int currentHealth;
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
+    [SerializeField] protected GameObject namCham;
     [SerializeField] protected GameObject holder;
     [SerializeField] protected EnemySpawner enemySpawner;
     public BossFinalAnimation bossFinalAnimation;
@@ -68,6 +69,7 @@ public class BossHealth : MonoBehaviour
         enemySpawner.panelBoss.SetActive(false);
         Destroy(gameObject);
         CreateExp();
+        CreateNamCham();
     }
   
     private void TakeDamage(int damage)
@@ -95,5 +97,12 @@ public class BossHealth : MonoBehaviour
         createExp.transform.parent = this.holder.transform;
         createExp.transform.position = transform.position;
         createExp.gameObject.SetActive(true);
+    }
+    protected virtual void CreateNamCham()
+    {
+        GameObject createNC = Instantiate(namCham);
+        createNC.transform.parent = this.holder.transform;
+        createNC.transform.position = transform.position;
+        createNC.gameObject.SetActive(true);
     }
 }

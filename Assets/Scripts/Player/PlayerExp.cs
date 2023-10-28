@@ -8,7 +8,6 @@ public class PlayerExp : MonoBehaviour
     public float currentExp = 0;
     public ExpBar expBar;
     public int currentLevel = 1;
-    public GameObject panelChooseSkill;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
@@ -18,7 +17,6 @@ public class PlayerExp : MonoBehaviour
         }
     }
 
-
     private void CollectExp(int amount)
     {
         Debug.Log("amount: " + amount);
@@ -26,7 +24,7 @@ public class PlayerExp : MonoBehaviour
         if (currentLevel == 1) { maxExp = 100; }
         maxExp = 100 * currentLevel * 1.2f; 
        
-        expBar.UpdateExp(currentExp, maxExp);
+        /*expBar.UpdateExp(currentExp, maxExp);*/
         Debug.Log("exp ne:" + currentExp + "..." + maxExp);
         if (currentExp >= maxExp)
         {
@@ -54,11 +52,12 @@ public class PlayerExp : MonoBehaviour
         }
     }
 
+
     private void LevelUp()
     {
         Debug.Log("Level up!");
         currentExp = 0;
-        expBar.UpdateExp(0, maxExp);
+        /*expBar.UpdateExp(0, maxExp);*/
         currentLevel++;
         Debug.Log("Current level: " + currentLevel);
     }

@@ -20,8 +20,8 @@ public class EnemySpawner : Spawner
         indexEnemy = 0;
         checkBoss = false;
         base.Start();
-        timeDelay = 0.3f;
-        timeEnemySpawnerLV = 5f;
+        timeDelay = 0.5f;
+        timeEnemySpawnerLV = 20f;
         timeDelayEnemyLV = 30f;
 
 
@@ -58,8 +58,8 @@ public class EnemySpawner : Spawner
         base.CreatePosition(prefabs);
         float randomPosX = 8;
         float randomPosY = 6;
-        float posX = Random.Range(-20, 20);
-        float posY = Random.Range(-15, 15);
+        float posX = Random.Range(-40, 40);
+        float posY = Random.Range(-35, 35);
         if (checkBoss)
         {
             posX = Random.Range(-4, 4);
@@ -79,14 +79,14 @@ public class EnemySpawner : Spawner
         
         base.Spawners();
         
-        if (timeEnemySpawnerLV > 0 && indexEnemy != 3 && indexEnemy != 8 && checkBoss == false) ListSpawner(indexEnemy);
+        if (timeEnemySpawnerLV > 0 && indexEnemy != 3 && indexEnemy != 7 && checkBoss == false) ListSpawner(indexEnemy);
         if (timeEnemySpawnerLV <= 0) 
         { 
-            if(indexEnemy <8)  indexEnemy++;
-            timeEnemySpawnerLV = 10f;
+            if(indexEnemy <7)  indexEnemy++;
+            timeEnemySpawnerLV = 15f;
         }
 
-        if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 8)
+        if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 7)
         {
             if (indexEnemy == 3) indexEnemy++;
             checkBoss = true;
@@ -100,17 +100,14 @@ public class EnemySpawner : Spawner
             indexBoss++;
 
         }
-        if (checkBoss && indexBoss == 1 && indexEnemy == 8)
+        if (checkBoss && indexBoss == 1 && indexEnemy == 7)
         {
-            ListSpawner(8);
+            ListSpawner(7);
             panelBoss.SetActive(true);
             panelBoss.transform.position = player.transform.position;
             indexBoss++;
         }
         if (!checkBoss) panelBoss.SetActive(false);
-        
-
-
 
 
     }
