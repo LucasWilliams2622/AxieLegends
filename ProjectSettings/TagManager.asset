@@ -30,6 +30,7 @@ TagManager:
   - Toxic
   - Carot
   - Carrot
+  - Lightning
   layers:
   - Default
   - TransparentFX

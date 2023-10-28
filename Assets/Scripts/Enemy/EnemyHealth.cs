@@ -47,8 +47,15 @@ public class EnemyHealth : MonoBehaviour
             StartCoroutine(takeDmgPerSec());
         }
 
-     
+        if (collision.gameObject.CompareTag("Lightning"))
+        { 
+            TakeDamage(5);
+        }
 
+        if (collision.gameObject.CompareTag("Carrot"))
+        {
+            TakeDamage(10);
+        }
     }
 
     IEnumerator takeDmgPerSec()
