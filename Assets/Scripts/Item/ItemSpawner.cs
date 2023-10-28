@@ -35,10 +35,14 @@ public class ItemSpawner : Spawner
         if(MagnetFollowPlayer.checkMagnet)
         {
             timeDelayMagnet -= Time.fixedDeltaTime;
-            if(Time.fixedDeltaTime <= 0) { MagnetFollowPlayer.checkMagnet = false; }
+            ExpFollowPlayer.distanceTarget = 30f;
+            ExpFollowPlayer.moveSpeedTarget = 50f;
+            if (Time.fixedDeltaTime <= 0) { MagnetFollowPlayer.checkMagnet = false; }
         }else
         {
             timeDelayMagnet = 2f;
+            ExpFollowPlayer.distanceTarget = 2;
+            ExpFollowPlayer.moveSpeedTarget = 10;
         }
         
     }
