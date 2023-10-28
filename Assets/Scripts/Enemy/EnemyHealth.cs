@@ -20,10 +20,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Spinner"))
-        {
-            TakeDamage(1);
-        }
+       
         if (collision.gameObject.CompareTag("Arrow"))
         {
             TakeDamage(1);
@@ -40,6 +37,10 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(10);
         }
         if (collision.gameObject.CompareTag("Rocket"))
+        {
+            TakeDamage(10);
+        }
+        if (collision.gameObject.CompareTag("Carrot"))
         {
             TakeDamage(10);
         }
@@ -76,10 +77,12 @@ public class EnemyHealth : MonoBehaviour
         IsDestroy();
         if (enemySpawner.checkBoss) Destroy(gameObject);
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+        if (collision.gameObject.CompareTag("Spinner"))
+        {
+            TakeDamage(1);
+        }
     }
 
     protected virtual void IsDestroy()

@@ -18,7 +18,35 @@ public class LBall_Area : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Monster") && !enemies.Contains(collision.transform))
+        if (collision.CompareTag("EnemyLv1") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv2") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv3") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv4") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv5") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv6") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("Boss1") && !enemies.Contains(collision.transform))
+        {
+            enemies.Add(collision.transform);
+        }
+        if (collision.CompareTag("BossFinal") && !enemies.Contains(collision.transform))
         {
             enemies.Add(collision.transform);
         }

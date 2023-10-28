@@ -23,7 +23,6 @@ public class SpinningController : MonoBehaviour
         startSkill = true;
     }
 
-    // Update is called once per frame
     void Update()
     {
         transform.position = targetToFollow.position;
