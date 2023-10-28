@@ -27,35 +27,38 @@ public class PlayerLevelBuff : MonoBehaviour
         LoadList();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+       /* if (Input.GetKeyDown(KeyCode.Q))
         {
             level++;
             skill.gameObject.SetActive(true);
             Random3Skill();
             Time.timeScale = 0f;
 
-        }
-        PlayerSkill();
+        }*/
         
+        PlayerSkill();
        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       /* if (collision.gameObject.CompareTag("EXP"))
+        if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(40);
-            Destroy(collision.gameObject);
-        }*/
+            if (arraySkill.Length < 4)
+            {
+                CollectExp(50);
+                Destroy(collision.gameObject);
+            }
+
+        }
     }
 
     protected virtual void LoadList()
     {
         //skill = GameObject.Find("Skill");
-        //this.listSkill.Add(skill) ;
+        //this.listSkill.Add(skill)
 
         foreach (Transform skills in skill)
         {
@@ -78,7 +81,7 @@ public class PlayerLevelBuff : MonoBehaviour
 
     protected virtual void Random3Skill()
     {
-        if (arraySkill.Length >= 9) return;
+        if (arraySkill.Length ==4) return;
         int[] numbers = new int[3];
         Debug.Log(" list skill player" + listPlayerSkill.Count);
         for (int i = 0; i < 3; i++)
@@ -138,7 +141,39 @@ public class PlayerLevelBuff : MonoBehaviour
         currentExp += amount;
         expBar.SetEXP(currentExp);
 
-        if (currentExp >= maxExp)
+
+        if (currentLevel == 1 )
+        {
+            maxExp = 100;
+        }
+
+        if (currentLevel == 2)
+        {
+            maxExp = 200;
+
+        }
+
+        if (currentLevel == 3)
+        {
+            maxExp = 300;
+        }
+        
+       
+        if (currentLevel == 1 && currentExp == 100)
+        {
+            LevelUp();
+
+        }
+        if (currentLevel == 2 && currentExp == 200)
+        {
+            LevelUp();
+        }
+        if (currentLevel == 3 && currentExp == 300)
+        {
+            LevelUp();
+
+        }
+        if (currentLevel == 4 && currentExp == 300)
         {
             LevelUp();
         }
@@ -147,6 +182,7 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         Debug.Log("Level up!");
         currentExp = 0;
+        expBar.SetEXP(0);
         currentLevel++;
         skill.gameObject.SetActive(true);
         Random3Skill();
