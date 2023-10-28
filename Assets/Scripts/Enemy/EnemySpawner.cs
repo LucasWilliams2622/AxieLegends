@@ -74,30 +74,30 @@ public class EnemySpawner : Spawner
         
         base.Spawners();
         
-        if (timeEnemySpawnerLV > 0 && indexEnemy != 3 && indexEnemy != 7 && checkBoss == false) ListSpawner(indexEnemy);
+        if (timeEnemySpawnerLV > 0 && indexEnemy != 4 && indexEnemy != 8 && checkBoss == false) ListSpawner(indexEnemy);
         if (timeEnemySpawnerLV <= 0) 
         { 
-            if(indexEnemy <7)  indexEnemy++;
+            if(indexEnemy <8)  indexEnemy++;
             timeEnemySpawnerLV = 10f;
         }
 
-        if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 7)
+        if (checkBoss == false && indexEnemy == 4 || checkBoss == false && indexEnemy == 8)
         {
-            if (indexEnemy == 3) indexEnemy++;
+            if (indexEnemy == 4) indexEnemy++;
             checkBoss = true;
 
         }
         if (checkBoss && indexBoss == 0)
         {       
-                ListSpawner(3);
+                ListSpawner(4);
                 panelBoss.SetActive(true);
                 panelBoss.transform.position = player.transform.position;
                 indexBoss++;
 
         }
-        if (checkBoss && indexBoss == 1 && indexEnemy == 7)
+        if (checkBoss && indexBoss == 1 && indexEnemy == 8)
         {
-            ListSpawner(7);
+            ListSpawner(8);
             panelBoss.SetActive(true);
             panelBoss.transform.position = player.transform.position;
             indexBoss++;

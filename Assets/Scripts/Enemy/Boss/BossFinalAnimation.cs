@@ -29,7 +29,6 @@ public class BossFinalAnimation : MonoBehaviour
         bossAttackPlayer = GetComponent<BossAttackPlayer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
        

@@ -9,7 +9,6 @@ public class PlayerExp : MonoBehaviour
     public ExpBar expBar;
     public int currentLevel = 1;
     public GameObject panelChooseSkill;
-    public PlayerLevelBuff playerLevelBuff;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
