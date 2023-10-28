@@ -6,42 +6,33 @@ public class BossAttackPlayer : MonoBehaviour
 {
     [SerializeField] public GameObject attack;
     [SerializeField] protected BossFollowPlayer bossFollowPlayer;
-    float timeDelay;
-    public bool checkAttack;
+   
+    public float timeDelayAnim;
     // Start is called before the first frame update
     void Start()
     {
-        checkAttack = false;
-        timeDelay = 0.2f;
         bossFollowPlayer = GetComponent<BossFollowPlayer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        attack.SetActive(checkAttack);
+        timeDelayAnim = bossFollowPlayer.timeDelayAnim;
         attack.transform.position = transform.position;
-        if (checkAttack && bossFollowPlayer.timeDelayAnim <= 0)
+        if (timeDelayAnim <= 0.5f)
         {
 
-            timeDelay -= Time.fixedDeltaTime;
-            if (timeDelay <= 0)
+            if (timeDelayAnim <= 0.35f)
             {
-                checkAttack = false;
-                timeDelay = 0.2f;
+                attack.SetActive(false);
+                return;
             }
+            attack.SetActive(true);
         }
+        
     }
 
-    public virtual void Attack()
-    {
-        attack.SetActive (checkAttack);
-        if(timeDelay <= 0)
-        {
-            checkAttack = false;
-            timeDelay = 0.2f;
-        }
-    }
+  
 
 
 

@@ -21,20 +21,21 @@ public class BossFollowPlayer : FollowToDistance
         checkAttack = false;
         checkAnimAttack = false;
         timeDelayAnim = 0;
+        speed = moveSpeed;
+
     }
-  
+
     private void FixedUpdate()
     {
        
-        speed = moveSpeed;
        
         Debug.Log(checkAttack);
-        if(moveSpeed == 0 && bossAttackPlayer.checkAttack == false && checkAnimAttack == false)
+        if(moveSpeed == 0 &&  checkAnimAttack == false)
         {
             bossFinalAnimation.PlayAttack();
             
             checkAnimAttack= true;
-            timeDelayAnim = 0.7f;
+            timeDelayAnim = 0.9f;
         }
         if (checkAnimAttack)
         {
@@ -42,17 +43,18 @@ public class BossFollowPlayer : FollowToDistance
             if (timeDelayAnim <= 0)
             {
                 checkAnimAttack = false;
-                bossAttackPlayer.checkAttack = true;
             }
         }
 
-        else if (moveSpeed == 3)
+        else if (moveSpeed >0)
         {
             bossFinalAnimation.PlayRun();
 
         }
 
     }
+
+    
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -67,7 +69,7 @@ public class BossFollowPlayer : FollowToDistance
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            moveSpeed = 3;
+            moveSpeed = speed;
           
         }
     }
@@ -77,11 +79,13 @@ public class BossFollowPlayer : FollowToDistance
         base.MoveTarget();
         
         direction = target.transform.position - transform.position;
-        rb.velocity = direction.normalized * moveSpeed;
+        transform.up = direction.normalized;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle + 180);
 
         if (direction.x > 0)
         {
-            transform.localScale = new Vector3(-1f, 1f, 1f);
+            transform.localScale = new Vector3(1f, -1f, 1f);
         }
         else if (direction.x <= 0)
         {
