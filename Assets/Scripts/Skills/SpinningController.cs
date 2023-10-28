@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpinningController : MonoBehaviour
@@ -18,10 +19,11 @@ public class SpinningController : MonoBehaviour
     [SerializeField] private GameObject circleBehindPlayer;
 
     // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
         startSkill = true;
     }
+
 
     // Update is called once per frame
     void Update()

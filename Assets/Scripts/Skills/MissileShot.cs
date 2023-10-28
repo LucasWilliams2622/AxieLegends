@@ -9,17 +9,23 @@ public class MissileShot : MonoBehaviour
     private float delayAtkBetweenPerMissile;
     public MissileAreaScan missleArea;
     public GameObject prefMissile;
+    private float shootSucced;
 
     public float DelayAtkBetweenPerMissile { get => delayAtkBetweenPerMissile; set => delayAtkBetweenPerMissile = value; }
 
     private void OnEnable()
     {
-        anim.Play("MissileShot");
+        if(missleArea.ListEnemy.Count>0)
+        {
+            shootSucced = 0;
+            anim.Play("MissileShot");
+            StartCoroutine(startShootingWithDelay());
+        }
 
-        StartCoroutine(startShootingWithDelay());
-
-        
-
+    }
+    private void OnDisable()
+    {
+        StopCoroutine(startShootingWithDelay());
     }
 
     private void Update()
@@ -29,15 +35,22 @@ public class MissileShot : MonoBehaviour
 
     IEnumerator startShootingWithDelay()
     {
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < missleArea.ListEnemy.Count; i++)
         {
             var enemy = missleArea.ListEnemy[Random.Range(0,missleArea.ListEnemy.Count-1)];
-            if (enemy != null)
+            if (enemy != null && shootSucced <3)
             {
-                Instantiate(prefMissile, enemy);
+                Instantiate(prefMissile, enemy.transform);
+                shootSucced++;
+                yield return new WaitForSeconds(DelayAtkBetweenPerMissile);
             }
-            yield return new WaitForSeconds(DelayAtkBetweenPerMissile);
+            if (shootSucced == 3)
+            {
+                break;
+            }
+            
         }
+        yield return new WaitForSeconds(0.1f);
         missleArea.ListEnemy.Clear();
         gameObject.SetActive(false);
     }
