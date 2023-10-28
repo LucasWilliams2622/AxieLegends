@@ -20,10 +20,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Spinner"))
-        {
-            TakeDamage(1);
-        }
+        
         if (collision.gameObject.CompareTag("Arrow"))
         {
             TakeDamage(1);
@@ -79,7 +76,10 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+        if (collision.gameObject.CompareTag("Spinner"))
+        {
+            TakeDamage(1);
+        }
     }
 
     protected virtual void IsDestroy()

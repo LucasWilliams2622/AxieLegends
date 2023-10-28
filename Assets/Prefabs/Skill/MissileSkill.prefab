@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1699395892215500322
 Transform:
   m_ObjectHideFlags: 0
@@ -50,7 +50,7 @@ MonoBehaviour:
   missleShot: {fileID: 4907261652585159931}
   missileAreaScan: {fileID: 5015592605922909730}
   delayAttackBetween: 0.3
-  delayBetween: 3
+  delayBetween: 2.5
   maxEnemyScan: 10
 --- !u!1 &4907261652585159931
 GameObject:
@@ -278,7 +278,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 26.25, y: 13.79}
+  m_Size: {x: 23.5, y: 12.9}
   m_EdgeRadius: 0
 --- !u!114 &5015592605922909730
 MonoBehaviour:
