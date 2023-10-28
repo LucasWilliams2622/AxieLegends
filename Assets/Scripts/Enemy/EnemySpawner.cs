@@ -25,10 +25,10 @@ public class EnemySpawner : Spawner
         timeDelayEnemyLV = 30f;
 
 
-        ListSpawner(3);
+        /*ListSpawner(3);
         panelBoss.SetActive(true);
         panelBoss.transform.position = player.transform.position;
-        indexBoss++;
+        indexBoss++;*/
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class EnemySpawner : Spawner
         timeDelay -= Time.fixedDeltaTime;
         if (timeDelay <= 0)
         {
-          /*  Spawners();*/
+            Spawners();
             timeDelay = 0.2f;
         }
 
@@ -94,10 +94,10 @@ public class EnemySpawner : Spawner
         }
         if (checkBoss && indexBoss == 0)
         {       
-                ListSpawner(3);
-                panelBoss.SetActive(true);
-                panelBoss.transform.position = player.transform.position;
-                indexBoss++;
+            ListSpawner(3);
+            panelBoss.SetActive(true);
+            panelBoss.transform.position = player.transform.position;
+            indexBoss++;
 
         }
         if (checkBoss && indexBoss == 1 && indexEnemy == 8)
@@ -106,7 +106,6 @@ public class EnemySpawner : Spawner
             panelBoss.SetActive(true);
             panelBoss.transform.position = player.transform.position;
             indexBoss++;
-
         }
         if (!checkBoss) panelBoss.SetActive(false);
         
