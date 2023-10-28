@@ -8,11 +8,13 @@ public class ItemSpawner : Spawner
     [SerializeField] protected GameObject player;
     [SerializeField] protected float timeDelay;
     [SerializeField] protected float timeDelay1;
+    public float timeDelayMagnet;
 
     protected override void Start()
     {
         base.Start();
         player = GameObject.Find("Player");
+        timeDelayMagnet = 2f;
     }
 
     protected override void FixedUpdate()
@@ -23,13 +25,27 @@ public class ItemSpawner : Spawner
         if (timeDelay <= 0) 
         {
             ListSpawner(0);
-            timeDelay = 1;
+            timeDelay = 2f;
         }
         if(timeDelay1 <= 0)
         {
             ListSpawner(1);
-            timeDelay1 = 20;
+            timeDelay1 = 50;
         }
+        if(MagnetFollowPlayer.checkMagnet)
+        {
+            timeDelayMagnet -= Time.fixedDeltaTime;
+            ExpFollowPlayer.distanceTarget = 30f;
+            ExpFollowPlayer.moveSpeedTarget = 50f;
+
+            if (Time.fixedDeltaTime <= 0) { MagnetFollowPlayer.checkMagnet = false; }
+        }else
+        {
+            timeDelayMagnet = 2f;
+            ExpFollowPlayer.distanceTarget = 2;
+            ExpFollowPlayer.moveSpeedTarget = 10;
+        }
+        
     }
 
     protected override void CreatePosition(Transform prefabs)
@@ -37,8 +53,8 @@ public class ItemSpawner : Spawner
         base.CreatePosition(prefabs);
         //if (prefabs == listPrefabs[0])
         //{
-            float posX = Random.Range(-20, 20);
-            float posY = Random.Range(-15, 15);
+            float posX = Random.Range(-40, 40);
+            float posY = Random.Range(-35, 35);
             if (posX >= 0 && posX < 4) posX = 4;
             if (posX < 0 && posX > -4) posX = -4;
             if (posY >= 0 && posY < 3) posY = -3;

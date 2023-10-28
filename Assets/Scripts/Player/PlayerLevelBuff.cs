@@ -15,43 +15,47 @@ public class PlayerLevelBuff : MonoBehaviour
     [SerializeField] public int[] arraySkill;
     [SerializeField] public SpinningController spinningController;
 
-    public int maxExp = 100;
-    public int currentExp = 0;
+    public float maxExp = 100;
+    public float currentExp = 0;
     public ExpBar expBar;
-    public int currentLevel = 1;
+    public float currentLevel = 1;
 
     void Start()
     {
-        
         level = 1;
         LoadList();
     }
 
     void Update()
     {
-       /* if (Input.GetKeyDown(KeyCode.Q))
-        {
-            level++;
-            skill.gameObject.SetActive(true);
-            Random3Skill();
-            Time.timeScale = 0f;
-
-        }*/
-        
         PlayerSkill();
-       
-    }
 
+    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
         {
             if (arraySkill.Length < 4)
             {
-                CollectExp(50);
+                if (currentLevel == 1)
+                {
+                    CollectExp(6);
+                }
+                if (currentLevel == 2)
+                {
+                    CollectExp(5);
+                }
+                if (currentLevel == 3)
+                {
+                    CollectExp(4);
+                }
+                if (currentLevel == 4)
+                {
+                    CollectExp(3);
+                }
                 Destroy(collision.gameObject);
             }
-
         }
     }
 
@@ -120,7 +124,6 @@ public class PlayerLevelBuff : MonoBehaviour
             if (arraySkill[i] == 7) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill7);
             if (arraySkill[i] == 8) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill8);
              
-
             if (arraySkill[i] == 9)
             {
                 listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill9);
@@ -128,53 +131,50 @@ public class PlayerLevelBuff : MonoBehaviour
                 Debug.Log(DelaySkills.checkSkill9);
             }
             
-            //if (Array.IndexOf(arraySkill, 1) != -1)
-            //{
-            //    spinningController.startSkill = true;
-            //}
         }
     }
 
     private void CollectExp(int amount)
     {
-        Debug.Log("amount: " + amount);
         currentExp += amount;
-        expBar.SetEXP(currentExp);
+        expBar.SetEXP((int)currentExp);
 
 
-        if (currentLevel == 1 )
-        {
-            maxExp = 100;
-        }
-
-        if (currentLevel == 2)
-        {
-            maxExp = 200;
-
-        }
-
-        if (currentLevel == 3)
-        {
-            maxExp = 300;
-        }
-        
-       
-        if (currentLevel == 1 && currentExp == 100)
-        {
-            LevelUp();
-
-        }
-        if (currentLevel == 2 && currentExp == 200)
+        if (currentLevel == 1 && currentExp >= 100)
         {
             LevelUp();
         }
-        if (currentLevel == 3 && currentExp == 300)
+        else if (currentLevel == 2 && currentExp >= 200)
         {
             LevelUp();
-
+          
         }
-        if (currentLevel == 4 && currentExp == 300)
+        else if (currentLevel == 3 && currentExp >= 300)
         {
+            LevelUp();
+        }
+        else if (currentLevel == 4 && currentExp >= 400)
+        {
+            LevelUp();
+        }
+        if (currentLevel == 1 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 2 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 3 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 4 && currentExp == maxExp)
+        {
+
             LevelUp();
         }
     }
@@ -184,9 +184,11 @@ public class PlayerLevelBuff : MonoBehaviour
         currentExp = 0;
         expBar.SetEXP(0);
         currentLevel++;
+        expBar.UpdateExp(0, maxExp);
         skill.gameObject.SetActive(true);
         Random3Skill();
         Time.timeScale = 0f;
         Debug.Log("Current level: " + currentLevel);
+
     }
 }

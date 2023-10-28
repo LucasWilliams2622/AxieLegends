@@ -10,10 +10,9 @@ public class MissileAreaScan : MonoBehaviour
     public List<Transform> ListEnemy { get => listEnemy; set => listEnemy = value; }
     public float MaxEnemy { get => maxEnemy; set => maxEnemy = value; }
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnDisable()
     {
-        
+        listEnemy.Clear();
     }
 
     // Update is called once per frame
@@ -22,7 +21,35 @@ public class MissileAreaScan : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if(collision.CompareTag("Monster") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        if(collision.CompareTag("EnemyLv1") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv2") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv3") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv4") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv5") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("EnemyLv6") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("Boss1") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
+        {
+            listEnemy.Add(collision.transform);
+        }
+        if (collision.CompareTag("BossFinal") && listEnemy.Count < MaxEnemy && !listEnemy.Contains(collision.transform))
         {
             listEnemy.Add(collision.transform);
         }

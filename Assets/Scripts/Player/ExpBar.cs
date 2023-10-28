@@ -15,5 +15,10 @@ public class ExpBar : MonoBehaviour
         fill.color = gradient.Evaluate(slider.normalizedValue);
 
     }
-   
+
+    public void UpdateExp(float currentValue, float maxValue)
+    {
+        slider.value = currentValue / maxValue;
+    }
+
 }
