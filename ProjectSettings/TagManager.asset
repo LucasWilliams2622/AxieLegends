@@ -23,6 +23,7 @@ TagManager:
   - SnailArea
   - buffSpeed
   - Boss1
+  - BossFinal
   layers:
   - Default
   - TransparentFX
