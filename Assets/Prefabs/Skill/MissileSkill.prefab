@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1699395892215500322
 Transform:
   m_ObjectHideFlags: 0
@@ -47,10 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToFollow: {fileID: 0}
-  missleShot: {fileID: 4907261652585159931}
   missileAreaScan: {fileID: 5015592605922909730}
   delayAttackBetween: 0.3
-  delayBetween: 2.5
   maxEnemyScan: 10
 --- !u!1 &4907261652585159931
 GameObject:
@@ -70,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1921135697132601749
 Transform:
   m_ObjectHideFlags: 0
@@ -99,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2930661599713190346}
+  delayAtkBetweenPerMissile: 0.3
   missleArea: {fileID: 5015592605922909730}
   prefMissile: {fileID: 4681989581290426935, guid: 170b8ae9d23cef74aaa6ed0f8ab05823, type: 3}
 --- !u!95 &2930661599713190346
