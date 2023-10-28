@@ -13,7 +13,6 @@ public class BossFinalAnimation : MonoBehaviour
     private string BOSS_RUN = "action/move-back";
     private string BOSS_HURT = "defense/hit-by-normal";
     private string BOSS_ATTACK = "attack/melee/normal-attack";
-    private string BOSS1_ATTACK = "attack/melee/normal-attack";
     private string BOSS_DIE = "defense/hit-die";
     private string BOSS_IDLE = "action/idle/normal";
     private string BOSS_ULTIMATE = "attack/melee/scratch-attack";   

@@ -30,6 +30,8 @@ TagManager:
   - Toxic
   - Carot
   - Carrot
+  - Undefined
+  - Boss1Attack
   layers:
   - Default
   - TransparentFX

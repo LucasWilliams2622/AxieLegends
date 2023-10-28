@@ -6,6 +6,7 @@ public class BossFollowPlayer : FollowToDistance
 {
     [SerializeField] public float speed ;
     [SerializeField] protected BossAttackPlayer bossAttackPlayer;
+    [SerializeField] protected BossHealth bossHealth;
     public BossFinalAnimation bossFinalAnimation;
     public float timeDelay;
     public float timeDelayAnim;
@@ -17,6 +18,7 @@ public class BossFollowPlayer : FollowToDistance
     {
         bossFinalAnimation = GetComponent<BossFinalAnimation>();
         bossAttackPlayer = GetComponent<BossAttackPlayer>();
+        bossHealth = GetComponent<BossHealth>();
         timeDelay = 0.2f;
         checkAttack = false;
         checkAnimAttack = false;
@@ -32,9 +34,10 @@ public class BossFollowPlayer : FollowToDistance
         Debug.Log(checkAttack);
         if(moveSpeed == 0 &&  checkAnimAttack == false)
         {
-            bossFinalAnimation.PlayAttack();
-            
-            checkAnimAttack= true;
+           
+            if(gameObject.tag == "Boss1" && bossHealth.currentHealth <= 0.3f * bossHealth.maxHealth) bossFinalAnimation.PlayUltimate();
+            else bossFinalAnimation.PlayAttack();
+            checkAnimAttack = true;
             timeDelayAnim = 0.9f;
         }
         if (checkAnimAttack)
