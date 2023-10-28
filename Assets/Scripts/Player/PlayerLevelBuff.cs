@@ -15,10 +15,10 @@ public class PlayerLevelBuff : MonoBehaviour
     [SerializeField] public int[] arraySkill;
     [SerializeField] public SpinningController spinningController;
 
-    public int maxExp = 100;
-    public int currentExp = 0;
+    public float maxExp = 100;
+    public float currentExp = 0;
     public ExpBar expBar;
-    public int currentLevel = 1;
+    public float currentLevel = 1;
 
     void Start()
     {
@@ -31,7 +31,8 @@ public class PlayerLevelBuff : MonoBehaviour
         PlayerSkill();
 
     }
-
+    
+   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
@@ -56,7 +57,6 @@ public class PlayerLevelBuff : MonoBehaviour
                 }
                 Destroy(collision.gameObject);
             }
-
         }
     }
 
@@ -138,10 +138,8 @@ public class PlayerLevelBuff : MonoBehaviour
 
     private void CollectExp(int amount)
     {
-        Debug.Log("amount: " + amount);
         currentExp += amount;
         expBar.SetEXP(currentExp);
-
 
 
         if (currentLevel == 1 && currentExp >= 100)
@@ -161,6 +159,26 @@ public class PlayerLevelBuff : MonoBehaviour
         {
             LevelUp();
         }
+        if (currentLevel == 1 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 2 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 3 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 4 && currentExp == maxExp)
+        {
+
+            LevelUp();
+        }
     }
     private void LevelUp()
     {
@@ -168,6 +186,7 @@ public class PlayerLevelBuff : MonoBehaviour
         currentExp = 0;
         expBar.SetEXP(0);
         currentLevel++;
+        expBar.UpdateExp(0, maxExp);
         skill.gameObject.SetActive(true);
         Random3Skill();
         Time.timeScale = 0f;

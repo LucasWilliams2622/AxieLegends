@@ -8,11 +8,13 @@ public class ItemSpawner : Spawner
     [SerializeField] protected GameObject player;
     [SerializeField] protected float timeDelay;
     [SerializeField] protected float timeDelay1;
+    public float timeDelayMagnet;
 
     protected override void Start()
     {
         base.Start();
         player = GameObject.Find("Player");
+        timeDelayMagnet = 2f;
     }
 
     protected override void FixedUpdate()
@@ -30,6 +32,19 @@ public class ItemSpawner : Spawner
             ListSpawner(1);
             timeDelay1 = 50;
         }
+        if(MagnetFollowPlayer.checkMagnet)
+        {
+            timeDelayMagnet -= Time.fixedDeltaTime;
+            ExpFollowPlayer.distanceTarget = 30f;
+            ExpFollowPlayer.moveSpeedTarget = 50f;
+            if (Time.fixedDeltaTime <= 0) { MagnetFollowPlayer.checkMagnet = false; }
+        }else
+        {
+            timeDelayMagnet = 2f;
+            ExpFollowPlayer.distanceTarget = 2;
+            ExpFollowPlayer.moveSpeedTarget = 10;
+        }
+        
     }
 
     protected override void CreatePosition(Transform prefabs)

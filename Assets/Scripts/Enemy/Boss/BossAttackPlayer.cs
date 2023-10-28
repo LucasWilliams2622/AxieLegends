@@ -19,16 +19,33 @@ public class BossAttackPlayer : MonoBehaviour
     {
         timeDelayAnim = bossFollowPlayer.timeDelayAnim;
         attack.transform.position = transform.position;
-        if (timeDelayAnim <= 0.5f)
+        if (gameObject.tag == "Boss1")
         {
-
-            if (timeDelayAnim <= 0.35f)
+            if (timeDelayAnim <= 0.5f)
             {
-                attack.SetActive(false);
-                return;
+
+                if (timeDelayAnim <= 0.35f)
+                {
+                    attack.SetActive(false);
+                    return;
+                }
+                attack.SetActive(true);
             }
-            attack.SetActive(true);
         }
+        if (gameObject.tag == "BossFinal")
+        {
+            if (timeDelayAnim <= 0.8f)
+            {
+
+                if (timeDelayAnim <= 0.65f)
+                {
+                    attack.SetActive(false);
+                    return;
+                }
+                attack.SetActive(true);
+            }
+        }
+        
         
     }
 

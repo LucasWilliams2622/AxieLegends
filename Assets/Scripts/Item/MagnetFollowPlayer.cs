@@ -9,6 +9,7 @@ public class MagnetFollowPlayer : FollowToDistance
     [SerializeField] protected float speed;
     [SerializeField] ExpFollowPlayer expFollowPlayer;
     [SerializeField] protected GameObject Magnet;
+    public static bool checkMagnet;
     protected override void Start()
     {
         base.Start();
@@ -27,7 +28,7 @@ public class MagnetFollowPlayer : FollowToDistance
         {
             if (time <= 0)
             {
-                ExpFollowPlayer.distanceTarget = 1;
+                ExpFollowPlayer.distanceTarget = 2;
                 ExpFollowPlayer.moveSpeedTarget = 10;
             } 
         }
@@ -41,6 +42,7 @@ public class MagnetFollowPlayer : FollowToDistance
             ExpFollowPlayer.distanceTarget = 20f;
             ExpFollowPlayer.moveSpeedTarget = 30f;
             time = 2f;
+            checkMagnet = true;
         }
     }
 }

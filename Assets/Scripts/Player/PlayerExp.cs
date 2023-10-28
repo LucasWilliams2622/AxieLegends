@@ -16,6 +16,10 @@ public class PlayerExp : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    private void Start()
+    {
+        playerLevelBuff = GetComponent<PlayerLevelBuff>();
+    }
 
     private void CollectExp(int amount)
     {
