@@ -96,3 +96,4 @@ MonoBehaviour:
   triggerSpawn: 0
   prefabTSTarget: {fileID: 6603765901342201280, guid: f3fbaa05e72b30f438c5147822adf53c, type: 3}
   prefabObjSnail: {fileID: 5185734712228206578, guid: faac159a1886849468f77eae04c02149, type: 3}
+  temp: {x: 0, y: 0, z: 0}

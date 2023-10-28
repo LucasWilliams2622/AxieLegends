@@ -9,7 +9,7 @@ public class ObjectSnailSkill : MonoBehaviour
     [SerializeField] private Transform tSnailGameObject;
     [SerializeField] float destroyTime = 0.01f;
     private Vector3 startPos;
-    private Vector3 endPos;
+    public Vector3 endPos;
     [SerializeField] float fireLerp = 1;
 
     private void Start()
@@ -17,7 +17,6 @@ public class ObjectSnailSkill : MonoBehaviour
         tSnailGameObject = GameObject.Find("ThrowingSnailSkill").transform;
         transform.position = tSnailGameObject.position;
         startPos = transform.position;
-        endPos = GameObject.Find("ThrowingSnailTarget").transform.position;
     }
 
     void Update()

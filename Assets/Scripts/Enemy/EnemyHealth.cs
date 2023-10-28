@@ -44,23 +44,33 @@ public class EnemyHealth : MonoBehaviour
             TakeDamage(10);
         }
 
-        if (collision.gameObject.CompareTag("SnailArea"))
+
+        if (collision.gameObject.CompareTag("Toxic"))
         {
-            TakeDamage(1);
-        }
-        if (gameObject.CompareTag("SnailArea"))
-        {
-            Debug.Log("ádsad");
-            StartCoroutine(LoseHealthOverTime(1));
+            StartCoroutine(takeDmgPerSec());
         }
 
-        /*  if (collision.gameObject.CompareTag("Shield"))
-          {
-              TakeDamage(10);
-          }*/
+     
 
     }
 
+    IEnumerator takeDmgPerSec()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(1);
+            TakeDamage(1);
+        }
+        
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Toxic"))
+        {
+            StopCoroutine(takeDmgPerSec());
+        }
+    }
     private void Update()
     {
         IsDestroy();

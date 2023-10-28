@@ -5,14 +5,13 @@ using UnityEngine;
 public class TSnailTargetImpact : MonoBehaviour
 {
     private bool isTrigger;
-    private SpriteRenderer sprite;
+    public Animator anim;
     [SerializeField] private float destroyTime=4f;
     public bool IsTrigger { get => isTrigger; set => isTrigger = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -20,10 +19,17 @@ public class TSnailTargetImpact : MonoBehaviour
     {
         if(isTrigger)
         {
-            sprite.enabled = true;
-            transform.localScale = new Vector3(30, 30, 0);
-            gameObject.tag = "bullet";
-            Destroy(gameObject,destroyTime);
+            anim.Play("Snail_Spread"); 
+            gameObject.tag = "Toxic";
+            Invoke(nameof(playDoneAnim), destroyTime);
         }
     }
+    void playDoneAnim()
+    {
+        IsTrigger = false;
+        anim.Play("Snail_End");
+        var dur = anim.GetCurrentAnimatorStateInfo(0).length;
+        Destroy(gameObject,dur);
+    }
+
 }
