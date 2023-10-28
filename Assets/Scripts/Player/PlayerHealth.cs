@@ -21,9 +21,12 @@ public class PlayerHealth : MonoBehaviour
         { "EnemyLv1", 1 },
         { "EnemyLv2", 2 },
         { "EnemyLv3", 3 },
+
+        { "EnemyLv4", 3 },
+        { "EnemyLv5", 4 },
+        { "EnemyLv6", 4 },
         { "BulletEnemy", 1 },
          
-
     };
     void Start()
     {

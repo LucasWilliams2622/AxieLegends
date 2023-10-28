@@ -4,22 +4,46 @@ using UnityEngine;
 
 public class BossFinal : MonoBehaviour
 {
-    public GameObject player;
+    public GameObject pointPlayer;
+    public GameObject pointAxe;
     public GameObject hurtPlace;
-    public bool showHurtPlace ;
+    public bool showHurtPlace;
+    public BossFollowPlayer bossFollowPlayer;
+    public Rigidbody2D rb;
+
     void Start()
     {
         showHurtPlace = false;
+        hurtPlace.SetActive(false);
     }
+
     private void Update()
     {
-        hurtPlace.transform.position = player.transform.position;
 
-        if (showHurtPlace)
+        
+        //hurtPlace.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        if (bossFollowPlayer.speed == 0)
         {
-            showHurtPlace = false;
-            hurtPlace.SetActive(true);
+            showHurtPlace = true;
+            if (showHurtPlace)
+            {
+                showHurtPlace = false;
+
+                Vector3 direction = ((Vector2)pointPlayer.transform.position - rb.position).normalized;
+
+                float angle = Vector3.Cross(direction, hurtPlace.transform.up).z;
+                rb.angularVelocity = -angle;
+
+                hurtPlace.SetActive(true);
+                StartCoroutine(HideHurtPlace());
+            }
         }
     }
-   
+
+    IEnumerator HideHurtPlace()
+    {
+        yield return new WaitForSeconds(1.5f);
+        hurtPlace.SetActive(false);
+    }
 }

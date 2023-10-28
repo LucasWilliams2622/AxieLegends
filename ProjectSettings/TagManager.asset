@@ -24,6 +24,9 @@ TagManager:
   - buffSpeed
   - Boss1
   - BossFinal
+  - EnemyLv4
+  - EnemyLv5
+  - EnemyLv6
   layers:
   - Default
   - TransparentFX

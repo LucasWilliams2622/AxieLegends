@@ -144,11 +144,11 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator BuffSpeedCoroutine()
     {
-        runSpeed += 5;
+        runSpeed += 4;
 
         yield return new WaitForSeconds(5f);
 
-        runSpeed -= 5; 
+        runSpeed -= 4; 
 
         isBuffSpeed = false;
     }
