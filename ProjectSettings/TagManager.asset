@@ -27,6 +27,9 @@ TagManager:
   - EnemyLv4
   - EnemyLv5
   - EnemyLv6
+  - Toxic
+  - Carot
+  - Carrot
   layers:
   - Default
   - TransparentFX
