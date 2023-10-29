@@ -20,13 +20,12 @@ public class PlayerHealth : MonoBehaviour
     {
         { "EnemyLv1", 1 },
         { "EnemyLv2", 2 },
-        { "EnemyLv3", 3 },
+        { "EnemyLv3", 1 },
 
-        { "EnemyLv4", 3 },
-        { "EnemyLv5", 4 },
+        { "EnemyLv4", 2 },
+        { "EnemyLv5", 3 },
         { "EnemyLv6", 4 },
-        { "BulletEnemy", 1 },
-         
+
     };
     void Start()
     {
@@ -46,15 +45,31 @@ public class PlayerHealth : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Heal"))
         {
-            Heal(5);
+            Heal(10);
             Destroy(collision.gameObject);  
+        }
+        if (collision.gameObject.CompareTag("SuperHeal"))
+        {
+            Heal(20);
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("Boss1Attack"))
         {
+            TakeDamage(4);
+        }
+        if (collision.gameObject.CompareTag("BossFinal"))
+        {
             TakeDamage(5);
         }
+        if (collision.gameObject.CompareTag("BulletEnemy"))
+        {
+            TakeDamage(1);
+        }
+        if (collision.gameObject.CompareTag("AxeHurt"))
+        {
+            TakeDamage(7);
+        }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
         string tag = collision.gameObject.tag;
@@ -64,7 +79,6 @@ public class PlayerHealth : MonoBehaviour
             TakeDamage(damage);
         }
     }
-
 
     private void TakeDamage(int damage)
     {
@@ -108,7 +122,6 @@ public class PlayerHealth : MonoBehaviour
         panelSystem.SetActive(true);
 
         panelDead.SetActive(false);
-
         isDead = false;
         Time.timeScale = 1f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);

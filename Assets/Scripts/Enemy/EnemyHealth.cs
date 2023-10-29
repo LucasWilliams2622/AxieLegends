@@ -29,8 +29,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("EnhanceArrow"))
         {
-            TakeDamage(2);
-
+            TakeDamage(1);
         }
         if (collision.gameObject.CompareTag("Ultimate"))
         {
@@ -40,8 +39,6 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
-
-
         if (collision.gameObject.CompareTag("Toxic"))
         {
             StartCoroutine(takeDmgPerSec());
