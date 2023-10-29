@@ -9,7 +9,7 @@ public class FollowToDistance : MonoBehaviour
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected Rigidbody2D rb;
     [SerializeField] protected float distance;
-    protected Vector2 direction;
+    [SerializeField]protected Vector2 direction;
 
     // Start is called before the first frame update
     protected virtual void Start()
