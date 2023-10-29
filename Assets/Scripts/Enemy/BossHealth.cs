@@ -60,7 +60,7 @@ public class BossHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            if (gameObject.tag == "BossFinal") SceneManager.LoadScene(1);
+            if (gameObject.tag == "BossFinal") SceneManager.LoadScene(2);
             enemySpawner.checkBoss = false;
             bossFinalAnimation.PlayDie();
             Invoke(nameof(DelayDie), 1.5f);
