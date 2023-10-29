@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BossHealth : MonoBehaviour
 {
@@ -47,6 +48,7 @@ public class BossHealth : MonoBehaviour
     private void FixedUpdate()
     {
         IsDestroy();
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -58,6 +60,7 @@ public class BossHealth : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
+            if (gameObject.tag == "BossFinal") SceneManager.LoadScene("Win");
             enemySpawner.checkBoss = false;
             bossFinalAnimation.PlayDie();
             Invoke(nameof(DelayDie), 1.5f);
