@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1699395892215500322
 Transform:
   m_ObjectHideFlags: 0
@@ -47,10 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetToFollow: {fileID: 0}
-  missleShot: {fileID: 4907261652585159931}
   missileAreaScan: {fileID: 5015592605922909730}
   delayAttackBetween: 0.3
-  delayBetween: 3
   maxEnemyScan: 10
 --- !u!1 &4907261652585159931
 GameObject:
@@ -70,7 +68,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1921135697132601749
 Transform:
   m_ObjectHideFlags: 0
@@ -99,8 +97,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 2930661599713190346}
+  delayAtkBetweenPerMissile: 0.3
   missleArea: {fileID: 5015592605922909730}
-  prefMissile: {fileID: 2498981227911800453, guid: 170b8ae9d23cef74aaa6ed0f8ab05823, type: 3}
+  prefMissile: {fileID: 4681989581290426935, guid: 170b8ae9d23cef74aaa6ed0f8ab05823, type: 3}
 --- !u!95 &2930661599713190346
 Animator:
   serializedVersion: 5
@@ -160,8 +159,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 349884707
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 7aedab601872b304ab86fd5a26e3acf1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -278,7 +277,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 26.25, y: 13.79}
+  m_Size: {x: 23.5, y: 12.9}
   m_EdgeRadius: 0
 --- !u!114 &5015592605922909730
 MonoBehaviour:

@@ -22,41 +22,47 @@ public class PlayerLevelBuff : MonoBehaviour
 
     void Start()
     {
-        
         level = 1;
         LoadList();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            level++;
-            skill.gameObject.SetActive(true);
-            Random3Skill();
-            Time.timeScale = 0f;
-
-        }
         PlayerSkill();
-        
-       
+
     }
     
-   
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("EXP"))
         {
-            CollectExp(20);
-            Destroy(collision.gameObject);
+            if (arraySkill.Length < 4)
+            {
+                if (currentLevel == 1)
+                {
+                    CollectExp(6);
+                }
+                if (currentLevel == 2)
+                {
+                    CollectExp(5);
+                }
+                if (currentLevel == 3)
+                {
+                    CollectExp(4);
+                }
+                if (currentLevel == 4)
+                {
+                    CollectExp(3);
+                }
+                Destroy(collision.gameObject);
+            }
         }
     }
 
     protected virtual void LoadList()
     {
         //skill = GameObject.Find("Skill");
-        //this.listSkill.Add(skill) ;
+        //this.listSkill.Add(skill)
 
         foreach (Transform skills in skill)
         {
@@ -79,7 +85,7 @@ public class PlayerLevelBuff : MonoBehaviour
 
     protected virtual void Random3Skill()
     {
-        if (arraySkill.Length >= 9) return;
+        if (arraySkill.Length ==4) return;
         int[] numbers = new int[3];
         Debug.Log(" list skill player" + listPlayerSkill.Count);
         for (int i = 0; i < 3; i++)
@@ -118,7 +124,6 @@ public class PlayerLevelBuff : MonoBehaviour
             if (arraySkill[i] == 7) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill7);
             if (arraySkill[i] == 8) listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill8);
              
-
             if (arraySkill[i] == 9)
             {
                 listPlayerSkill[arraySkill[i]].gameObject.SetActive(DelaySkills.checkSkill9);
@@ -126,22 +131,29 @@ public class PlayerLevelBuff : MonoBehaviour
                 Debug.Log(DelaySkills.checkSkill9);
             }
             
-            //if (Array.IndexOf(arraySkill, 1) != -1)
-            //{
-            //    spinningController.startSkill = true;
-            //}
         }
     }
 
     private void CollectExp(int amount)
     {
         currentExp += amount;
-        if (currentLevel == 1) { maxExp = 100; }
-        maxExp = 100 * currentLevel;
+        expBar.SetEXP((int)currentExp);
 
-        expBar.UpdateExp(currentExp, maxExp);
-        Debug.Log("exp ne:" + currentExp + "..." + maxExp);
-        if (currentExp >= maxExp)
+
+        if (currentLevel == 1 && currentExp >= 100)
+        {
+            LevelUp();
+        }
+        else if (currentLevel == 2 && currentExp >= 200)
+        {
+            LevelUp();
+          
+        }
+        else if (currentLevel == 3 && currentExp >= 300)
+        {
+            LevelUp();
+        }
+        else if (currentLevel == 4 && currentExp >= 400)
         {
             LevelUp();
         }
@@ -170,11 +182,13 @@ public class PlayerLevelBuff : MonoBehaviour
     {
         Debug.Log("Level up!");
         currentExp = 0;
+        expBar.SetEXP(0);
         currentLevel++;
         expBar.UpdateExp(0, maxExp);
         skill.gameObject.SetActive(true);
         Random3Skill();
         Time.timeScale = 0f;
         Debug.Log("Current level: " + currentLevel);
+
     }
 }

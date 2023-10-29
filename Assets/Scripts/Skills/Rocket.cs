@@ -6,8 +6,8 @@ public class Rocket : MonoBehaviour
 {
     public GameObject rocketPrefab;
     public Transform shootPoint;
-    public float rocketSpeed = 10f;
-    public int maxRockets = 3;
+    public float rocketSpeed = 100f;
+    public int maxRockets = 1;
     public bool canFireRockets = true;
     private GameObject[] rockets;
 
@@ -21,13 +21,12 @@ public class Rocket : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canFireRockets) // Kiểm tra canFireRockets trước khi bắn tên lửa
-        {
+        
             FireRockets();
-        }
         enemyNearThe = playerAttackEnemyNearThe.nearestEnemy;
 
     }
+
     private IEnumerator AutoFireRockets()
     {
         while (true)
@@ -36,7 +35,7 @@ public class Rocket : MonoBehaviour
             {
                 FireRockets();
             }
-            yield return new WaitForSeconds(5f); // Thời gian chờ giữa các lần bắn tên lửa (1 giây trong ví dụ này)
+            yield return new WaitForSeconds(5f); 
         }
     }
     private void FireRockets()
@@ -55,9 +54,16 @@ public class Rocket : MonoBehaviour
                     rocket.GetComponent<Rigidbody2D>().velocity = direction * rocketSpeed;
                 }
 
+                StartCoroutine(DestroyRocket(rocket, 3f)); // Tự động hủy tên lửa sau 3 giây
 
                 break;
             }
         }
+    }
+
+    private IEnumerator DestroyRocket(GameObject rocket, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(rocket);
     }
 }

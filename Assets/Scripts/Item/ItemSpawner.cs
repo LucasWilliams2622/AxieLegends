@@ -25,12 +25,12 @@ public class ItemSpawner : Spawner
         if (timeDelay <= 0) 
         {
             ListSpawner(0);
-            timeDelay = 1;
+            timeDelay = 2f;
         }
         if(timeDelay1 <= 0)
         {
             ListSpawner(1);
-            timeDelay1 = 20;
+            timeDelay1 = 50;
         }
         if(MagnetFollowPlayer.checkMagnet)
         {
@@ -53,8 +53,8 @@ public class ItemSpawner : Spawner
         base.CreatePosition(prefabs);
         //if (prefabs == listPrefabs[0])
         //{
-            float posX = Random.Range(-20, 20);
-            float posY = Random.Range(-15, 15);
+            float posX = Random.Range(-40, 40);
+            float posY = Random.Range(-35, 35);
             if (posX >= 0 && posX < 4) posX = 4;
             if (posX < 0 && posX > -4) posX = -4;
             if (posY >= 0 && posY < 3) posY = -3;

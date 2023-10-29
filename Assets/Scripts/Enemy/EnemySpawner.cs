@@ -9,7 +9,7 @@ public class EnemySpawner : Spawner
     [SerializeField] public float timeEnemySpawnerLV;
     [SerializeField] protected float timeDelay;
     [SerializeField] protected GameObject player;
-    [SerializeField] protected GameObject panelBoss;
+    [SerializeField] public GameObject panelBoss;
     [SerializeField] public bool checkBoss;
     [SerializeField] protected float timeDelayEnemyLV;
     [SerializeField] protected float indexBoss;
@@ -20,10 +20,15 @@ public class EnemySpawner : Spawner
         indexEnemy = 0;
         checkBoss = false;
         base.Start();
-        timeDelay = 0.3f;
-        timeEnemySpawnerLV = 5f;
+        timeDelay = 0.5f;
+        timeEnemySpawnerLV = 20f;
         timeDelayEnemyLV = 30f;
 
+
+        /*ListSpawner(3);
+        panelBoss.SetActive(true);
+        panelBoss.transform.position = player.transform.position;
+        indexBoss++;*/
     }
 
     // Update is called once per frame
@@ -53,8 +58,8 @@ public class EnemySpawner : Spawner
         base.CreatePosition(prefabs);
         float randomPosX = 8;
         float randomPosY = 6;
-        float posX = Random.Range(-20, 20);
-        float posY = Random.Range(-15, 15);
+        float posX = Random.Range(-40, 40);
+        float posY = Random.Range(-35, 35);
         if (checkBoss)
         {
             posX = Random.Range(-4, 4);
@@ -78,7 +83,7 @@ public class EnemySpawner : Spawner
         if (timeEnemySpawnerLV <= 0) 
         { 
             if(indexEnemy <7)  indexEnemy++;
-            timeEnemySpawnerLV = 10f;
+            timeEnemySpawnerLV = 15f;
         }
 
         if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 7)
@@ -89,10 +94,10 @@ public class EnemySpawner : Spawner
         }
         if (checkBoss && indexBoss == 0)
         {       
-                ListSpawner(3);
-                panelBoss.SetActive(true);
-                panelBoss.transform.position = player.transform.position;
-                indexBoss++;
+            ListSpawner(3);
+            panelBoss.SetActive(true);
+            panelBoss.transform.position = player.transform.position;
+            indexBoss++;
 
         }
         if (checkBoss && indexBoss == 1 && indexEnemy == 7)
@@ -101,12 +106,8 @@ public class EnemySpawner : Spawner
             panelBoss.SetActive(true);
             panelBoss.transform.position = player.transform.position;
             indexBoss++;
-
         }
         if (!checkBoss) panelBoss.SetActive(false);
-        
-
-
 
 
     }

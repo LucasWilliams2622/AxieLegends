@@ -28,7 +28,6 @@ public class ExpFollowPlayer : FollowToDistance
         Vector2 direction = target.transform.position - transform.position;
         rb.velocity = direction.normalized * moveSpeedTarget;
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

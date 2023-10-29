@@ -58,7 +58,7 @@ public class listIconSkillReview : MonoBehaviour
                     var image = obj.gameObject.transform.GetChild(0);
                     image.name = skill.name;
                     image.gameObject.transform.SetParent(availableIcon.transform);
-                    image.GetComponent<RectTransform>().localScale = new Vector3(0.16f, 0.16f, 0);
+                    image.GetComponent<RectTransform>().localScale = new Vector3(0.21f, 0.21f, 0);
 
                     Destroy(obj);
                     level++;

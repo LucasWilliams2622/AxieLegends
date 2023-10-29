@@ -9,9 +9,11 @@ public class BossHealth : MonoBehaviour
     public int currentHealth;
     [SerializeField] private GameObject floatingTextPrefab;
     [SerializeField] protected GameObject exp;
+    [SerializeField] protected GameObject namCham;
     [SerializeField] protected GameObject holder;
     [SerializeField] protected EnemySpawner enemySpawner;
     public BossFinalAnimation bossFinalAnimation;
+
     void Start()
     {
         currentHealth = maxHealth;
@@ -24,6 +26,10 @@ public class BossHealth : MonoBehaviour
         {
             TakeDamage(1);
         }
+        if (collision.gameObject.CompareTag("EnhanceArrow"))
+        {
+            TakeDamage(1);
+        }
         if (collision.gameObject.CompareTag("Ultimate"))
         {
             TakeDamage(10);
@@ -32,6 +38,11 @@ public class BossHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
+        if (collision.gameObject.CompareTag("Spinner"))
+        {
+            TakeDamage(2);
+        }
+
     }
 
     private void FixedUpdate()
@@ -42,11 +53,7 @@ public class BossHealth : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Spinner"))
-        {
-            TakeDamage(1);
-        }
-
+      
     }
 
     protected virtual void IsDestroy()
@@ -57,21 +64,21 @@ public class BossHealth : MonoBehaviour
             enemySpawner.checkBoss = false;
             bossFinalAnimation.PlayDie();
             Invoke(nameof(DelayDie), 1.5f);
-           
-
         }
     }
     void DelayDie()
     {
+
+        enemySpawner.panelBoss.SetActive(false);
         Destroy(gameObject);
         CreateExp();
+        CreateNamCham();
     }
   
     private void TakeDamage(int damage)
     {
-        bossFinalAnimation.PlayHurt();
+       /* bossFinalAnimation.PlayHurt();*/
         if(currentHealth >0) Invoke(nameof(bossFinalAnimation.PlayRun), 0.667f);
-
 
         currentHealth -= damage;
         ShowDamage(damage.ToString());
@@ -87,12 +94,18 @@ public class BossHealth : MonoBehaviour
             prefab.GetComponentInChildren<TextMesh>().text = text;
         }
     }
-
     protected virtual void CreateExp()
     {
         GameObject createExp = Instantiate(exp);
         createExp.transform.parent = this.holder.transform;
         createExp.transform.position = transform.position;
         createExp.gameObject.SetActive(true);
+    }
+    protected virtual void CreateNamCham()
+    {
+        GameObject createNC = Instantiate(namCham);
+        createNC.transform.parent = this.holder.transform;
+        createNC.transform.position = transform.position;
+        createNC.gameObject.SetActive(true);
     }
 }

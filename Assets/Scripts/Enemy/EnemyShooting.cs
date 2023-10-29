@@ -25,7 +25,7 @@ public class EnemyShooting : MonoBehaviour
             GameObject Bullet = Instantiate(bullet, shootTip.transform.position, shootTip.transform.rotation);
             Bullet.SetActive(true);
             Destroy(Bullet, 2f);
-            timeDelay = 2f;
+            timeDelay = 4f;
         }
     }
 }
