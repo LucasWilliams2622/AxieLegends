@@ -102,9 +102,11 @@ public class EnemyHealth : MonoBehaviour
    
     private void TakeDamage(int damage)
     {
+        var obj = Instantiate(Resources.Load("PrefGotHit", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
         
         ShowDamage(damage.ToString());
         currentHealth -= damage;
+        
 
     }
 
@@ -133,9 +135,7 @@ public class EnemyHealth : MonoBehaviour
     {
         GameObject createExp = Instantiate(exp);
         createExp.transform.parent = this.holder.transform;
-        createExp.transform.position = transform.position; 
+        createExp.transform.position = transform.position;
         createExp.gameObject.SetActive(true);
     }
-
-   
 }
