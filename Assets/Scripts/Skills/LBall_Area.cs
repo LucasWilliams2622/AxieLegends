@@ -15,7 +15,7 @@ public class LBall_Area : MonoBehaviour
     void Update()
     {
         
-    }
+    } 
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.CompareTag("EnemyLv1") && !enemies.Contains(collision.transform))

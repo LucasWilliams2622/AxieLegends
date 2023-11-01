@@ -40,4 +40,9 @@ public class PauseGameController : MonoBehaviour
             AudioListener.volume = 1;
         }
     }
+    public void pauseGame()
+    {
+        trigger = !trigger;
+    }
+
 }
