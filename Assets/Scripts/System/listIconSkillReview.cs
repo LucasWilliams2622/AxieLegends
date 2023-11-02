@@ -11,7 +11,7 @@ public class listIconSkillReview : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        level = 0;
+        level = 1;
         foreach (Transform obj in transform)
         {
             listIcon.Add(obj.gameObject);

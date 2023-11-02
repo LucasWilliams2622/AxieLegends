@@ -11,12 +11,15 @@ public class BossFollowPlayer : FollowToDistance
     public BossFinalAnimation bossFinalAnimation;
     public float timeDelay;
     public float timeDelayAnim;
+    public float timeDelayy;
     [SerializeField] public GameObject attack;
     [SerializeField] public GameObject player;
     [SerializeField] public GameObject leftTarget;
     [SerializeField] public GameObject rightTarget;
     public bool checkAttack;
     public bool checkAnimAttack;
+    public bool checkRunFast;
+
 
     private void Awake()
     {
@@ -26,16 +29,16 @@ public class BossFollowPlayer : FollowToDistance
         timeDelay = 0.2f;
         checkAttack = false;
         checkAnimAttack = false;
+        checkRunFast = false;
         timeDelayAnim = 0;
         speed = moveSpeed;
-
     }
 
     private void FixedUpdate()
     {
-       
-       
+
         Debug.Log(checkAttack);
+        timeDelayy -= Time.fixedDeltaTime;
         if(moveSpeed == 0 &&  checkAnimAttack == false)
         {
 
@@ -79,64 +82,67 @@ public class BossFollowPlayer : FollowToDistance
     protected override void ConditionTarget()
     {
         base.ConditionTarget();
-       
-        
+
         if (target == leftTarget|| target == rightTarget)
         {
             MoveTarget();
             //distancesLeftRight = Vector2.Distance(transform.position, target.transform.position);
             if (distance <= targetDistance)
             {
-                Debug.Log("đã vào target distances");
                 target = player;
-                moveSpeed = 12;
+                
+            }
+            if (direction.x > 3 && direction.x < 10 || direction.x < -3 && direction.x > -10)
+            {
+                if (timeDelayy <= 0)
+                {
+                    moveSpeed = speed * 4;
+                    Invoke(nameof(ResetTimeDelay), 2f);
+
+                }
+
             }
         }
+
         if (target == player && direction.x > 3 || target == player && direction.x <= -3)
         {
             MoveTarget();
         }
+        
         float theRotation = player.transform.rotation.y;
-        if( distance > 3.7 && target == player)
-        {
+        
             
-            if (direction.x > 0)
+                if (direction.x > 4)
+                {
+                    if (theRotation == 0) target = leftTarget;
+                    else target = rightTarget;
+
+                }
+                else if (direction.x <= -4)
+                {
+                    if (theRotation == 0) target = rightTarget;
+                    else target = leftTarget;
+
+                }
+            if (direction.y > 0.5 || direction.y <= -0.5)
             {
-                if(theRotation ==0) target = leftTarget;
-                else target = rightTarget;
+                if (direction.x > 0)
+                {
+                    if (theRotation == 0) target = leftTarget;
+                    else target = rightTarget;
+
+                }
+                else if (direction.x <= 0)
+                {
+                    if (theRotation == 0) target = rightTarget;
+                    else target = leftTarget;
+
+                }
 
             }
-            else if (direction.x <= 0)
-            {
-                if (theRotation == 0) target = rightTarget;
-                else target = leftTarget;
-
-            }
-        }
-        if (direction.y > 0.5 || direction.y <= -0.5)
-        {
-            if (direction.x > 0)
-            {
-                if (theRotation == 0) target = leftTarget;
-                else target = rightTarget;
-
-            }
-            else if (direction.x <= 0)
-            {
-                if (theRotation == 0) target = rightTarget;
-                else target = leftTarget;
-
-            }
-
-        }
-
-
-
-
-
-
-
+       
     }
+    public void ResetTimeDelay() { timeDelayy = 10; }
     protected override void MoveTarget()
     {
         base.MoveTarget();
@@ -162,8 +168,9 @@ public class BossFollowPlayer : FollowToDistance
 
         if (collision.gameObject.CompareTag("Player") && target == player)
         {
-            
+
             moveSpeed = 0;
+            checkAttack = true;
             Debug.Log("đã chạm vào player" + moveSpeed);
 
 
@@ -174,6 +181,7 @@ public class BossFollowPlayer : FollowToDistance
 
         if (collision.gameObject.CompareTag("Player"))
         {
+            checkAttack = false;
             moveSpeed = speed;
 
         }

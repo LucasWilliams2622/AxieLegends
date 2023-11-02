@@ -23,6 +23,9 @@ public class PlayerLevelBuff : MonoBehaviour
     void Start()
     {
         level = 1;
+        currentLevel = 1;
+        maxExp = 100;
+        currentExp = 0;
         LoadList();
     }
 
@@ -137,42 +140,43 @@ public class PlayerLevelBuff : MonoBehaviour
     private void CollectExp(int amount)
     {
         currentExp += amount;
-        expBar.SetEXP((int)currentExp);
+        //expBar.SetEXP((int)currentExp);
+        expBar.UpdateExp(currentExp, maxExp);
+        
 
+        //if (currentLevel == 1 && currentExp >= 100)
+        //{
+        //    LevelUp();
+        //}
+        //else if (currentLevel == 2 && currentExp >= 200)
+        //{
+        //    LevelUp();
 
-        if (currentLevel == 1 && currentExp >= 100)
-        {
-            LevelUp();
-        }
-        else if (currentLevel == 2 && currentExp >= 200)
-        {
-            LevelUp();
-          
-        }
-        else if (currentLevel == 3 && currentExp >= 300)
-        {
-            LevelUp();
-        }
-        else if (currentLevel == 4 && currentExp >= 400)
-        {
-            LevelUp();
-        }
-        if (currentLevel == 1 && currentExp == maxExp)
-        {
-
-            LevelUp();
-        }
-        if (currentLevel == 2 && currentExp == maxExp)
+        //}
+        //else if (currentLevel == 3 && currentExp >= 300)
+        //{
+        //    LevelUp();
+        //}
+        //else if (currentLevel == 4 && currentExp >= 400)
+        //{
+        //    LevelUp();
+        //}
+        if (currentLevel == 1 && currentExp >= maxExp)
         {
 
             LevelUp();
         }
-        if (currentLevel == 3 && currentExp == maxExp)
+        if (currentLevel == 2 && currentExp >= maxExp)
         {
 
             LevelUp();
         }
-        if (currentLevel == 4 && currentExp == maxExp)
+        if (currentLevel == 3 && currentExp >= maxExp)
+        {
+
+            LevelUp();
+        }
+        if (currentLevel == 4 && currentExp >= maxExp)
         {
 
             LevelUp();
@@ -180,11 +184,12 @@ public class PlayerLevelBuff : MonoBehaviour
     }
     private void LevelUp()
     {
-        Debug.Log("Level up!");
-        currentExp = 0;
-        expBar.SetEXP(0);
+        maxExp = maxExp * currentLevel;
+        Debug.Log("Level up!" + maxExp);
+        currentExp = currentExp - maxExp;
+        //expBar.SetEXP(0);
         currentLevel++;
-        expBar.UpdateExp(0, maxExp);
+        expBar.UpdateExp(currentExp, maxExp);
         skill.gameObject.SetActive(true);
         Random3Skill();
         Time.timeScale = 0f;
