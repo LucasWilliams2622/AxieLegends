@@ -33,7 +33,7 @@ public class EnemyHealth : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Ultimate"))
         {
-            TakeDamage(10);
+            Invoke(nameof(DelayTakeDamage),0.7f);
         }
         if (collision.gameObject.CompareTag("Rocket"))
         {
@@ -53,6 +53,11 @@ public class EnemyHealth : MonoBehaviour
         {
             TakeDamage(10);
         }
+    }
+
+    void DelayTakeDamage()
+    {
+        TakeDamage(10);
     }
 
     IEnumerator takeDmgPerSec()

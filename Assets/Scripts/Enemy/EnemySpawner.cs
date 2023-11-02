@@ -20,7 +20,7 @@ public class EnemySpawner : Spawner
         indexEnemy = 0;
         checkBoss = false;
         base.Start();
-        timeDelay = 0.5f;
+        timeDelay = 1f;
         timeEnemySpawnerLV = 30f;
         timeDelayEnemyLV = 0;
 
@@ -39,10 +39,10 @@ public class EnemySpawner : Spawner
         if(!checkBoss) timeEnemySpawnerLV -= Time.fixedDeltaTime;
         if(indexEnemy == 2 || indexEnemy == 6) timeDelayEnemyLV -= Time.fixedDeltaTime;
         timeDelay -= Time.fixedDeltaTime;
-        if (timeDelay <= 0)
+        if (timeDelay < 0)
         {
             Spawners();
-            timeDelay = 0.2f;
+            timeDelay = 0.3f;
         }
 
         Debug.Log(">>>>>>>>>>>>" + checkBoss);

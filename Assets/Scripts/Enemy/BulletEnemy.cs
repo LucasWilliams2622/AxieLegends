@@ -34,7 +34,7 @@ public class BulletEnemy : MonoBehaviour
     }
     protected virtual void ConditionTarget()
     {
-        if (distance <= targetDistance)
+        if (distance < targetDistance)
         {
             MoveTarget();
         }
@@ -48,11 +48,12 @@ public class BulletEnemy : MonoBehaviour
         rb.velocity = direction.normalized * moveSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Shield") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Shield"))
         {
-           /* Destroy(collision.gameObject);*/
+            Debug.LogWarning("in");
+            Destroy(gameObject);
         }
     }
 

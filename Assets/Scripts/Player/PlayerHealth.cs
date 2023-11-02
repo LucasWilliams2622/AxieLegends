@@ -15,6 +15,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject panelSystem;
     public GameObject panelExpBar;
     public ShieldController shieldController;
+    public PlayerAnimation playerAnim;
+    public PlayerController control;
 
     private Dictionary<string, int> enemyDamageMap = new Dictionary<string, int>()
     {
@@ -55,20 +57,31 @@ public class PlayerHealth : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Boss1Attack"))
         {
+            CreateHitEffect();
             TakeDamage(4);
         }
         if (collision.gameObject.CompareTag("BossFinal"))
         {
+            CreateHitEffect();
             TakeDamage(5);
         }
         if (collision.gameObject.CompareTag("BulletEnemy"))
         {
-            TakeDamage(1);
+            TakeDamage(2);
+            CreateHitEffect();
+            Destroy(collision.gameObject);
         }
         if (collision.gameObject.CompareTag("AxeHurt"))
         {
+            CreateHitEffect();
             TakeDamage(7);
         }
+    } 
+
+    private void CreateHitEffect()
+    {
+        control.HandleHurt();
+        var obj = Instantiate(Resources.Load("PrefGotHit", typeof(GameObject)), transform.position, Quaternion.identity) as GameObject;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -124,6 +137,6 @@ public class PlayerHealth : MonoBehaviour
         panelDead.SetActive(false);
         isDead = false;
         Time.timeScale = 1f;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name,LoadSceneMode.Single);
     }
 }
