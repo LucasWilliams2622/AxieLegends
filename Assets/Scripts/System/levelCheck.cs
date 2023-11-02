@@ -9,13 +9,21 @@ public class levelCheck : MonoBehaviour
     public TextMeshProUGUI text;
     public listIconSkillReview iconskill;
     void Start()
-    {
+    { 
         
     } 
 
     // Update is called once per frame
     void Update()
     {
-        text.SetText("Level: "+iconskill.level);
+        if(iconskill.level != 4)
+        {
+            text.SetText("Level: " + iconskill.level);
+        }
+        else
+        {
+            text.SetText("Level: Max");
+        }
+        
     }
 }

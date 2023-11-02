@@ -216,10 +216,13 @@ MonoBehaviour:
   moveSpeed: 0
   rb: {fileID: 0}
   distance: 0
+  direction: {x: 0, y: 0}
   time: 0
   speed: 0
   expFollowPlayer: {fileID: 0}
   Magnet: {fileID: 9150449645597415794}
+  sprite: {fileID: 6199170653539271801}
+  col: {fileID: 7123478665266568560}
 --- !u!58 &7123478665266568560
 CircleCollider2D:
   m_ObjectHideFlags: 0

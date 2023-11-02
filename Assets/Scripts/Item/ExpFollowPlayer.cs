@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ExpFollowPlayer : FollowToDistance
 {
+    public float dfaultDistanceTarget;
+    public float dfaultMoveSpeedTarget;
     public static float distanceTarget; 
     public static float moveSpeedTarget;
 
@@ -16,12 +18,12 @@ public class ExpFollowPlayer : FollowToDistance
     protected override void ConditionTarget()
     {
         base.ConditionTarget();
-        if(distance < distanceTarget)
-        { 
+        if (distance < distanceTarget)
+        {
             MoveTarget();
         }
+
     }
-     
     protected override void MoveTarget()
     {
         base.MoveTarget();

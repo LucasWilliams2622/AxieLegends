@@ -9,40 +9,42 @@ public class MagnetFollowPlayer : FollowToDistance
     [SerializeField] protected float speed;
     [SerializeField] ExpFollowPlayer expFollowPlayer;
     [SerializeField] protected GameObject Magnet;
-    public static bool checkMagnet;
+    public SpriteRenderer sprite;
+    public Collider2D col;
     protected override void Start()
     {
         base.Start();
         distanceTarget = ExpFollowPlayer.distanceTarget;
         speed = ExpFollowPlayer.moveSpeedTarget;
         target = GameObject.Find("Player");
-        ExpFollowPlayer.distanceTarget = 1; 
-        ExpFollowPlayer.moveSpeedTarget = 10;
+        ExpFollowPlayer.distanceTarget = 3.5f; 
+        ExpFollowPlayer.moveSpeedTarget = 40;
     }
 
-    protected override void Update()
-    {
-        base.Update();
-        time -= Time.deltaTime;
-        if (distanceTarget != ExpFollowPlayer.distanceTarget) 
-        {
-            if (time <= 0)
-            {
-                ExpFollowPlayer.distanceTarget = 2;
-                ExpFollowPlayer.moveSpeedTarget = 10;
-            } 
-        }
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Magnet.SetActive(false);
-            Destroy(gameObject,4f);
-            ExpFollowPlayer.distanceTarget = 20f;
-            ExpFollowPlayer.moveSpeedTarget = 30f;
-            time = 2f;
-            checkMagnet = true;
+
+            StartCoroutine(destroyGameobject());
+           
         }
+    }
+
+    IEnumerator destroyGameobject()
+    {
+        ExpFollowPlayer.distanceTarget = 20f;
+        ExpFollowPlayer.moveSpeedTarget = 60f;
+        sprite.enabled = false;
+        col.enabled = false;
+
+        yield return new WaitForSeconds(2);
+        ExpFollowPlayer.distanceTarget = 3.5f;
+        ExpFollowPlayer.moveSpeedTarget = 40;
+
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+        StopCoroutine(destroyGameobject());
+
     }
 }

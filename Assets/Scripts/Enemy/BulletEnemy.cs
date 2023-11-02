@@ -48,11 +48,12 @@ public class BulletEnemy : MonoBehaviour
         rb.velocity = direction.normalized * moveSpeed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Shield") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Shield"))
         {
-            //Debug.LogWarning("hit");
+            Debug.LogWarning("in");
+            Destroy(gameObject);
         }
     }
 
