@@ -148,12 +148,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed02f0f0e90eaae428be6e810e67cf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingForce: 4
+  shootingForce: 8
   delayAnimOffset: 0
   rotationModifier: 90
   anim: {fileID: 1814580402560974015}
   rb: {fileID: 8650816223868274830}
   nearestEnm: {fileID: 0}
+  enmPos: {x: 0, y: 0, z: 0}
 --- !u!61 &3172820190613991680
 BoxCollider2D:
   m_ObjectHideFlags: 0

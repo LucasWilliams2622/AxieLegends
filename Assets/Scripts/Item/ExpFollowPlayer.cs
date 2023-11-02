@@ -17,11 +17,11 @@ public class ExpFollowPlayer : FollowToDistance
     {
         base.ConditionTarget();
         if(distance < distanceTarget)
-        {
+        { 
             MoveTarget();
         }
     }
-
+     
     protected override void MoveTarget()
     {
         base.MoveTarget();

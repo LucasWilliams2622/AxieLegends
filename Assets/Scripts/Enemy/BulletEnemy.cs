@@ -34,7 +34,7 @@ public class BulletEnemy : MonoBehaviour
     }
     protected virtual void ConditionTarget()
     {
-        if (distance <= targetDistance)
+        if (distance < targetDistance)
         {
             MoveTarget();
         }
@@ -52,7 +52,7 @@ public class BulletEnemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shield") || collision.gameObject.CompareTag("Player"))
         {
-           /* Destroy(collision.gameObject);*/
+            //Debug.LogWarning("hit");
         }
     }
 
