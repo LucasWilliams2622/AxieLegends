@@ -21,8 +21,8 @@ public class EnemySpawner : Spawner
         checkBoss = false;
         base.Start();
         timeDelay = 0.5f;
-        timeEnemySpawnerLV = 20f;
-        timeDelayEnemyLV = 30f;
+        timeEnemySpawnerLV = 30f;
+        timeDelayEnemyLV = 0;
 
 
         /*ListSpawner(3);
@@ -37,7 +37,7 @@ public class EnemySpawner : Spawner
     {
         base.FixedUpdate();
         if(!checkBoss) timeEnemySpawnerLV -= Time.fixedDeltaTime;
-
+        if(indexEnemy == 2 || indexEnemy == 6) timeDelayEnemyLV -= Time.fixedDeltaTime;
         timeDelay -= Time.fixedDeltaTime;
         if (timeDelay <= 0)
         {
@@ -80,12 +80,15 @@ public class EnemySpawner : Spawner
         base.Spawners();
         
         if (timeEnemySpawnerLV > 0 && indexEnemy != 3 && indexEnemy != 7 && checkBoss == false) ListSpawner(indexEnemy);
-        if (timeEnemySpawnerLV <= 0) 
+        if (timeEnemySpawnerLV <= 0 && timeDelayEnemyLV <= 0) 
         { 
             if(indexEnemy <7)  indexEnemy++;
-            timeEnemySpawnerLV = 15f;
+            timeEnemySpawnerLV = 30f;
+            if (indexEnemy == 2) timeDelayEnemyLV = timeEnemySpawnerLV + 30f;
+            if (indexEnemy == 6) timeDelayEnemyLV = timeEnemySpawnerLV + 30f;
         }
-
+        if(indexEnemy == 2 && timeEnemySpawnerLV <= 0) { ListSpawner(Random.Range(1, 4) - 1); }
+        if(indexEnemy == 6 && timeEnemySpawnerLV <= 0) { ListSpawner(Random.Range(5, 7) - 1); }
         if (checkBoss == false && indexEnemy == 3 || checkBoss == false && indexEnemy == 7)
         {
             if (indexEnemy == 3) indexEnemy++;
