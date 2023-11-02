@@ -47,15 +47,15 @@ public class PlayerLevelBuff : MonoBehaviour
                 }
                 if (currentLevel == 2)
                 {
-                    CollectExp(5);
+                    CollectExp(7);
                 }
                 if (currentLevel == 3)
                 {
-                    CollectExp(4);
+                    CollectExp(6);
                 }
                 if (currentLevel == 4)
                 {
-                    CollectExp(3);
+                    CollectExp(6);
                 }
                 Destroy(collision.gameObject);
             }
@@ -184,7 +184,7 @@ public class PlayerLevelBuff : MonoBehaviour
     }
     private void LevelUp()
     {
-        maxExp = maxExp * currentLevel;
+        maxExp = 100 * currentLevel;
         Debug.Log("Level up!" + maxExp);
         currentExp = currentExp - maxExp;
         //expBar.SetEXP(0);
