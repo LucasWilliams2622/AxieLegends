@@ -31,7 +31,7 @@ public class FollowToDistance : MonoBehaviour
     }
     protected virtual void ConditionTarget()
     {
-        if (distance <= targetDistance)
+        if (distance < targetDistance)
         {
             MoveTarget();
         }

@@ -38,6 +38,7 @@ public class UltiCDTrigger : MonoBehaviour
 
         yield return new WaitForSeconds(durationAnim);
 
+        cooldown.onWaitingCD = false;
         btn.enabled = true;
         gameObject.SetActive(false);
     }

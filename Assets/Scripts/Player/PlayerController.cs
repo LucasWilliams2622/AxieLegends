@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     private float horizontal;
     private float vertical;
     private bool isMoving;
-    private bool isTriggerHurtAnimation; //lock các animation khác khi animation hurt đang chạy
+    public bool isTriggerHurtAnimation; //lock các animation khác khi animation hurt đang chạy
     private bool isBuffSpeed = false;
 
     public bool IsPlayerDie { get => isPlayerDie; set => isPlayerDie = value; }
@@ -115,23 +115,28 @@ public class PlayerController : MonoBehaviour
     {
         transform.localEulerAngles = new Vector3(x, y, z);
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("buffSpeed"))
+        {
+            Destroy(collision.gameObject);
+            StartCoroutine(BuffSpeedCoroutine());
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Monster") 
-            || collision.collider.CompareTag("EnemyLv1") 
+        if (collision.collider.CompareTag("Monster")
+            || collision.collider.CompareTag("EnemyLv1")
             || collision.collider.CompareTag("EnemyLv2")
             || collision.collider.CompareTag("EnemyLv3"))
         {
             HandleHurt();
         }
-        if (collision.collider.CompareTag("buffSpeed"))
-        {
-            Destroy(collision.gameObject);
-            StartCoroutine(BuffSpeedCoroutine());
-        }
+
 
     }
-    void HandleHurt()
+    public void HandleHurt()
     {
         isTriggerHurtAnimation = true;
         playerAnim.PlayHurt();

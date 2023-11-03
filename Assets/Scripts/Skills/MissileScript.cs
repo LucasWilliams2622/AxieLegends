@@ -17,7 +17,7 @@ public class MissileScript : MonoBehaviour
     {
         anim.Play("MissileFly");
         var dur = anim.GetCurrentAnimatorStateInfo(0).length;
-        Destroy(gameObject, dur - offsetDelay);
+        Destroy(gameObject.transform.parent.gameObject, dur - offsetDelay);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

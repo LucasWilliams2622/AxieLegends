@@ -21,7 +21,7 @@ public class Ultimate : MonoBehaviour
     }*/
     void Update()
     {
-        ultimateEffect.transform.position = player.transform.position;
+        transform.position = player.transform.position;
 
         if (usingUltimate)
         {
