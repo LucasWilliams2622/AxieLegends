@@ -16,13 +16,11 @@ public class PauseGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckPause();
-
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale==1)
         {
             trigger = !trigger;
+            CheckPause();
         }
-
     }
 
     void CheckPause()
@@ -43,6 +41,7 @@ public class PauseGameController : MonoBehaviour
     public void pauseGame()
     {
         trigger = !trigger;
+        CheckPause();
     }
 
 }

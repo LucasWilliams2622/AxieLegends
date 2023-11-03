@@ -25,6 +25,7 @@ public class Play : MonoBehaviour
     }
     public void  PlayGame()
     {
+        Time.timeScale = 1;
         SceneManager.LoadScene("SampleScenetest");
     }
 
