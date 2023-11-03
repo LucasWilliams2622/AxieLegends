@@ -62,10 +62,10 @@ public class EnemySpawner : Spawner
         float posY = Random.Range(-35, 35);
         if (checkBoss)
         {
-            posX = Random.Range(-4, 4);
-            posY = Random.Range(-3, 3);
-            randomPosX = 3;
-            randomPosY = 1.7f;
+            posX = Random.Range(-6, 6);
+            posY = Random.Range(-5, 5);
+            randomPosX = 4;
+            randomPosY = 3;
             Debug.Log("boss ne");
         }
         if (posX >= 0 && posX < randomPosX) posX = randomPosX;
