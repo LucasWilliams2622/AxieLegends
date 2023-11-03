@@ -109,17 +109,18 @@ public class BossFollowPlayer : FollowToDistance
         {
             Debug.Log("đã về target player");
             target = player;
-            if (direction.x < 3.5f && direction.x > -3.5f )
-            {
-                moveSpeed = 0;
-            }
-            else
-            {
-                moveSpeed = speed;
-            }
+           
 
         }
-        
+        if (direction.x < 3.5f && direction.y <= y && direction.x > -3.5f && direction.y > -y)
+        {
+            moveSpeed = 0;
+        }
+        else
+        {
+            moveSpeed = speed;
+        }
+
 
 
     }
