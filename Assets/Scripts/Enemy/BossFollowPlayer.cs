@@ -82,74 +82,52 @@ public class BossFollowPlayer : FollowToDistance
     protected override void ConditionTarget()
     {
         base.ConditionTarget();
-
-        if (target == leftTarget|| target == rightTarget)
-        {
-            MoveTarget();
-            //distancesLeftRight = Vector2.Distance(transform.position, target.transform.position);
-            if (distance <= targetDistance)
-            {
-                target = player;
-                
-            }
-            if (direction.x > 3 && direction.x < 10 || direction.x < -3 && direction.x > -10)
-            {
-                if (timeDelayy <= 0)
-                {
-                    moveSpeed = speed * 4;
-                    Invoke(nameof(ResetTimeDelay), 2f);
-
-                }
-
-            }
-        }
-
-        if (target == player && direction.x > 3 || target == player && direction.x <= -3)
-        {
-            MoveTarget();
-        }
+        if (!checkAttack) MoveTarget();
+        else moveSpeed = 0;
         
         float theRotation = player.transform.rotation.y;
-        
-            
-                if (direction.x > 4)
-                {
-                    if (theRotation == 0) target = leftTarget;
-                    else target = rightTarget;
-
-                }
-                else if (direction.x <= -4)
-                {
-                    if (theRotation == 0) target = rightTarget;
-                    else target = leftTarget;
-
-                }
-            if (direction.y > 0.5 || direction.y <= -0.5)
+        float y = 0.7f;
+        if (direction.y > y || direction.y <= -y)
+        {
+            Debug.Log("đã vô đổi target");
+            target = leftTarget;
+            if (direction.x > 0)
             {
-                if (direction.x > 0)
-                {
-                    if (theRotation == 0) target = leftTarget;
-                    else target = rightTarget;
-
-                }
-                else if (direction.x <= 0)
-                {
-                    if (theRotation == 0) target = rightTarget;
-                    else target = leftTarget;
-
-                }
+                if (theRotation == 0) target = leftTarget;
+                else target = rightTarget;
 
             }
-       
+            else if (direction.x <= 0)
+            {
+                if (theRotation == 0) target = rightTarget;
+                else target = leftTarget;
+
+            }
+
+        }
+        else if (direction.y <= y || direction.y > -y)
+        {
+            Debug.Log("đã về target player");
+            target = player;
+            if (direction.x < 3.5f && direction.x > -3.5f )
+            {
+                moveSpeed = 0;
+            }
+            else
+            {
+                moveSpeed = speed;
+            }
+
+        }
+        
+
+
     }
     public void ResetTimeDelay() { timeDelayy = 10; }
     protected override void MoveTarget()
     {
         base.MoveTarget();
         direction = player.transform.position - transform.position;
-        //transform.up = direction.normalized;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //transform.rotation = Quaternion.Euler(0, 0, angle + 180);
 
         if (direction.x > 0.1)
         {
@@ -160,6 +138,7 @@ public class BossFollowPlayer : FollowToDistance
             transform.localScale = new Vector3(1f, 1f, 1f);
 
         }
+       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
