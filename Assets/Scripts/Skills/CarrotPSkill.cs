@@ -59,7 +59,7 @@ public class CarrotPSkill : MonoBehaviour
     {
         if (collision.CompareTag("ActiveRange4Skill"))
         {
-            Destroy(gameObject);
+            Destroy(gameObject,10);
         }
     }
 }

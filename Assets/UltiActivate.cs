@@ -29,5 +29,6 @@ public class UltiActivate : MonoBehaviour
     private void OnDisable()
     {
         transform.SetParent(ultimate.transform);
+        transform.localPosition = Vector3.zero;
     }
 }

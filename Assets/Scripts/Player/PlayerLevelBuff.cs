@@ -47,15 +47,15 @@ public class PlayerLevelBuff : MonoBehaviour
                 }
                 if (currentLevel == 2)
                 {
-                    CollectExp(5);
+                    CollectExp(2);
                 }
                 if (currentLevel == 3)
                 {
-                    CollectExp(4);
+                    CollectExp(2);
                 }
                 if (currentLevel == 4)
                 {
-                    CollectExp(3);
+                    CollectExp(2);
                 }
                 Destroy(collision.gameObject);
             }

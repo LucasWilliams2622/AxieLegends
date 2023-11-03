@@ -22,10 +22,10 @@ public class PlayerHealth : MonoBehaviour
     {
         { "EnemyLv1", 1 },
         { "EnemyLv2", 2 },
-        { "EnemyLv3", 1 },
+        { "EnemyLv3", 3 },
 
-        { "EnemyLv4", 2 },
-        { "EnemyLv5", 3 },
+        { "EnemyLv4", 3 },
+        { "EnemyLv5", 4 },
         { "EnemyLv6", 4 },
 
     };
